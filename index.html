@@ -669,7 +669,7 @@ class Game {
             }
           }
         }
-        if (c.isSpell && c.isReversedCopy) this.reverseTwist(side);
+        if (c.isSpell && c.isReversedCopy) this.reverseTwist(side, c);
         else if (c.isSpell && c.reversible && this.reuseReversed && c.id > 0) {
           // 쓴 룬·타로는 덱에 거꾸로 섞여 들어간다
           p.deck.splice(this.rnd.int(p.deck.length + 1), 0, reversedOf(c));
@@ -817,21 +817,25 @@ class Game {
     }
   }
   // 역방향 반전: 상대 하수인 하나 체력 +1, 또는 내가 잃은 하수인이 꼭두각시로 되살아남
-  reverseTwist(side) {
+  //  되살림은 그 주문의 비용 이하인 하수인만, 능력(수호·가호·질주·그림자) 없이 나온다
+  reverseTwist(side, card) {
     const me = this.players[side], foe = this.players[1 - side];
+    const maxCost = card ? card.cost : 99;
+    const revivable = me.grave.filter(d => d.cost <= maxCost);
     const opts = [];
     if (foe.board.some(m => m.hp > 0)) opts.push('foe');
-    if (me.grave.length && me.board.length < this.boardLimit(side)) opts.push('revive');
+    if (revivable.length && me.board.length < this.boardLimit(side)) opts.push('revive');
     if (!opts.length) return;
     if (opts[this.rnd.int(opts.length)] === 'foe') {
       const pool = foe.board.filter(m => m.hp > 0), t = pool[this.rnd.int(pool.length)];
       t.hp += 1; t.maxHp += 1;
       this.say('  역방향: ' + t.def.title + ' 체력 +1 (상대)');
     } else {
-      const def = me.grave[this.rnd.int(me.grave.length)];
+      const def = revivable[this.rnd.int(revivable.length)];
       const m = this.summon(side, def, false, -1);
       if (m) {
         m.hp += 1; m.maxHp += 1; m.flags.add('PUPPET');
+        m.taunt = false; m.shield = false; m.charge = false; m.stealth = false;
         m.doomTurn = this.turnNumber + 2;   // 다음 내 턴이 끝날 때 사라진다
         this.say('  역방향: ' + def.title + ' 되살아남 (조종 불가, 다음 턴에 사라짐)');
       }
@@ -1051,7 +1055,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = API; else 
 (function () {
 'use strict';
 const APP_TITLE = 'Voltaic Myth Card Battle (신화 카드 대전) with Claude';
-const VERSION = '2.5';
+const VERSION = '2.5.1';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 
@@ -1587,8 +1591,8 @@ const GLOSSARY = [
   { g: '때', n: '내 턴 끝', t: '내 차례가 끝날 때마다 일어납니다.', f: c => hasTrig(c, 'TURN_END') },
   { g: '때', n: '서사', t: '같은 이야기(예: 단군, 주몽, 아마테라스)의 단계가 붙은 카드. 앞 단계를 이 대전에서 이미 냈으면 "이어짐" 효과가 더 일어납니다. 손패에서 금색 테두리 = 이어짐 준비됨.', f: c => !!c.saga },
   { g: '때', n: '이어짐', t: '서사 카드를 낼 때, 같은 이야기의 앞 단계를 이미 냈으면 일어나는 효과.', f: c => hasTrig(c, 'CHAIN') },
-  { g: '능력', n: '역방향', t: '룬·타로 주문은 쓰고 나면 덱에 거꾸로 섞여 들어갑니다. 역방향 카드를 다시 쓰면 같은 효과에 반전이 하나 붙습니다: 상대 하수인 하나 체력 +1, 또는 내가 잃은 하수인이 되살아남. 역방향 카드는 한 번 쓰면 사라집니다.', f: c => c.reversible && c.isSpell },
-  { g: '능력', n: '조종 불가', t: '역방향으로 되살아난 하수인. 체력 +1로 나오지만 공격·스킬을 못 하고(수호는 그대로), 다음 내 턴이 끝날 때 사라집니다.', f: () => false },
+  { g: '능력', n: '역방향', t: '룬·타로 주문은 쓰고 나면 덱에 거꾸로 섞여 들어갑니다. 역방향 카드를 다시 쓰면 같은 효과에 반전이 하나 붙습니다: 상대 하수인 하나 체력 +1, 또는 내가 잃은 하수인(그 주문 비용 이하)이 능력 없이 되살아남. 역방향 카드는 한 번 쓰면 사라집니다.', f: c => c.reversible && c.isSpell },
+  { g: '능력', n: '조종 불가', t: '역방향으로 되살아난 하수인. 체력 +1로 나오지만 능력(수호·가호 등) 없이, 공격·스킬도 못 하고, 다음 내 턴이 끝날 때 사라집니다. 상대 공격을 한 번 받아 주는 방패 역할.', f: () => false },
   { g: '때', n: '스킬', t: '하수인이 신력을 내고 쓰는 능력. 쓰면 그 턴에는 공격할 수 없습니다. 액티브2는 반신, 특수능력은 상급신부터 열리고 특수능력은 대전마다 한 번.', f: c => !c.isSpell && !!c.active1 },
   { g: '오행', n: '상극 +1', t: '공격하는 쪽 주속성이 맞는 쪽 방어 속성을 이기면(목→토→수→화→금→목) 피해 +1. 반격 피해는 그대로입니다.', f: c => !!c.mainEl && !c.isNeutral && !c.isSpell },
   { g: '오행', n: '계절 강세', t: '지금 계절의 오행과 주속성이 같은 하수인은 공격 +1. 절기는 한 턴에 하나씩 지나갑니다.', f: c => !!c.mainEl && !c.isNeutral && !c.isArbiter && !c.isSpell },
@@ -1847,7 +1851,7 @@ function rulesSheet() {
   • 같은 턴에 상생 순서(목→화→토→금→수→목)로 이어 내면 비용 −1.<br>• 공격하는 쪽 주속성이 맞는 쪽 방어 속성(양속성은 보조)을 상극하면 피해 +1.<br>
   • 무속성(無): 비용 +1, 상극·계절의 영향 없음.<br>• 조정자(調): 공격 불가, 양옆 아군 공격 +1, 낼 때 효과 둘 중 하나 선택.<\/div>
   <h3>서사·역방향<\/h3><div>• 서사 카드: 같은 이야기의 앞 단계를 이미 냈으면 "이어짐" 효과가 더 일어납니다(손패 금색 테두리).<br>
-  • 룬·타로 주문은 쓰면 덱에 역방향으로 섞여 들어가고, 다시 쓰면 반전 하나가 붙습니다(상대 하수인 체력 +1, 또는 내가 잃은 하수인이 조종 불가로 되살아나 다음 턴에 사라짐).<\/div>
+  • 룬·타로 주문은 쓰면 덱에 역방향으로 섞여 들어가고, 다시 쓰면 반전 하나가 붙습니다(상대 하수인 체력 +1, 또는 내가 잃은 하수인 중 그 주문 비용 이하인 것이 능력 없이·조종 불가로 되살아나 다음 턴에 사라짐).<\/div>
   <h3>신탁 대전<\/h3><div>그 자리에서 덱을 만드는 대전. 운명에 맡기기(무작위 20장) 또는 신탁 받기(세 장 중 한 장 × 20). 양쪽 모두 정령★1.<\/div>
   <h3>등급<\/h3><div>정령 → 수호령 → 반신(액티브2) → 하급신 → 상급신(특수능력) → 대신 → 주신 → 태초신. 한 단계마다 체력 +1, 두 단계마다 공격 +1.<\/div>
   <h3>조작<\/h3><div>카드를 누르면 냅니다(하수인은 ▼ 자리를 고름). 내 하수인을 누른 뒤 빨간 대상을 누르면 공격. 길게 누르면(PC는 오른쪽 클릭) 설명. 빈 곳을 누르면 취소.<\/div>
