@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#262a33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="신화 카드 대전">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<title>Voltaic Myth Card Battle (신화 카드 대전) with Claude</title>
+<style>:root{--bg:#262a33;--panel:#2f343f;--line:#4a5262;--text:#e8ebf0;--muted:#9aa3b2;--gold:#e6c878;--accent:#5aa0ff;--danger:#ff7a7a;--ok:#7fdc8a;
+--cw:min(calc((100vw - 28px)/7 - 4px),84px);--ch:calc(var(--cw)*1.32);--hw:min(84px,23vw);--hh:calc(var(--hw)*1.38);}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;overscroll-behavior:none}
+body{touch-action:manipulation;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+button{font:inherit;color:var(--text);background:#3a4150;border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer}
+button:active{transform:scale(.97)}button.primary{background:#d9a93c;color:#241a05;border-color:#d9a93c;font-weight:600}
+button:disabled{opacity:.45}
+select,input[type=text]{font:inherit;color:var(--text);background:#20242c;border:1px solid var(--line);border-radius:8px;padding:8px;width:100%}
+.hidden{display:none!important}
+#app{height:100%;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+/* ---------- 맨 위 */
+#topbar{display:flex;align-items:center;gap:8px;padding:6px 8px;background:#1e2229;font-size:12.5px;min-height:34px}
+#topbar .term{display:flex;align-items:center;gap:6px;flex:1;min-width:0;white-space:nowrap;overflow:hidden}
+#topbar .term .nm{color:var(--gold);font-weight:600}
+#topbar .term .rest{color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+#topbar .track{display:flex;gap:2px}
+@media (max-width:700px){#topbar .track{display:none}}
+#topbar .track i{width:6px;height:10px;border-radius:2px;display:block}
+#menuBtn{padding:4px 10px}
+.elb{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-weight:700;border:1.5px solid #fff;flex:none}
+/* ---------- 판 */
+#main{flex:1;display:flex;min-height:0}
+#board{flex:1;display:flex;flex-direction:column;justify-content:space-evenly;min-width:0;min-height:0;padding:4px 6px 0;position:relative}
+.hero{display:flex;align-items:center;gap:10px;margin:2px auto;padding:6px 12px;border-radius:10px;border:1.5px solid #8c96a8;min-width:min(330px,94%);justify-content:space-between;font-size:13px}
+.hero.me{background:#34506e}.hero.foe{background:#6b3a3a}
+.hero.turn{border-color:var(--gold);box-shadow:0 0 0 2px rgba(230,200,120,.35)}
+.hero.tgt{border-color:#ff6a3d;box-shadow:0 0 0 3px rgba(255,106,61,.55)}
+.hero .nm{font-weight:600}.hero .hp{font-size:22px;font-weight:700}.hero .hp.low{color:#ffb0b0}
+.hero .sub{color:#cfd6e2;font-size:11.5px}
+.mana{display:flex;gap:2px;align-items:center}.mana i{width:9px;height:11px;border-radius:50%;background:#3a4252;display:block}.mana i.on{background:#4aa0ff}.mana i.max{background:#2a4a70}
+.row{display:flex;justify-content:center;align-items:center;gap:4px;min-height:calc(var(--ch) + 8px);padding:4px 0}
+.row .empty{color:#6e7888;font-size:12px}
+.mid{height:22px;display:flex;align-items:center;justify-content:center;position:relative}
+.mid::before{content:"";position:absolute;left:10px;right:10px;top:50%;border-top:1.5px dashed #556070}
+.mid span{position:relative;background:var(--bg);padding:0 10px;font-size:12.5px;color:var(--gold);font-weight:600;max-width:90%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ---------- 카드 */
+.card{position:relative;width:var(--cw);height:var(--ch);border-radius:8px;background:#efe9dc;color:#1c1c20;border:1.5px solid #3c3c46;flex:none;display:flex;flex-direction:column;overflow:visible;cursor:pointer;transition:transform .12s}
+.card .band{margin:3px 3px 0;border-radius:5px;color:#fff;text-align:center;padding:2px calc(var(--cw)*0.28) 1px;font-weight:700;font-size:calc(var(--cw)*0.15);line-height:1.15;min-height:calc(var(--ch)*0.3);flex:none;max-height:calc(var(--ch)*0.46);display:flex;flex-direction:column;justify-content:center;word-break:keep-all;overflow:hidden}
+.card .band small{font-weight:400;font-size:calc(var(--cw)*0.12);opacity:.9}
+.card .rule{flex:1 1 0;min-height:0;font-size:max(8px,calc(var(--cw)*0.115));line-height:1.2;padding:2px 3px;overflow:hidden;text-align:center;color:#2a2a30}
+.card .rank{text-align:center;font-size:max(8px,calc(var(--cw)*0.11));color:#7a5010;min-height:1.2em;line-height:1.2}
+.card .foot{height:calc(var(--cw)*0.2);flex:none}
+.card .st{position:absolute;bottom:-5px;width:calc(var(--cw)*0.34);height:calc(var(--cw)*0.34);border-radius:50%;border:1.5px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:calc(var(--cw)*0.19);color:#fff}
+.card .st.a{left:-5px;background:#e6aa1e}.card .st.h{right:-5px;background:#c83232}
+.card .st .up{color:#bfffbf}.card .st .dn{color:#ffc4d0}
+.card .cost{position:absolute;top:-6px;left:-6px;width:calc(var(--cw)*0.34);height:calc(var(--cw)*0.34);border-radius:50%;background:#2870d2;border:1.5px solid #fff;color:#fff;font-weight:800;font-size:calc(var(--cw)*0.2);display:flex;align-items:center;justify-content:center}
+.card .cost.up{color:#ffc4d0}.card .cost.dn{color:#bfffbf}
+.card .elb{position:absolute;top:-6px;right:-6px;width:calc(var(--cw)*0.3);height:calc(var(--cw)*0.3);font-size:calc(var(--cw)*0.16)}
+.card .elb.sub{top:calc(var(--cw)*0.25);right:-4px;width:calc(var(--cw)*0.21);height:calc(var(--cw)*0.21);font-size:calc(var(--cw)*0.12)}
+.card .elb.season{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.card .ov{position:absolute;inset:0;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:calc(var(--cw)*0.16)}
+.card .ov.frz{background:rgba(150,210,255,.45);color:#0a2a60}.card .ov.stl{background:rgba(20,20,30,.45);color:#fff}
+.card .note{position:absolute;left:10%;right:10%;top:44%;text-align:center;font-size:max(9px,calc(var(--cw)*0.11));color:#fff;background:rgba(40,40,50,.72);border-radius:4px;padding:1px 0}
+.card.taunt{border:4px solid #5c5c68}
+.card.shield{box-shadow:0 0 0 3px rgba(255,215,90,.85)}
+.card.ready{border-color:#3ddc5a;box-shadow:0 0 0 2px #3ddc5a}
+.card.tgt{border-color:#ff6a3d;box-shadow:0 0 0 3px rgba(255,106,61,.8)}
+.card.sel{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold);transform:translateY(-4px)}
+.card.shield.ready{box-shadow:0 0 0 2px #3ddc5a,0 0 0 5px rgba(255,215,90,.85)}
+.card .badge{position:absolute;left:8%;right:8%;top:-18px;background:#c82820;color:#fff;font-size:11px;font-weight:700;text-align:center;border-radius:5px;padding:1px 0}
+.gap{width:14px;height:calc(var(--ch) - 16px);border-radius:6px;background:rgba(255,215,90,.55);display:flex;align-items:center;justify-content:center;font-size:10px;color:#3a2a00;flex:none;cursor:pointer;animation:pulse 1s infinite alternate}
+@keyframes pulse{from{opacity:.55}to{opacity:1}}
+/* ---------- 손패 */
+#handWrap{padding:6px 4px 4px;background:#20242c;border-top:1px solid #353b47}
+#hand{display:flex;gap:6px;overflow-x:auto;padding:10px 8px 8px;scrollbar-width:thin}
+#hand .card{--cw:var(--hw);--ch:var(--hh)}
+#hand .card.play{border-color:#3ddc5a;box-shadow:0 0 0 2px #3ddc5a}
+#hand .card.dim{filter:saturate(.5) brightness(.8)}
+#hand .card.sel{transform:translateY(-10px)}
+#actbar{display:flex;gap:6px;align-items:center;padding:4px 8px;flex-wrap:wrap;min-height:40px}
+#actbar .hint{flex:1;font-size:12.5px;color:var(--muted);min-width:120px}
+#actbar .sk{font-size:12px;padding:5px 7px;max-width:100%}
+#endTurn{background:#e0b850;color:#2a1e00;border-color:#e0b850;font-weight:700;padding:8px 14px}
+#logLine{font-size:12px;color:var(--muted);padding:2px 10px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+/* ---------- 옆 칸 (넓은 화면) */
+#side{display:none;width:320px;flex:none;flex-direction:column;gap:8px;padding:8px;background:#22262e;border-left:1px solid #353b47;min-height:0}
+#sideInfo{background:#f8f5ee;color:#222;border-radius:8px;padding:10px;font-size:13px;line-height:1.5;flex:0 0 46%;overflow:auto}
+#sideInfo h2{font-size:17px;margin:0 0 2px}#sideInfo h3{font-size:13.5px;margin:8px 0 2px}#sideInfo .muted{color:#666;font-size:12px}#sideInfo .lore{color:#6a5a48;font-size:12px;white-space:pre-wrap;margin-top:8px;border-top:1px solid #ddd5c4;padding-top:6px}#sideInfo .lock{color:#999}
+#sideLog{flex:1;overflow:auto;font-size:12px;color:#c8cfda;background:#1b1f26;border-radius:8px;padding:6px 8px;min-height:80px}
+#sideLog div{padding:1px 0}
+@media (min-width:980px) and (min-height:560px){
+  :root{--cw:min(calc((100vw - 380px)/7 - 8px),104px);--hw:104px}
+  #side{display:flex}#logLine{display:none}
+}
+@media (orientation:landscape) and (max-height:560px){
+  :root{--hw:62px}
+  #app{display:grid;grid-template-columns:minmax(0,1fr) min(300px,38vw);grid-template-rows:auto minmax(0,1fr)}
+  #topbar{grid-column:1/3}
+  #main{grid-column:1;grid-row:2;min-height:0}
+  #handWrap{grid-column:2;grid-row:2;border-top:none;border-left:1px solid #353b47;overflow:auto;display:flex;flex-direction:column}
+  #hand{flex-wrap:wrap;overflow:visible;justify-content:center;gap:10px 8px}
+  #actbar{order:2}#logLine{order:3}
+  .hero{padding:2px 10px;min-width:min(300px,94%)}.hero .hp{font-size:17px}.hero .mana{display:none}
+  .row{padding:2px 0}.mid{height:18px}
+}
+/* ---------- 창 */
+.sheetBack{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;z-index:50}
+.sheet{background:#f8f5ee;color:#1e1e24;width:min(560px,100%);max-height:88vh;overflow:auto;border-radius:16px 16px 0 0;padding:14px 16px 18px;font-size:14px;line-height:1.55}
+@media (min-width:700px){.sheetBack{align-items:center}.sheet{border-radius:14px}}
+.sheet h2{margin:0 0 4px;font-size:19px}.sheet h3{margin:12px 0 4px;font-size:15px}
+.sheet .muted{color:#666;font-size:12.5px}
+.sheet button{background:#e9e4d8;color:#222;border-color:#c9c2b2}
+.sheet button.primary{background:#d9a93c;border-color:#c0902a;color:#241a05}
+.sheet select,.sheet input[type=text]{background:#fff;color:#222;border-color:#c9c2b2}
+.sheet .btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}.sheet .btns button{flex:1}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.choice button{padding:14px 10px;text-align:left;line-height:1.45;min-height:110px}
+.choice b{display:block;font-size:16px;margin-bottom:4px}
+.lock{color:#999}
+.lore{color:#6a5a48;font-size:12.5px;white-space:pre-wrap;margin-top:8px;border-top:1px solid #ddd5c4;padding-top:6px}
+.list{display:flex;flex-direction:column;gap:2px;max-height:52vh;overflow:auto;border:1px solid #ddd5c4;border-radius:8px;background:#fff}
+.list .it{display:flex;gap:8px;align-items:center;padding:6px 8px;border-bottom:1px solid #eee6d6;cursor:pointer;font-size:13px}
+.list .it:active{background:#f2ead8}
+.list .it .c{width:22px;height:22px;border-radius:50%;background:#2870d2;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:12px;flex:none}
+.list .it .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.list .it .m{color:#777;font-size:11.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gain{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #eee6d6;font-size:13px}
+.gain .up{color:#b46a00;font-weight:700}
+#home{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center}
+#home h1{font-size:22px;margin:0;color:var(--gold)}#home p{color:var(--muted);margin:0;font-size:13px}
+#home button{width:min(320px,90%);padding:14px;font-size:16px}
+.float{position:fixed;pointer-events:none;font-weight:800;font-size:20px;color:#ff5a5a;text-shadow:0 1px 2px #000;z-index:40;animation:up 1s forwards}
+.float.heal{color:#7fff8a}
+@keyframes up{from{transform:translate(-50%,0);opacity:1}to{transform:translate(-50%,-36px);opacity:0}}
+.toast{position:fixed;left:50%;top:44px;transform:translateX(-50%);background:#111;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;z-index:60;opacity:.92;max-width:90%}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>const DATA={"cards": "# 신화 카드 대전 카드 목록 (UTF-8). 이 파일을 고치면 다음 실행 때 바로 반영됩니다.\n# 번호|신화|이름|종류|비용|공격|체력|패시브|액티브1|액티브2|특수능력\n#\n# 종류: 하수인 / 주문      (주문은 8번째 칸에 효과식만 적고 9~11번째 칸은 비웁니다)\n# 패시브   = 이름=절&절...     절: KW:키워드  또는  계기>효과식\n#            키워드: TAUNT(수호) CHARGE(질주) SHIELD(신의 가호) STEALTH(그림자)\n#            계기:   PLAY(출전) DEATH(최후) TURN_START(내 턴 시작) TURN_END(내 턴 끝)\n# 액티브/특수 = 이름(신력 비용)=효과식      — 쓰면 그 턴에는 공격할 수 없습니다.\n# 효과식   = 효과;효과...\n#   DMG:n:대상  HEAL:n:대상  BUFF:공:체:대상  KW:키워드:대상  FREEZE:대상  DESTROY:대상\n#   DRAW:n  MANA:n  ARMOR:n  SUMMON:이름:공:체[:키워드]\n# 대상 (직접 고름): ANY ENEMY FRIEND ANY_MIN ENEMY_MIN FRIEND_MIN\n#      (자동):      SELF MY_HERO ENEMY_HERO ALL ALL_MIN ALL_ENEMY ALL_ENEMY_MIN ALL_FRIEND ALL_FRIEND_MIN\n#                   OTHER_FRIEND_MIN RANDOM_ENEMY RANDOM_ENEMY_MIN\n# 조정자(⚖) 선택지: 패시브 절에 CHOOSE>이름{효과식}/이름{효과식}  (주문은 8번째 칸 전체를 CHOOSE>… 로)\n#   조정자 효과: FIGHT_ENEMIES(적끼리 싸움) FACE_OFF(양옆 아군이 맞은편과 싸움) INFIGHT(아군끼리 싸움) DISCARD:n(상대 손패 버리기)\n#   FLAG:LONE(혼자면 공격 가능) FLAG:WITHER(아군 공격 −1) FLAG:NARROW(내 전장 −1칸) FLAG:BALANCE2(양옆 +2)\n# 번호는 바꾸지 마세요(덱과 경험치가 번호로 저장됩니다).\n# ================= 그리스·로마\n1|GRE|제우스|하수인|8|6|7|천공의 왕=KW:SHIELD|번개(2)=DMG:3:ENEMY|독수리의 눈(1)=DRAW:1|티타노마키아(0)=DMG:3:ALL_ENEMY\n2|GRE|아테나|하수인|6|4|6|지혜의 방패=KW:TAUNT|지혜(1)=DRAW:1|아이기스(2)=KW:SHIELD:FRIEND_MIN|승리의 여신(0)=BUFF:2:2:ALL_FRIEND_MIN\n3|GRE|포세이돈|하수인|7|5|7|바다의 주인=TURN_END>DMG:1:ALL_ENEMY_MIN|해일(3)=DMG:2:ALL_ENEMY_MIN|지진(2)=FREEZE:ENEMY|삼지창(0)=DESTROY:ENEMY_MIN\n4|GRE|하데스|하수인|6|4|5|저승의 왕=DEATH>SUMMON:망령:2:2|저승의 손길(2)=DMG:2:ENEMY_MIN|영혼 거두기(2)=HEAL:4:MY_HERO|투명 투구(0)=KW:STEALTH:SELF;BUFF:3:0:SELF\n5|GRE|헤라클레스|하수인|5|5|4|장사=KW:CHARGE|곤봉(1)=DMG:2:ENEMY_MIN|사자 가죽(2)=KW:SHIELD:SELF|12과업(0)=BUFF:3:3:SELF\n6|GRE|아킬레우스|하수인|4|5|2|불사의 몸=KW:SHIELD|창 던지기(1)=DMG:2:ENEMY|분노(1)=BUFF:2:0:SELF|스틱스의 축복(0)=KW:SHIELD:SELF;HEAL:5:SELF\n7|GRE|메두사|하수인|3|2|4|돌의 눈=PLAY>FREEZE:ENEMY_MIN|응시(2)=FREEZE:ENEMY|뱀 머리카락(1)=DMG:1:ALL_ENEMY_MIN|석화(0)=DESTROY:ENEMY_MIN\n8|GRE|판도라의 항아리|주문|3|0|0|DMG:2:ALL_MIN;DRAW:1|||\n9|GRE|프로메테우스의 불|주문|2|0|0|DMG:3:ENEMY|||\n# ================= 북유럽\n10|NOR|오딘|하수인|8|6|8|만물의 아버지=TURN_START>DRAW:1|궁니르(2)=DMG:4:ENEMY|까마귀(1)=DRAW:1|발할라(0)=SUMMON:에인헤랴르:3:3:TAUNT;SUMMON:에인헤랴르:3:3:TAUNT\n11|NOR|토르|하수인|6|5|5|천둥=KW:CHARGE|묠니르(2)=DMG:3:ENEMY|천둥 폭풍(3)=DMG:1:ALL_ENEMY|거인 살해(0)=DESTROY:ENEMY_MIN\n12|NOR|로키|하수인|3|2|3|변신술=KW:STEALTH|장난(1)=DMG:2:ANY_MIN|속임수(1)=FREEZE:ENEMY|라그나로크의 불씨(0)=DMG:2:ALL_MIN\n13|NOR|프레이야|하수인|5|3|5|사랑의 여신=TURN_END>HEAL:2:ALL_FRIEND|세이드 마법(2)=BUFF:1:2:FRIEND_MIN|깃털 망토(1)=KW:STEALTH:SELF|폴크방(0)=HEAL:8:MY_HERO\n14|NOR|헤임달|하수인|4|2|6|파수꾼=KW:TAUNT|걀라르호른(1)=DRAW:1|무지개다리(2)=KW:TAUNT:FRIEND_MIN|최후의 뿔피리(0)=BUFF:1:1:ALL_FRIEND_MIN\n15|NOR|펜리르|하수인|5|6|4|굶주린 늑대=KW:CHARGE|물어뜯기(1)=DMG:2:ENEMY_MIN|사슬 끊기(1)=BUFF:2:0:SELF|신을 삼킴(0)=DESTROY:ENEMY_MIN\n16|NOR|브륀힐드|하수인|2|2|2|전사자 인도=DEATH>DRAW:1|창(1)=DMG:1:ENEMY|날개(1)=KW:SHIELD:SELF|선택받은 자(0)=BUFF:2:2:FRIEND_MIN\n17|NOR|라그나로크|주문|8|0|0|DMG:6:ALL_MIN|||\n# ================= 이집트\n18|EGY|라|하수인|7|5|6|태양의 배=TURN_END>DMG:2:RANDOM_ENEMY|태양 광선(2)=DMG:3:ENEMY|새벽(2)=HEAL:4:FRIEND|아펩 격퇴(0)=DMG:4:ALL_ENEMY_MIN\n19|EGY|오시리스|하수인|5|3|6|부활=DEATH>SUMMON:오시리스의 미라:3:3:TAUNT|생명의 나일(2)=HEAL:3:ALL_FRIEND|심판(2)=DMG:2:ENEMY_MIN|저승의 왕좌(0)=BUFF:0:4:ALL_FRIEND_MIN\n20|EGY|이시스|하수인|4|2|5|마법의 어머니=PLAY>HEAL:4:FRIEND|치유(1)=HEAL:3:FRIEND|날개 보호(2)=KW:SHIELD:FRIEND_MIN|되살림(0)=SUMMON:되살아난 자:4:4\n21|EGY|아누비스|하수인|3|3|3|망자의 인도=DEATH>DMG:2:RANDOM_ENEMY_MIN|저울(1)=DMG:2:ENEMY_MIN|미라 붕대(1)=FREEZE:ENEMY_MIN|심장 달기(0)=DESTROY:ENEMY_MIN\n22|EGY|세트|하수인|4|4|3|사막 폭풍=KW:CHARGE|모래 바람(2)=DMG:1:ALL_ENEMY|혼돈(1)=DMG:2:ANY|형제 살해(0)=DMG:5:ENEMY\n23|EGY|세크메트|하수인|2|3|2|피의 사자=PLAY>DMG:1:ENEMY|포효(1)=BUFF:1:0:SELF|역병(2)=DMG:1:ALL_ENEMY_MIN|붉은 맥주(0)=HEAL:4:MY_HERO\n# ================= 메소포타미아·페르시아\n24|MES|길가메시|하수인|5|4|5|3분의 2는 신=KW:SHIELD|도끼(1)=DMG:2:ENEMY_MIN|우정(2)=SUMMON:엔키두의 혼:3:3:TAUNT|영생의 풀(0)=HEAL:10:MY_HERO\n25|MES|엔키두|하수인|3|3|4|야생의 힘=KW:TAUNT|박치기(1)=DMG:2:ENEMY_MIN|들짐승(1)=BUFF:1:1:SELF|하늘 황소 잡기(0)=DESTROY:ENEMY_MIN\n26|MES|티아마트|하수인|8|7|7|혼돈의 바다=PLAY>SUMMON:혼돈의 괴물:2:2;SUMMON:혼돈의 괴물:2:2|바다뱀(2)=SUMMON:바다뱀:2:3:TAUNT|독의 피(2)=DMG:2:ALL_ENEMY_MIN|태초의 물(0)=DMG:4:ALL\n27|MES|마르두크|하수인|7|6|6|신들의 왕=PLAY>DMG:4:ENEMY_MIN|바람 그물(2)=FREEZE:ENEMY|화살(2)=DMG:3:ENEMY|운명의 서판(0)=BUFF:2:2:ALL_FRIEND_MIN\n28|PER|로스탐|하수인|5|5|5|최고의 용사=KW:TAUNT|철퇴(1)=DMG:2:ENEMY_MIN|라흐시(1)=KW:CHARGE:SELF|일곱 과업(0)=BUFF:2:2:SELF;KW:SHIELD:SELF\n29|MES|아트라하시스의 홍수|주문|7|0|0|DESTROY:ALL_MIN|||\n# ================= 인도\n30|IND|시바|하수인|8|6|6|파괴의 춤=TURN_END>DMG:1:ALL_ENEMY|셋째 눈(3)=DMG:4:ENEMY|명상(1)=HEAL:4:SELF|탄다바(0)=DMG:5:ALL_ENEMY_MIN\n31|IND|비슈누|하수인|7|4|8|유지자=KW:TAUNT&TURN_END>HEAL:2:ALL_FRIEND_MIN|수다르샤나(2)=DMG:3:ENEMY_MIN|아바타라(2)=SUMMON:화신:3:3|칼키(0)=DMG:4:ALL_ENEMY\n32|IND|가네샤|하수인|3|2|5|장애 제거=PLAY>DRAW:1|지혜(1)=DRAW:1|코끼리 힘(1)=BUFF:0:3:SELF|길을 열다(0)=MANA:3\n33|IND|하누만|하수인|4|4|4|바람의 아들=KW:CHARGE|산 들기(2)=HEAL:5:FRIEND|꼬리 불(2)=DMG:2:ALL_ENEMY_MIN|랑카로 도약(0)=DMG:4:ENEMY_HERO\n34|IND|인드라|하수인|6|5|5|천둥왕=PLAY>DMG:3:ENEMY|바즈라(2)=DMG:3:ENEMY|소마(1)=BUFF:1:1:SELF|브리트라 격퇴(0)=DESTROY:ENEMY_MIN\n# ================= 중국\n35|CHN|반고|하수인|9|8|9|천지개벽=PLAY>DMG:3:ALL_ENEMY_MIN|도끼(2)=DMG:4:ENEMY|거인의 숨(1)=HEAL:4:MY_HERO|몸이 세상이 되다(0)=BUFF:3:3:ALL_FRIEND_MIN\n36|CHN|여와|하수인|5|2|6|하늘 깁기=KW:TAUNT|흙 사람(2)=SUMMON:흙 사람:2:2|오색 돌(2)=HEAL:4:FRIEND|인간 창조(0)=SUMMON:흙 사람:2:2;SUMMON:흙 사람:2:2;SUMMON:흙 사람:2:2\n37|CHN|후예|하수인|4|3|3|명궁=PLAY>DMG:2:ENEMY|활(1)=DMG:2:ENEMY|연발(2)=DMG:1:ALL_ENEMY|아홉 해 쏘기(0)=DMG:3:ALL_ENEMY_MIN\n38|CHN|치우|하수인|5|5|4|전쟁의 신=KW:CHARGE|짙은 안개(1)=KW:STEALTH:SELF|병기(1)=BUFF:2:0:SELF|구려 군단(0)=SUMMON:구려 전사:3:2:CHARGE;SUMMON:구려 전사:3:2:CHARGE\n39|CHN|우의 치수|주문|3|0|0|FREEZE:ALL_ENEMY_MIN|||\n40|CHN|신농의 약초|주문|1|0|0|HEAL:6:FRIEND|||\n# ================= 일본\n41|JPN|아마테라스|하수인|6|4|6|태양 여신=TURN_START>HEAL:2:MY_HERO|햇살(2)=DMG:2:ENEMY;HEAL:2:MY_HERO|거울(1)=KW:SHIELD:SELF|동굴에서 나오다(0)=BUFF:2:2:ALL_FRIEND_MIN\n42|JPN|스사노오|하수인|5|5|4|폭풍=KW:CHARGE|검(1)=DMG:2:ENEMY_MIN|폭풍우(2)=DMG:1:ALL_ENEMY|오로치 퇴치(0)=DESTROY:ENEMY_MIN\n43|JPN|야마타노오로치|하수인|7|8|8|여덟 머리=KW:TAUNT|독 숨결(2)=DMG:2:ALL_ENEMY_MIN|꼬리(1)=DMG:3:ENEMY_MIN|여덟 술통(0)=HEAL:8:SELF\n# ================= 한국\n44|KOR|환웅|하수인|7|5|6|천부인=PLAY>SUMMON:풍백:1:3;SUMMON:우사:1:3;SUMMON:운사:1:3|바람(1)=DMG:1:ALL_ENEMY_MIN|비(2)=HEAL:3:ALL_FRIEND|신시(0)=BUFF:1:2:ALL_FRIEND_MIN\n45|KOR|단군|하수인|5|4|5|홍익인간=TURN_END>HEAL:1:ALL_FRIEND|아사달(1)=KW:TAUNT:SELF|고조선(2)=BUFF:1:1:ALL_FRIEND_MIN|산신이 되다(0)=HEAL:6:ALL_FRIEND\n46|KOR|웅녀|하수인|2|1|4|백일의 인내=KW:TAUNT|쑥과 마늘(1)=HEAL:3:FRIEND|인내(1)=BUFF:0:2:SELF|사람이 되다(0)=BUFF:3:3:SELF\n47|KOR|주몽|하수인|4|4|3|신궁=PLAY>DMG:1:ENEMY|활(1)=DMG:2:ENEMY|자라 다리(1)=KW:STEALTH:SELF|고구려 건국(0)=SUMMON:고구려 무사:3:3:TAUNT\n48|KOR|바리공주|하수인|4|2|5|저승 인도=DEATH>HEAL:5:MY_HERO|생명수(2)=HEAL:4:FRIEND|꽃(1)=HEAL:2:ALL_FRIEND_MIN|되살림(0)=SUMMON:되살아난 부모:3:3;SUMMON:되살아난 부모:3:3\n49|KOR|박혁거세|하수인|3|2|3|알에서 태어남=KW:SHIELD|빛(1)=DMG:1:ENEMY|서라벌(1)=BUFF:1:1:FRIEND_MIN|신라 건국(0)=BUFF:1:1:ALL_FRIEND_MIN\n# ================= 아메리카\n50|AZT|케찰코아틀|하수인|6|4|6|깃털 뱀=KW:SHIELD|바람(2)=DMG:2:ENEMY;DRAW:1|뼈와 피(2)=SUMMON:사람:2:2|다섯째 태양(0)=HEAL:5:ALL_FRIEND\n51|AZT|우이칠로포치틀리|하수인|5|5|4|완전 무장=KW:CHARGE&KW:SHIELD|불뱀(2)=DMG:3:ENEMY|태양의 길(1)=BUFF:1:1:SELF|달을 꺾다(0)=DMG:4:ENEMY_MIN\n52|MAY|우나푸|하수인|4|3|3|영웅 쌍둥이=PLAY>SUMMON:슈발랑케:3:3|바람총(1)=DMG:2:ENEMY|공놀이(1)=FREEZE:ENEMY_MIN|해와 달(0)=BUFF:2:2:ALL_FRIEND_MIN\n53|INC|비라코차|하수인|7|5|7|창조자=TURN_END>SUMMON:돌 거인:2:2|해 띄우기(2)=DMG:3:ENEMY|홍수(3)=DMG:2:ALL_MIN|운누 파차쿠티(0)=DMG:5:ALL_MIN\n# ================= 그 밖의 주문\n54|POL|마우이의 낚싯바늘|주문|2|0|0|DRAW:2|||\n55|MNG|텡그리의 축복|주문|1|0|0|BUFF:2:2:FRIEND_MIN|||\n56|CEL|다그다의 가마솥|주문|3|0|0|HEAL:4:ALL_FRIEND;ARMOR:3|||\n57|SLA|페룬의 번개|주문|4|0|0|DMG:5:ENEMY|||\n# ================= 북유럽 룬 (주문) — 고대 게르만의 엘더 푸타르크 24자 가운데 19자\n58|NOR|페후의 룬|주문|1|0|0|MANA:2|||\n59|NOR|우루즈의 룬|주문|2|0|0|BUFF:3:1:FRIEND_MIN|||\n60|NOR|투리사즈의 룬|주문|2|0|0|KW:TAUNT:FRIEND_MIN;BUFF:0:3:FRIEND_MIN|||\n61|NOR|안수즈의 룬|주문|3|0|0|DRAW:2;ARMOR:2|||\n62|NOR|라이도의 룬|주문|1|0|0|KW:CHARGE:FRIEND_MIN;BUFF:1:0:FRIEND_MIN|||\n63|NOR|케나즈의 룬|주문|2|0|0|DMG:3:ENEMY_MIN|||\n64|NOR|게보의 룬|주문|3|0|0|BUFF:1:1:ALL_FRIEND_MIN|||\n65|NOR|하갈라즈의 룬|주문|3|0|0|DMG:1:ALL_ENEMY;FREEZE:RANDOM_ENEMY_MIN|||\n66|NOR|나우디즈의 룬|주문|2|0|0|FREEZE:ENEMY;DRAW:1|||\n67|NOR|이사의 룬|주문|2|0|0|FREEZE:ENEMY_MIN;DMG:2:ENEMY_MIN|||\n68|NOR|예라의 룬|주문|4|0|0|HEAL:3:ALL_FRIEND;DRAW:1|||\n69|NOR|에이와즈의 룬|주문|2|0|0|KW:SHIELD:FRIEND_MIN;HEAL:4:FRIEND_MIN|||\n70|NOR|알기즈의 룬|주문|5|0|0|KW:SHIELD:ALL_FRIEND_MIN|||\n71|NOR|소윌로의 룬|주문|4|0|0|DMG:4:ENEMY;HEAL:2:MY_HERO|||\n72|NOR|티와즈의 룬|주문|3|0|0|BUFF:2:2:FRIEND_MIN;KW:TAUNT:FRIEND_MIN|||\n73|NOR|베르카나의 룬|주문|3|0|0|SUMMON:자작나무 정령:2:3;SUMMON:자작나무 정령:2:3|||\n74|NOR|에와즈의 룬|주문|4|0|0|KW:CHARGE:ALL_FRIEND_MIN|||\n75|NOR|다가즈의 룬|주문|5|0|0|DMG:3:ALL_ENEMY_MIN|||\n76|NOR|오실라의 룬|주문|5|0|0|SUMMON:조상의 영혼:3:3:TAUNT;SUMMON:조상의 영혼:3:3:TAUNT|||\n# ================= 게티아 (솔로몬의 72악마 가운데 16, 중세 마도서 '레메게톤' 전승)\n77|GOE|바알|하수인|7|6|6|투명의 왕=KW:STEALTH|세 개의 머리(2)=DMG:3:ENEMY|군단 소환(3)=SUMMON:악마 군단병:2:2;SUMMON:악마 군단병:2:2|66군단(0)=BUFF:2:2:ALL_FRIEND_MIN\n78|GOE|아가레스|하수인|4|3|4|지진=PLAY>FREEZE:ENEMY_MIN|땅 흔들기(2)=DMG:1:ALL_ENEMY_MIN|악어 탄 노인(1)=KW:TAUNT:SELF|대지진(0)=DMG:2:ALL_ENEMY_MIN;FREEZE:RANDOM_ENEMY_MIN\n79|GOE|바사고|하수인|3|1|4|예지=PLAY>DRAW:1|미래 보기(1)=DRAW:1|감춘 것 드러내기(1)=DMG:2:ANY_MIN|과거와 미래(0)=DRAW:2\n80|GOE|가미긴|하수인|3|2|3|망령 소환자=DEATH>SUMMON:망자의 영혼:2:1|영혼 부르기(2)=SUMMON:망자의 영혼:2:1|저승의 말(1)=BUFF:1:1:SELF|바다에 잠든 혼(0)=SUMMON:익사자의 혼:2:2:TAUNT;SUMMON:익사자의 혼:2:2:TAUNT\n81|GOE|마르바스|하수인|4|4|4|사자 대장=KW:TAUNT|역병(2)=DMG:1:ALL_ENEMY|치유(2)=HEAL:4:FRIEND|변신술(0)=BUFF:3:0:SELF;KW:CHARGE:SELF\n82|GOE|발레포르|하수인|2|3|2|도둑의 길=KW:STEALTH|기습(1)=DMG:2:ENEMY_MIN|훔치기(1)=MANA:2|도둑 무리(0)=SUMMON:도둑:2:1:CHARGE;SUMMON:도둑:2:1:CHARGE\n83|GOE|아몬 후작|하수인|5|5|4|불 뿜는 늑대=KW:CHARGE|불꽃 숨(2)=DMG:3:ENEMY|다툼 풀기(1)=HEAL:3:ALL_FRIEND|지옥불(0)=DMG:3:ALL_ENEMY\n84|GOE|바르바토스|하수인|4|3|4|사냥꾼의 뿔=PLAY>SUMMON:사냥개:2:1:CHARGE|활(1)=DMG:2:ENEMY|짐승의 말(1)=BUFF:1:1:OTHER_FRIEND_MIN|숨은 보물(0)=DRAW:2\n85|GOE|파이몬|하수인|7|5|7|학문의 왕=TURN_END>ARMOR:2|학문(1)=DRAW:1|나팔 소리(2)=FREEZE:ENEMY|200군단(0)=SUMMON:파이몬의 군단:3:3:TAUNT;SUMMON:파이몬의 군단:3:3:TAUNT\n86|GOE|부에르|하수인|3|2|4|치유의 바퀴=TURN_END>HEAL:2:ALL_FRIEND_MIN|약초(1)=HEAL:4:FRIEND|회전(2)=DMG:1:ALL_ENEMY_MIN|만병통치(0)=HEAL:8:ALL_FRIEND\n87|GOE|아스타로트|하수인|6|5|6|독의 숨=PLAY>DMG:2:ALL_ENEMY_MIN|비밀 지식(1)=DRAW:1|용 타기(2)=KW:CHARGE:SELF;BUFF:2:0:SELF|타락(0)=DESTROY:ENEMY_MIN\n88|GOE|벨리알|하수인|8|7|7|불의 전차=KW:CHARGE&KW:SHIELD|불 수레(2)=DMG:3:ENEMY|거짓 은혜(2)=BUFF:2:2:FRIEND_MIN|무법의 왕(0)=DMG:4:ALL_ENEMY_MIN\n89|GOE|아스모데우스|하수인|7|6|6|세 머리=TURN_END>DMG:2:RANDOM_ENEMY|기하학(1)=DRAW:1|보물 창고(1)=MANA:2|진노(0)=DMG:3:ALL_ENEMY\n90|GOE|포칼로르|하수인|5|4|5|폭풍의 바다=PLAY>DMG:3:ENEMY_MIN|침몰(2)=DMG:3:ENEMY_MIN|바람 지배(1)=FREEZE:ENEMY|해일(0)=DMG:2:ALL_ENEMY_MIN;FREEZE:RANDOM_ENEMY_MIN\n91|GOE|단탈리온|하수인|4|3|5|천의 얼굴=KW:STEALTH|마음 읽기(1)=DRAW:1|생각 바꾸기(2)=FREEZE:ENEMY_MIN|환영(0)=SUMMON:환영:3:3;SUMMON:환영:3:3\n92|GOE|안드로말리우스|하수인|3|3|3|뱀을 든 백작=KW:TAUNT|뱀(1)=DMG:2:ENEMY_MIN|되찾기(2)=HEAL:4:MY_HERO|악인 처벌(0)=DESTROY:ENEMY_MIN\n93|GOE|소환진|주문|2|0|0|SUMMON:하급 악마:2:2;DRAW:1|||\n94|GOE|솔로몬의 인장|주문|4|0|0|FREEZE:ALL_ENEMY_MIN;DMG:1:ALL_ENEMY_MIN|||\n95|GOE|솔로몬의 반지|주문|6|0|0|SUMMON:봉인된 악마:4:4:TAUNT;SUMMON:봉인된 악마:4:4:TAUNT|||\n# ================= 북유럽 룬 (나머지 5자 — 이로써 24자 완성)\n96|NOR|우뇨의 룬|주문|3|0|0|HEAL:2:ALL_FRIEND;BUFF:1:0:ALL_FRIEND_MIN|||\n97|NOR|페르스의 룬|주문|3|0|0|DMG:3:RANDOM_ENEMY;DRAW:1|||\n98|NOR|라구즈의 룬|주문|4|0|0|DMG:2:ALL_ENEMY_MIN;HEAL:2:ALL_FRIEND_MIN|||\n99|NOR|인구즈의 룬|주문|3|0|0|HEAL:6:MY_HERO;DRAW:1|||\n100|NOR|만나즈의 룬|주문|3|0|0|SUMMON:마을 사람:1:2;SUMMON:마을 사람:1:2;SUMMON:마을 사람:1:2|||\n# ================= 타로 메이저 아르카나 22장 (주문) — 정방향의 뜻을 효과로\n101|TAR|0 바보|주문|1|0|0|DRAW:1;MANA:1|||\n102|TAR|1 마법사|주문|3|0|0|DMG:2:ANY;DRAW:1|||\n103|TAR|2 여사제|주문|2|0|0|DRAW:1;ARMOR:3|||\n104|TAR|3 여황제|주문|4|0|0|SUMMON:풍요의 아이:2:2;SUMMON:풍요의 아이:2:2;HEAL:3:MY_HERO|||\n105|TAR|4 황제|주문|4|0|0|KW:TAUNT:ALL_FRIEND_MIN;BUFF:0:2:ALL_FRIEND_MIN|||\n106|TAR|5 교황|주문|3|0|0|BUFF:1:3:FRIEND_MIN;DRAW:1|||\n107|TAR|6 연인|주문|3|0|0|KW:SHIELD:FRIEND_MIN;HEAL:3:ALL_FRIEND_MIN|||\n108|TAR|7 전차|주문|2|0|0|KW:CHARGE:FRIEND_MIN;BUFF:2:0:FRIEND_MIN|||\n109|TAR|8 힘|주문|3|0|0|BUFF:2:4:FRIEND_MIN|||\n110|TAR|9 은둔자|주문|2|0|0|KW:STEALTH:FRIEND_MIN;DRAW:1|||\n111|TAR|10 운명의 수레바퀴|주문|4|0|0|DMG:2:RANDOM_ENEMY;DMG:2:RANDOM_ENEMY;DMG:2:RANDOM_ENEMY|||\n112|TAR|11 정의|주문|3|0|0|CHOOSE>이간{FIGHT_ENEMIES;HEAL:3:MY_HERO}/탈취{DISCARD:1;HEAL:3:MY_HERO}|||\n113|TAR|12 매달린 남자|주문|1|0|0|DESTROY:FRIEND_MIN;DRAW:2|||\n114|TAR|13 죽음|주문|8|0|0|DESTROY:ALL_MIN;DRAW:2|||\n115|TAR|14 절제|주문|3|0|0|HEAL:4:ALL_FRIEND|||\n116|TAR|15 악마|주문|2|0|0|BUFF:4:0:FRIEND_MIN;DMG:3:MY_HERO|||\n117|TAR|16 탑|주문|4|0|0|DMG:3:ALL|||\n118|TAR|17 별|주문|3|0|0|HEAL:5:MY_HERO;DRAW:1|||\n119|TAR|18 달|주문|3|0|0|KW:STEALTH:ALL_FRIEND_MIN;FREEZE:RANDOM_ENEMY_MIN|||\n120|TAR|19 태양|주문|6|0|0|DMG:2:ALL_ENEMY;HEAL:3:ALL_FRIEND|||\n121|TAR|20 심판|주문|6|0|0|SUMMON:깨어난 영혼:4:4:TAUNT;SUMMON:깨어난 영혼:4:4|||\n122|TAR|21 세계|주문|8|0|0|BUFF:3:3:ALL_FRIEND_MIN;DRAW:2;HEAL:5:MY_HERO|||\n# ================= 십이지(띠) 하수인 12장 + 오행 주문 5장\n123|GAN|쥐 (자子)|하수인|1|1|2|재빠른 첫째=KW:STEALTH|갉아먹기(1)=DMG:1:ENEMY_MIN|새끼 치기(1)=SUMMON:생쥐:1:1|첫째 자리(0)=DRAW:2\n124|GAN|소 (축丑)|하수인|3|2|5|우직함=KW:TAUNT|밭갈이(1)=ARMOR:3|되새김(1)=BUFF:0:2:SELF|황소걸음(0)=BUFF:2:2:SELF\n125|GAN|호랑이 (인寅)|하수인|5|5|4|산군=KW:CHARGE|할퀴기(1)=DMG:2:ENEMY_MIN|포효(2)=FREEZE:ENEMY_MIN|백수의 왕(0)=DMG:4:ENEMY\n126|GAN|토끼 (묘卯)|하수인|2|2|2|영리함=PLAY>DRAW:1|깡충(1)=KW:STEALTH:SELF|달의 절구(1)=HEAL:3:FRIEND|토끼의 꾀(0)=FREEZE:ALL_ENEMY_MIN\n127|GAN|용 (진辰)|하수인|8|7|7|비구름=KW:SHIELD&TURN_END>DMG:1:ALL_ENEMY|여의주(2)=DMG:4:ENEMY|단비(2)=HEAL:4:ALL_FRIEND|승천(0)=DMG:4:ALL_ENEMY\n128|GAN|뱀 (사巳)|하수인|3|3|2|풀숲=KW:STEALTH|독니(1)=DMG:3:ENEMY_MIN|허물 벗기(1)=HEAL:3:SELF|똬리(0)=KW:TAUNT:SELF;BUFF:0:4:SELF\n129|GAN|말 (오午)|하수인|4|4|3|질풍=KW:CHARGE|발굽(1)=DMG:2:ENEMY_MIN|함께 달리기(2)=KW:CHARGE:OTHER_FRIEND_MIN|천리마(0)=BUFF:3:0:ALL_FRIEND_MIN\n130|GAN|양 (미未)|하수인|2|1|4|온순함=KW:TAUNT|풀 뜯기(1)=HEAL:2:ALL_FRIEND_MIN|양털(1)=ARMOR:3|양 떼(0)=SUMMON:양:1:3:TAUNT;SUMMON:양:1:3:TAUNT\n131|GAN|원숭이 (신申)|하수인|3|3|3|장난꾸러기=PLAY>DMG:1:RANDOM_ENEMY_MIN|재주(1)=DRAW:1|흉내(1)=BUFF:2:0:SELF|분신술(0)=SUMMON:분신:3:3;SUMMON:분신:3:3\n132|GAN|닭 (유酉)|하수인|2|2|2|새벽 알림=TURN_START>HEAL:1:MY_HERO|쪼기(1)=DMG:1:ENEMY|홰치기(1)=DRAW:1|해를 부름(0)=HEAL:6:ALL_FRIEND\n133|GAN|개 (술戌)|하수인|3|3|3|충직함=KW:TAUNT&DEATH>DMG:2:RANDOM_ENEMY_MIN|물기(1)=DMG:2:ENEMY_MIN|집 지키기(1)=BUFF:0:2:SELF|지킴이(0)=KW:SHIELD:ALL_FRIEND_MIN\n134|GAN|돼지 (해亥)|하수인|4|3|6|넉넉함=TURN_END>HEAL:2:SELF|돌진(2)=DMG:3:ENEMY_MIN|복 부르기(1)=MANA:2|복돼지(0)=DRAW:2;ARMOR:3\n135|GAN|목(木) 오행|주문|3|0|0|SUMMON:나무 정령:2:3:TAUNT;HEAL:3:MY_HERO|||\n136|GAN|화(火) 오행|주문|4|0|0|DMG:3:ENEMY;DMG:1:ALL_ENEMY_MIN|||\n137|GAN|토(土) 오행|주문|2|0|0|ARMOR:5|||\n138|GAN|금(金) 오행|주문|2|0|0|BUFF:3:0:FRIEND_MIN|||\n139|GAN|수(水) 오행|주문|3|0|0|FREEZE:ENEMY;HEAL:3:ALL_FRIEND_MIN|||\n# ================= 동양 상징 · 조정자\n140|EAS|춘분 (春分)|하수인|3|1|5|낮밤의 저울=CHOOSE>이간{FIGHT_ENEMIES}/균형 강화{FLAG:BALANCE2;FLAG:NARROW}|싹틔움(1)=HEAL:3:FRIEND_MIN|봄비(1)=BUFF:1:1:OTHER_FRIEND_MIN|천지 균형(0)=HEAL:4:ALL_FRIEND;DRAW:1\n141|EAS|추분 (秋分)|하수인|3|1|5|결실의 저울=CHOOSE>탈취{DISCARD:1}/대치{FACE_OFF}|거둠(1)=ARMOR:3|서리 바람(1)=FREEZE:ENEMY_MIN|가을걷이(0)=DRAW:2\n142|EAS|수화기제 (水火旣濟)|하수인|4|2|6|이미 건넘=KW:TAUNT&CHOOSE>대치{FACE_OFF}/이간{FIGHT_ENEMIES;FLAG:WITHER}|물불 다스림(2)=FREEZE:ENEMY_MIN|끓는 솥(1)=DMG:2:ENEMY_MIN|완성(0)=HEAL:5:ALL_FRIEND_MIN\n143|EAS|화수미제 (火水未濟)|하수인|4|2|6|아직 못 건넘=CHOOSE>고독{FLAG:LONE}/탈취{DISCARD:2;INFIGHT}|불길(2)=DMG:2:ENEMY|여우 꼬리(1)=DRAW:1|새 시작(0)=MANA:2;DRAW:1\n", "tags": "# 신화 카드 속성 (번호|주속성|보조속성|종류|팔괘|정역|근거)\n# 종류: 단 = 속성 하나 / 양 = 공격할 때 주속성, 방어할 때 보조 속성 / 조정자 = 정반대(수↔화, 목↔금)를 품어 상쇄됨 / 무 = 속성 없음(비용 +1)\n# 팔괘: 乾 兌 離 震 巽 坎 艮 坤 (震 동, 巽 동남, 離 남, 坤 남서, 兌 서, 乾 북서, 坎 북, 艮 동북) / 정역: Y = 룬·타로\n1|목||단|震||천둥(우레)\n2|금||단|兌||지혜·전쟁(창과 방패)\n3|수||단|坎||바다\n4|수||단|坎||저승(어둠·겨울)\n5|토||단|艮||산 같은 힘, 장사\n6|금||단|乾||전사\n7|토||단|艮||돌로 만드는 눈\n8|토||단|坤||흙 항아리, 재앙의 근원\n9|화||단|離||불\n10|금||단|乾||하늘의 아버지(乾=아버지)\n11|목||단|震||천둥\n12|화||단|離||불의 거인 혈통·속임수\n13|목||단|巽||사랑·풍요, 깃털 망토(바람)\n14|토||단|艮||파수꾼(산=멈춤·지킴)\n15|화|금|양|乾||늑대의 이빨, 신을 삼킴 → 상극을 품어 이기는 쪽이 주속성\n16|금||단|兌||발키리(전사·창)\n17|화||단|離||세상을 태우는 불\n18|화||단|離||태양\n19|수||단|坎||저승·나일의 부활\n20|토||단|坤||어머니(坤=어머니)\n21|토||단|艮||무덤·미라의 수호\n22|토|금|양|坤||사막 폭풍\n23|화||단|離||불타는 사자\n24|금||단|乾||왕·도끼\n25|목||단|巽||야생의 숲\n26|수||단|坎||태초의 바닷물\n27|목|수|양|震||바람과 폭풍의 왕\n28|금||단|兌||용사·철퇴\n29|수||단|坎||홍수\n30|화||단|離||파괴의 춤, 셋째 눈의 불\n31|수||단|坎||우유 바다에 누운 유지자\n32|목|토|양|坤||장애 제거, 대지의 풍요 → 상극을 품어 이기는 쪽이 주속성\n33|목||단|巽||바람의 아들\n34|목||단|震||천둥왕(바즈라)\n35|토||단|艮||천지개벽, 몸이 산과 땅이 됨\n36|토||단|坤||흙으로 사람을 빚음\n37|화|금|양|乾||활(쇠·금속) → 상극을 품어 이기는 쪽이 주속성\n38|금||단|兌||병기를 만든 전쟁의 신\n39|수||단|坎||물을 다스림\n40|목||단|巽||약초\n41|화||단|離||태양 여신\n42|목|수|양|震||폭풍\n43|수||단|坎||강의 큰 뱀\n44|목||단|巽||풍백·우사·운사(바람·비·구름)\n45|토||단|艮||산신이 됨\n46|토||단|坤||곰에서 사람, 인내(땅)\n47|금||단|乾||신궁(활)\n48|수||단|坎||생명수·저승\n49|화||단|離||빛, 알에서 태어남\n50|목||단|巽||바람의 신\n51|화||단|離||태양·전쟁\n52|화|목|양|離||해가 된 쌍둥이\n53|수||단|坎||티티카카 호수, 홍수\n54|수||단|坎||바다에서 섬을 낚음\n55|금||단|乾||영원한 푸른 하늘(乾)\n56|토||단|坤||풍요의 가마솥\n57|목||단|震||번개\n58|화||단|離|Y|룬 원소: 불\n59|토||단|艮|Y|룬 원소: 흙\n60|화||단|離|Y|룬 원소: 불\n61|목||단|巽|Y|룬 원소: 바람\n62|목||단|巽|Y|룬 원소: 공기\n63|화||단|離|Y|룬 원소: 불(횃불)\n64|목||단|巽|Y|룬 원소: 바람\n65|수||단|坎|Y|룬 원소: 물·눈\n66|화||단|離|Y|룬 원소: 불(필요의 불꽃)\n67|수||단|坎|Y|룬 원소: 물(얼음)\n68|토||단|坤|Y|룬 원소: 흙(수확)\n69|금||단|乾|Y|룬 원소: 자료에 \"모든 원소\" — 생사의 주목나무로 금\n70|목||단|巽|Y|룬 원소: 바람\n71|목|화|양|巽|Y|룬 원소: 자료는 공기, 뜻은 태양(화도 가능)\n72|목||단|巽|Y|룬 원소: 바람\n73|토||단|坤|Y|룬 원소: 흙\n74|토||단|坤|Y|룬 원소: 흙\n75|화||단|離|Y|룬 원소: 불\n76|||무||Y|룬 원소: 자료에 원소 없음 — 물려받은 땅으로 토 → 무속성\n77|목|화|양|震||폭풍의 신 바알\n78|토||단|艮||지진\n79|수||단|坎||예언(감춘 것)\n80|수||단|坎||망자·물에 잠든 혼\n81|금||단|兌||기계·질병의 사자\n82|금|수|양|兌||도둑(날붙이)\n83|화||단|離||불 뿜는 늑대\n84|목||단|巽||사냥꾼·짐승의 말\n85|금||단|乾||왕·학문\n86|목||단|巽||약초\n87|수|금|양|坎||독의 숨\n88|화||단|離||불의 전차\n89|화|토|양|離||진노의 불\n90|수||단|坎||바다\n91|목|수|양|巽||마음(바람처럼 스며듦)\n92|금||단|兌||악인 처벌(정의)\n93|토||단|坤||소환진(땅에 그림)\n94|금||단|乾||인장(금속)\n95|금||단|兌||반지(금속)\n96|토||단|坤|Y|룬 원소: 흙\n97|수||단|坎|Y|룬 원소: 물\n98|수||단|坎|Y|룬 원소: 물\n99|||무||Y|룬 원소: 자료에 원소 없음 — 풍요의 신 잉으로 토 → 무속성\n100|목||단|巽|Y|룬 원소: 바람\n101|목||단|巽|Y|타로: 천왕성·공기\n102|수||단|坎|Y|타로: 수성(水星)\n103|수||단|坎|Y|타로: 달·물\n104|금||단|兌|Y|타로: 금성(金星)\n105|화||단|離|Y|타로: 양자리·불\n106|토||단|艮|Y|타로: 황소자리·흙\n107|목||단|巽|Y|타로: 쌍둥이자리·공기\n108|수||단|坎|Y|타로: 게자리·물\n109|화||단|離|Y|타로: 사자자리·불\n110|토||단|艮|Y|타로: 처녀자리·흙\n111|목||단|震|Y|타로: 목성(木星)\n112|목|금|조정자|巽|Y|타로: 천칭자리·공기 (저울·칼로 금도 가능) → 목↔금 정반대라 상쇄\n113|수||단|坎|Y|타로: 해왕성·물\n114|수||단|坎|Y|타로: 전갈자리·물\n115|화||단|離|Y|타로: 궁수자리·불\n116|토||단|坤|Y|타로: 염소자리·흙\n117|화||단|離|Y|타로: 화성(火星)\n118|목||단|巽|Y|타로: 물병자리·공기\n119|수||단|坎|Y|타로: 물고기자리·물\n120|화||단|離|Y|타로: 태양\n121|화||단|離|Y|타로: 명왕성·불\n122|토||단|坤|Y|타로: 토성(土星)\n123|수||단|坎||간지: 자(子)=수\n124|토||단|艮||간지: 축(丑)=토\n125|목||단|震||간지: 인(寅)=목\n126|목||단|巽||간지: 묘(卯)=목\n127|토|수|양|艮||간지: 진(辰)=토 (용이지만 지지는 토)\n128|화||단|離||간지: 사(巳)=화\n129|화||단|離||간지: 오(午)=화\n130|토||단|坤||간지: 미(未)=토\n131|금||단|兌||간지: 신(申)=금\n132|금||단|兌||간지: 유(酉)=금\n133|토||단|艮||간지: 술(戌)=토\n134|수||단|坎||간지: 해(亥)=수\n135|목||단|震||간지: 목\n136|화||단|離||간지: 화\n137|토||단|坤||간지: 토\n138|금||단|乾||간지: 금\n139|수||단|坎||간지: 수\n140|목|금|조정자|震||절기: 춘분 — 낮과 밤이 같음, 봄(목)이 가을(금)과 맞섬\n141|금|목|조정자|兌||절기: 추분 — 낮과 밤이 같음, 가을(금)이 봄(목)과 맞섬\n142|수|화|조정자|坎||64괘 63 수화기제 — 물이 불 위, 이미 균형\n143|화|수|조정자|離||64괘 64 화수미제 — 불이 물 위, 아직 어긋남\n", "lore": {"GRE|제우스": "제우스 (Zeus) — 신, 하늘·천둥\n올림포스의 주신. 로마의 유피테르\n나오는 이야기: 크로노스와 자식 삼키기, 티타노마키아, 세계를 나누다, 기간토마키아와 티폰, 프로메테우스와 불, 판도라의 항아리, 데우칼리온의 홍수, 헤르메스, 소를 훔치다, 두 번 태어난 디오니소스, 레토의 쌍둥이", "GRE|포세이돈": "포세이돈 (Poseidon) — 신, 바다·지진\n삼지창의 바다 신. 로마의 넵투누스\n나오는 이야기: 티타노마키아, 세계를 나누다", "GRE|하데스": "하데스 (Hades) — 신, 저승\n저승의 왕. 로마의 플루톤\n나오는 이야기: 티타노마키아, 세계를 나누다, 오르페우스의 저승 여행", "GRE|아테나": "아테나 (Athena) — 여신, 지혜·전쟁\n제우스의 머리에서 태어났다. 로마의 미네르바\n나오는 이야기: 페르세우스와 메두사", "GRE|메두사": "메두사 (Medusa) — 괴물, 돌로 만드는 눈\n머리카락이 뱀인 고르곤\n나오는 이야기: 페르세우스와 메두사", "GRE|헤라클레스": "헤라클레스 (Herakles) — 영웅, 힘\n12가지 과업. 죽은 뒤 신이 되었다\n나오는 이야기: 기간토마키아와 티폰, 헤라클레스의 12가지 과업", "GRE|아킬레우스": "아킬레우스 (Achilleus) — 영웅, 전사\n발뒤꿈치만 약점인 트로이 전쟁의 영웅\n나오는 이야기: 트로이 전쟁", "NOR|오딘": "오딘 (Óðinn) — 신, 지혜·전쟁·죽음\n아스 신족의 주신. 외눈, 까마귀 두 마리\n나오는 이야기: 이미르의 몸으로 세상을 만들다, 아스 신족과 바니르 신족의 전쟁, 오딘의 지혜, 아스크와 엠블라, 라그나로크, 펜리르를 묶다", "NOR|토르": "토르 (Þórr) — 신, 천둥·힘\n망치 묠니르를 든 천둥신\n나오는 이야기: 묠니르의 탄생, 라그나로크", "NOR|로키": "로키 (Loki) — 신, 속임수\n장난과 꾀의 신. 거인족 출신\n나오는 이야기: 묠니르의 탄생, 발드르의 죽음, 라그나로크, 펜리르를 묶다", "NOR|헤임달": "헤임달 (Heimdallr) — 신, 파수꾼\n무지개다리 비프로스트를 지킨다\n나오는 이야기: 라그나로크", "NOR|프레이야": "프레이야 (Freyja) — 여신, 사랑·전쟁·마법\n바니르 신족, 전사자의 절반을 맞는다\n나오는 이야기: 아스 신족과 바니르 신족의 전쟁", "NOR|펜리르": "펜리르 (Fenrir) — 괴물, 늑대\n로키의 아들, 라그나로크에 오딘을 삼킨다\n나오는 이야기: 라그나로크, 펜리르를 묶다", "NOR|브륀힐드": "브륀힐드 (Brynhildr) — 영웅, 발키리\n시구르드와 얽힌 발키리\n나오는 이야기: 시구르드와 용 파프니르", "EGY|라": "라 (Ra) — 신, 태양\n태양신. 매 머리\n나오는 이야기: 태초의 언덕과 아툼, 라의 밤 항해, 라의 눈물에서 인간이, 하토르(세크메트)의 분노, 아몬-라, 라의 눈, 세크메트", "EGY|오시리스": "오시리스 (Osiris) — 신, 저승·부활\n저승의 왕\n나오는 이야기: 오시리스와 세트, 이시스, 오시리스를 되살리다, 사후 심판(마아트의 저울)", "EGY|이시스": "이시스 (Isis) — 여신, 마법·어머니\n오시리스의 아내, 호루스의 어머니\n나오는 이야기: 이시스, 오시리스를 되살리다, 호루스와 세트의 다툼", "EGY|세트": "세트 (Set) — 신, 사막·폭풍·혼돈\n오시리스를 죽인 동생\n나오는 이야기: 오시리스와 세트, 호루스와 세트의 다툼, 라의 밤 항해", "EGY|아누비스": "아누비스 (Anubis) — 신, 미라·장례\n자칼 머리의 신\n나오는 이야기: 이시스, 오시리스를 되살리다, 사후 심판(마아트의 저울)", "EGY|세크메트": "세크메트 (Sekhmet) — 여신, 전쟁·역병\n사자 머리의 여신\n나오는 이야기: 하토르(세크메트)의 분노, 라의 눈, 세크메트", "MES|티아마트": "티아마트 (Tiamat) — 원초신, 바닷물\n바다와 혼돈의 여신\n나오는 이야기: 압주와 티아마트, 마르두크와 티아마트", "MES|마르두크": "마르두크 (Marduk) — 신, 바빌론의 주신\n티아마트를 이긴 신들의 왕\n나오는 이야기: 마르두크와 티아마트, 신들의 노동을 대신할 인간", "MES|길가메시": "길가메시 (Gilgamesh) — 영웅, 우루크 왕\n3분의 2는 신, 3분의 1은 인간\n나오는 이야기: 길가메시와 엔키두, 영생을 찾아서", "MES|엔키두": "엔키두 (Enkidu) — 영웅, 야생인\n길가메시의 친구\n나오는 이야기: 길가메시와 엔키두", "IND|비슈누": "비슈누 (Vishnu) — 신, 유지\n세상을 지키며 여러 화신으로 내려온다\n나오는 이야기: 우유 바다 젓기, 삼주신, 마누와 물고기, 유가의 순환", "IND|시바": "시바 (Shiva) — 신, 파괴·재생\n춤추는 신, 셋째 눈\n나오는 이야기: 우유 바다 젓기, 삼주신, 가네샤의 코끼리 머리", "IND|가네샤": "가네샤 (Ganesha) — 신, 지혜·장애 제거\n코끼리 머리의 신\n나오는 이야기: 가네샤의 코끼리 머리", "IND|인드라": "인드라 (Indra) — 신, 천둥·하늘\n베다 시대 신들의 왕\n나오는 이야기: 인드라와 브리트라, 아그니와 제사의 불", "IND|하누만": "하누만 (Hanuman) — 신, 원숭이·힘\n라마를 도운 원숭이 장수\n나오는 이야기: 라마야나", "CHN|반고": "반고 (盤古) — 원초신, 천지개벽\n알 속에서 깨어나 하늘과 땅을 갈랐다\n나오는 이야기: 혼돈과 계란 같은 우주, 반고 개천벽지, 반고의 몸이 세상이 되다", "CHN|여와": "여와 (女媧) — 여신, 인간 창조·하늘 수리\n뱀의 몸을 한 여신\n나오는 이야기: 여와의 인간 창조, 여와, 하늘을 기우다", "CHN|치우": "치우 (蚩尤) — 신, 전쟁·병기\n구려족의 우두머리, 전쟁의 신\n나오는 이야기: 탁록 대전", "CHN|후예": "후예 (后羿) — 영웅, 활\n아홉 해를 쏘아 떨어뜨렸다\n나오는 이야기: 후예, 아홉 해를 쏘다, 항아, 달로 가다", "JPN|아마테라스": "아마테라스 (天照) — 여신, 태양\n천황가의 조상신\n나오는 이야기: 삼귀자의 탄생, 아마노이와토(천암호), 천손 강림", "JPN|스사노오": "스사노오 (須佐之男) — 신, 폭풍·바다\n야마타노오로치를 물리쳤다\n나오는 이야기: 삼귀자의 탄생, 아마노이와토(천암호), 야마타노오로치 퇴치", "JPN|야마타노오로치": "야마타노오로치 (八岐大蛇) — 괴물, 큰 뱀\n머리와 꼬리가 여덟 개인 뱀\n나오는 이야기: 야마타노오로치 퇴치", "KOR|환웅": "환웅 (桓雄) — 신, 하늘에서 내려온 신\n풍백·우사·운사를 거느렸다\n나오는 이야기: 환인과 환웅, 곰과 호랑이, 단군의 고조선 건국", "KOR|웅녀": "웅녀 (熊女) — 인간, 곰에서 사람으로\n단군의 어머니\n나오는 이야기: 곰과 호랑이, 단군의 고조선 건국", "KOR|단군": "단군 (檀君) — 영웅, 고조선 시조\n단군왕검\n나오는 이야기: 단군의 고조선 건국", "KOR|주몽": "주몽 (朱蒙) — 영웅, 고구려 시조\n동명성왕\n나오는 이야기: 주몽의 고구려 건국", "KOR|박혁거세": "박혁거세 (朴赫居世) — 영웅, 신라 시조\n알에서 태어났다\n나오는 이야기: 박혁거세", "KOR|바리공주": "바리공주 (바리데기) — 여신, 무조신·저승 인도\n버려진 일곱째 공주\n나오는 이야기: 바리공주", "PER|로스탐": "로스탐 (Rostam) — 영웅, 최고의 용사\n샤나메의 영웅\n나오는 이야기: 로스탐과 소랍", "MAY|우나푸": "우나푸 (Hunahpu) — 영웅, 해\n영웅 쌍둥이\n나오는 이야기: 거짓 태양 부쿱 칵시, 시발바의 공놀이", "AZT|케찰코아틀": "케찰코아틀 (Quetzalcoatl) — 신, 바람·지혜\n깃털 달린 뱀\n나오는 이야기: 이원의 신, 대지 괴물을 찢다, 네 번의 태양, 뼈와 피로 만든 사람", "AZT|우이칠로포치틀리": "우이칠로포치틀리 (Huitzilopochtli) — 신, 태양·전쟁\n아즈텍의 수호신\n나오는 이야기: 우이칠로포치틀리의 탄생, 독수리와 선인장, 다섯째 태양의 끝", "INC|비라코차": "비라코차 (Viracocha) — 원초신, 창조\n티티카카 호수에서 나온 창조신\n나오는 이야기: 티티카카의 어둠, 돌 거인들, 운누 파차쿠티, 해와 달을 띄우다, 다시 만든 사람들"}};</script>
+<script>// Voltaic Myth Card Battle (신화 카드 대전) with Claude — 규칙 엔진 (웹판)
+// VB.NET v1.6 엔진을 옮긴 것. 화면과 무관하며 node 에서도 돌아간다.
+(function (root) {
+'use strict';
+
+// ============================================================ 오행·24절기
+const Elements = ['목', '화', '토', '금', '수'];
+const ElementHanja = { 목: '木', 화: '火', 토: '土', 금: '金', 수: '水' };
+const ElementColor = { 목: '#2e7d46', 화: '#c0392b', 토: '#b0841e', 금: '#787d87', 수: '#1e3c78' };
+function generates(a, b) { const i = Elements.indexOf(a), j = Elements.indexOf(b); return i >= 0 && j >= 0 && (i + 1) % 5 === j; }
+function overcomes(a, b) { const i = Elements.indexOf(a), j = Elements.indexOf(b); return i >= 0 && j >= 0 && (i + 2) % 5 === j; }
+function oppositeOf(el) { return { 수: '화', 화: '수', 목: '금', 금: '목' }[el] || ''; }
+const TermNames = ['입춘', '우수', '경칩', '춘분', '청명', '곡우', '입하', '소만', '망종', '하지', '소서', '대서',
+  '입추', '처서', '백로', '추분', '한로', '상강', '입동', '소설', '대설', '동지', '소한', '대한'];
+const TermHanja = ['立春', '雨水', '驚蟄', '春分', '淸明', '穀雨', '立夏', '小滿', '芒種', '夏至', '小暑', '大暑',
+  '立秋', '處暑', '白露', '秋分', '寒露', '霜降', '立冬', '小雪', '大雪', '冬至', '小寒', '大寒'];
+const TermDates = [[2, 4], [2, 19], [3, 6], [3, 21], [4, 5], [4, 20], [5, 6], [5, 21], [6, 6], [6, 21], [7, 7], [7, 23],
+  [8, 8], [8, 23], [9, 8], [9, 23], [10, 8], [10, 23], [11, 7], [11, 22], [12, 7], [12, 22], [1, 6], [1, 20]];
+const MonthGua = ['지천태', '뇌천대장', '택천쾌', '중천건', '천풍구', '천산돈', '천지비', '풍지관', '산지박', '중지곤', '지뢰복', '지택림'];
+const SeasonNames = ['봄', '여름', '가을', '겨울'];
+const SeasonEls = ['목', '화', '금', '수'];
+function seasonName(t) { return SeasonNames[Math.floor((t % 24) / 6)]; }
+function seasonElement(t) { t %= 24; return (t % 6 >= 4) ? '토' : SeasonEls[Math.floor(t / 6)]; }
+function monthGuaOf(t) { return MonthGua[Math.floor((t % 24) / 2)]; }
+function termOfDate(d) {
+  const key0 = (d.getMonth() + 1) * 100 + d.getDate();
+  let best = 21, bestKey = -1;
+  TermDates.forEach((md, i) => { const k = md[0] * 100 + md[1]; if (k <= key0 && k > bestKey) { bestKey = k; best = i; } });
+  return best;
+}
+
+// ============================================================ 등급
+const TierNames = ['', '정령', '수호령', '반신', '하급신', '상급신', '대신', '주신', '태초신'];
+const Active2Tier = 3, SpecialTier = 5, MaxLevel = 23;
+const XpPlayed = 10, XpWin = 25, XpFinisher = 5;
+const tierOfLevel = lv => Math.floor(Math.min(MaxLevel, Math.max(0, lv)) / 3) + 1;
+const starOfLevel = lv => Math.min(MaxLevel, Math.max(0, lv)) % 3 + 1;
+const levelOf = (tier, star) => (tier - 1) * 3 + (star - 1);
+const rankText = (tier, star) => TierNames[Math.max(1, Math.min(8, tier))] + ' ' + '★'.repeat(Math.max(1, Math.min(3, star)));
+const rankTextOfLevel = lv => rankText(tierOfLevel(lv), starOfLevel(lv));
+const xpForNext = lv => 20 + 10 * lv;
+function xpAtLevel(lv) { let t = 0; for (let l = 0; l < lv; l++) t += xpForNext(l); return t; }
+function levelFromXp(xp) { let lv = 0, need = 0; while (lv < MaxLevel) { need += xpForNext(lv); if (xp < need) break; lv++; } return lv; }
+function statBonus(tier, star) { const lv = levelOf(tier, star); return [Math.floor(lv / 6), Math.floor(lv / 3)]; }
+
+// ============================================================ 카드
+const ChosenTargets = ['ANY', 'ENEMY', 'FRIEND', 'ANY_MIN', 'ENEMY_MIN', 'FRIEND_MIN'];
+const AutoTargets = ['SELF', 'MY_HERO', 'ENEMY_HERO', 'ALL', 'ALL_MIN', 'ALL_ENEMY', 'ALL_ENEMY_MIN',
+  'ALL_FRIEND', 'ALL_FRIEND_MIN', 'OTHER_FRIEND_MIN', 'RANDOM_ENEMY', 'RANDOM_ENEMY_MIN'];
+const KeywordNames = { TAUNT: '수호', CHARGE: '질주', SHIELD: '신의 가호', STEALTH: '그림자' };
+const FlagNames = { LONE: '고독', WITHER: '위축', NARROW: '협소', BALANCE2: '균형 강화' };
+const MythNames = { GRE: '그리스', NOR: '북유럽', EGY: '이집트', MES: '메소포타미아', PER: '페르시아', IND: '인도', CHN: '중국',
+  JPN: '일본', KOR: '한국', AZT: '아즈텍', MAY: '마야', INC: '잉카', POL: '폴리네시아', MNG: '몽골', CEL: '켈트', SLA: '슬라브',
+  SEA: '동남아', YOR: '요루바', NAM: '북미', HEB: '히브리', GOE: '게티아', TAR: '타로', GAN: '십이지·오행', EAS: '동양 상징' };
+const mythName = c => MythNames[c] || c;
+function mythColor(code) {
+  switch (code) {
+    case 'GRE': return '#3465a4'; case 'NOR': return '#466e82'; case 'EGY': return '#c49628';
+    case 'MES': case 'PER': return '#965a32'; case 'IND': return '#c85a1e'; case 'CHN': return '#b42828';
+    case 'JPN': return '#c8466e'; case 'KOR': return '#28786e'; case 'AZT': case 'MAY': case 'INC': return '#3c8c3c';
+    case 'GOE': return '#6e2346'; case 'TAR': return '#96781e'; case 'GAN': return '#1e6496'; case 'EAS': return '#46465a';
+    default: return '#6e5a96';
+  }
+}
+const isChosen = t => ChosenTargets.includes(t);
+function chosenSpec(effects) { for (const ef of effects) if (isChosen(ef.target)) return ef.target; return ''; }
+
+class CardDef {
+  constructor() {
+    this.id = 0; this.mythCode = ''; this.title = ''; this.isSpell = false; this.cost = 0; this.atk = 0; this.hp = 0;
+    this.passive = null; this.active1 = null; this.active2 = null; this.special = null; this.spellEffects = [];
+    this.isToken = false; this.mainEl = ''; this.subEl = ''; this.attrKind = '단'; this.gua = ''; this.reversible = false;
+    this.choices = [];
+  }
+  get isArbiter() { return this.attrKind === '조정자'; }
+  get isNeutral() { return this.attrKind === '무'; }
+  get defenseEl() { return this.attrKind === '양' && this.subEl ? this.subEl : this.mainEl; }
+  hasKeyword(kw) { return !!this.passive && this.passive.clauses.some(cl => cl.trigger === 'KW' && cl.keyword === kw); }
+  clausesOf(tr) { return this.passive ? this.passive.clauses.filter(cl => cl.trigger === tr) : []; }
+}
+
+function parseEffects(s) {
+  const list = [];
+  for (const part of s.split(';')) {
+    const t = part.trim(); if (!t) continue;
+    const a = t.split(':');
+    const ef = { op: a[0].trim().toUpperCase(), n: 0, n2: 0, target: '', tokenName: '', tokenKw: '', keyword: '' };
+    switch (ef.op) {
+      case 'DMG': case 'HEAL': ef.n = +a[1]; ef.target = a[2].trim(); break;
+      case 'BUFF': ef.n = +a[1]; ef.n2 = +a[2]; ef.target = a[3].trim(); break;
+      case 'KW': ef.keyword = a[1].trim(); ef.target = a[2].trim();
+        if (!KeywordNames[ef.keyword]) throw new Error('알 수 없는 키워드 ' + ef.keyword); break;
+      case 'FREEZE': case 'DESTROY': ef.target = a[1].trim(); break;
+      case 'DRAW': case 'MANA': case 'ARMOR': case 'DISCARD': ef.n = +a[1]; break;
+      case 'FIGHT_ENEMIES': case 'FACE_OFF': case 'INFIGHT': break;
+      case 'FLAG': ef.keyword = a[1].trim().toUpperCase();
+        if (!FlagNames[ef.keyword]) throw new Error('알 수 없는 FLAG ' + ef.keyword); break;
+      case 'SUMMON': ef.tokenName = a[1].trim(); ef.n = +a[2]; ef.n2 = +a[3]; if (a.length > 4) ef.tokenKw = a[4].trim(); break;
+      default: throw new Error('알 수 없는 효과 ' + ef.op);
+    }
+    if (ef.target && !isChosen(ef.target) && !AutoTargets.includes(ef.target)) throw new Error('알 수 없는 대상 ' + ef.target);
+    if (Number.isNaN(ef.n) || Number.isNaN(ef.n2)) throw new Error('숫자 오류 ' + t);
+    list.push(ef);
+  }
+  return list;
+}
+function parseChoices(s) {
+  const list = s.split('/').map(part => {
+    const t = part.trim(), lb = t.indexOf('{'), rb = t.lastIndexOf('}');
+    if (lb <= 0 || rb < lb) throw new Error('선택지 형식: 이름{효과식} — ' + t);
+    const opt = { title: t.substring(0, lb).trim(), effects: parseEffects(t.substring(lb + 1, rb)) };
+    if (chosenSpec(opt.effects)) throw new Error('선택지에는 직접 고르는 대상을 쓸 수 없습니다 — ' + t);
+    return opt;
+  });
+  if (list.length !== 2) throw new Error('선택지는 두 개여야 합니다 — ' + s);
+  return list;
+}
+function parseSkill(s) {
+  if (!s) return null;
+  const eq = s.indexOf('='); if (eq < 0) throw new Error('스킬 형식: 이름(비용)=효과 — ' + s);
+  const head = s.substring(0, eq).trim(), sk = { title: head, cost: 0, effects: [], clauses: [], choices: [] };
+  const lp = head.lastIndexOf('('), rp = head.lastIndexOf(')');
+  if (lp > 0 && rp > lp) { sk.title = head.substring(0, lp).trim(); sk.cost = +head.substring(lp + 1, rp); }
+  sk.effects = parseEffects(s.substring(eq + 1));
+  return sk;
+}
+function parsePassive(s) {
+  if (!s) return null;
+  const sk = { title: '', cost: 0, effects: [], clauses: [], choices: [] };
+  let body = s; const eq = s.indexOf('=');
+  if (eq >= 0) { sk.title = s.substring(0, eq).trim(); body = s.substring(eq + 1); }
+  for (const part of body.split('&')) {
+    const t = part.trim();
+    if (t.startsWith('CHOOSE>')) { sk.choices.push(...parseChoices(t.substring(7))); continue; }
+    const cl = { trigger: '', keyword: '', effects: [] };
+    if (t.startsWith('KW:')) {
+      cl.trigger = 'KW'; cl.keyword = t.substring(3).trim();
+      if (!KeywordNames[cl.keyword]) throw new Error('알 수 없는 키워드 ' + cl.keyword);
+    } else {
+      const gt = t.indexOf('>'); if (gt < 0) throw new Error('패시브 절 형식: 계기>효과 — ' + t);
+      cl.trigger = t.substring(0, gt).trim();
+      if (!['PLAY', 'DEATH', 'TURN_START', 'TURN_END'].includes(cl.trigger)) throw new Error('알 수 없는 계기 ' + cl.trigger);
+      cl.effects = parseEffects(t.substring(gt + 1));
+      if (cl.trigger !== 'PLAY' && chosenSpec(cl.effects)) throw new Error(cl.trigger + ' 절에는 직접 고르는 대상을 쓸 수 없습니다');
+    }
+    sk.clauses.push(cl);
+  }
+  return sk;
+}
+function loadCards(text, tagsText) {
+  const list = [], errs = [];
+  text.split(/\r?\n/).forEach((raw, i) => {
+    const line = raw.trim(); if (!line || line.startsWith('#')) return;
+    const f = line.split('|').map(p => p.trim());
+    try {
+      if (f.length < 8) throw new Error('칸이 부족합니다');
+      const c = new CardDef();
+      c.id = +f[0]; c.mythCode = f[1]; c.title = f[2]; c.isSpell = f[3] === '주문'; c.cost = +f[4]; c.atk = +f[5]; c.hp = +f[6];
+      if (c.isSpell) {
+        if (f[7].startsWith('CHOOSE>')) c.choices = parseChoices(f[7].substring(7)); else c.spellEffects = parseEffects(f[7]);
+      } else {
+        c.passive = parsePassive(f[7]);
+        if (c.passive) c.choices = c.passive.choices.slice();
+        c.active1 = parseSkill(f[8] || ''); c.active2 = parseSkill(f[9] || ''); c.special = parseSkill(f[10] || '');
+      }
+      list.push(c);
+    } catch (e) { errs.push((i + 1) + '줄: ' + e.message); }
+  });
+  if (errs.length) throw new Error('cards.txt 오류\n' + errs.slice(0, 15).join('\n'));
+  if (tagsText) {
+    const byId = new Map(list.map(c => [c.id, c]));
+    for (const raw of tagsText.split(/\r?\n/)) {
+      const line = raw.trim(); if (!line || line.startsWith('#')) continue;
+      const p = line.split('|'); const c = byId.get(+p[0]); if (!c || p.length < 4) continue;
+      c.mainEl = p[1].trim(); c.subEl = p[2].trim(); c.attrKind = p[3].trim() || '단';
+      c.gua = (p[4] || '').trim(); c.reversible = (p[5] || '').trim() === 'Y';
+    }
+  }
+  return list;
+}
+
+// ------------------------------------------------------------ 설명
+function targetText(t) {
+  return { ANY: '캐릭터 하나에게', ENEMY: '적 하나에게', FRIEND: '아군 하나에게', ANY_MIN: '하수인 하나에게', ENEMY_MIN: '적 하수인 하나에게',
+    FRIEND_MIN: '아군 하수인 하나에게', SELF: '자신에게', MY_HERO: '내 영웅에게', ENEMY_HERO: '적 영웅에게', ALL: '모든 캐릭터에게',
+    ALL_MIN: '모든 하수인에게', ALL_ENEMY: '모든 적에게', ALL_ENEMY_MIN: '모든 적 하수인에게', ALL_FRIEND: '모든 아군에게',
+    ALL_FRIEND_MIN: '모든 아군 하수인에게', OTHER_FRIEND_MIN: '다른 아군 하수인에게', RANDOM_ENEMY: '무작위 적에게',
+    RANDOM_ENEMY_MIN: '무작위 적 하수인에게' }[t] || t;
+}
+function describeOne(ef) {
+  switch (ef.op) {
+    case 'DMG': return targetText(ef.target) + ' 피해 ' + ef.n;
+    case 'HEAL': return targetText(ef.target) + ' 생명력 ' + ef.n + ' 회복';
+    case 'BUFF': return targetText(ef.target) + ' +' + ef.n + '/+' + ef.n2;
+    case 'KW': return targetText(ef.target) + ' ' + KeywordNames[ef.keyword] + ' 부여';
+    case 'FREEZE': return targetText(ef.target).replace('에게', '') + ' 빙결';
+    case 'DESTROY': return targetText(ef.target).replace('에게', '') + ' 처치';
+    case 'DRAW': return '카드 ' + ef.n + '장 뽑기';
+    case 'MANA': return '이번 턴 신력 +' + ef.n;
+    case 'ARMOR': return '방어도 +' + ef.n;
+    case 'DISCARD': return '상대 손패 ' + ef.n + '장 무작위로 버리기';
+    case 'FIGHT_ENEMIES': return '무작위 적 하수인 둘이 서로 싸움';
+    case 'FACE_OFF': return '양옆 아군이 각각 맞은편 적 하수인과 싸움';
+    case 'INFIGHT': return '무작위 아군 하수인 둘이 서로 싸움';
+    case 'FLAG': return { LONE: '아군 전장에 혼자일 때는 공격 가능', WITHER: '이 카드가 있는 동안 아군 공격 −1',
+      NARROW: '이 카드가 있는 동안 내 전장 최대 수 −1', BALANCE2: '양옆 공격 보너스 +2' }[ef.keyword] || ef.keyword;
+    case 'SUMMON': return ef.tokenName + '(' + ef.n + '/' + ef.n2 + (ef.tokenKw ? ', ' + KeywordNames[ef.tokenKw] : '') + ') 소환';
+    default: return ef.op;
+  }
+}
+const describe = effects => effects.map(describeOne).join(', ');
+function describePassive(sk) {
+  if (!sk) return '';
+  return sk.clauses.map(cl => {
+    switch (cl.trigger) {
+      case 'KW': return KeywordNames[cl.keyword];
+      case 'PLAY': return '출전: ' + describe(cl.effects);
+      case 'DEATH': return '최후: ' + describe(cl.effects);
+      case 'TURN_START': return '내 턴 시작: ' + describe(cl.effects);
+      case 'TURN_END': return '내 턴 끝: ' + describe(cl.effects);
+    }
+    return '';
+  }).join(' · ');
+}
+function rulesLine(c) {
+  if (c.choices.length === 2) {
+    const ch = '선택: ' + c.choices[0].title + ' / ' + c.choices[1].title;
+    if (c.isSpell) return ch;
+    return (c.passive && c.passive.clauses.length ? describePassive(c.passive) + ' · ' : '') + ch;
+  }
+  return c.isSpell ? describe(c.spellEffects) : describePassive(c.passive);
+}
+function describeAttr(c) {
+  switch (c.attrKind) {
+    case '무': return '무속성 — 상극·계절의 영향을 받지 않음, 비용 +1';
+    case '조정자': return '조정자 ' + c.mainEl + '↔' + c.subEl + ' — 공격 불가, 양옆 아군 공격 +1';
+    case '양': return '속성: ' + c.mainEl + '(공격) · ' + c.subEl + '(방어) — 양속성';
+    default: return c.mainEl ? '속성: ' + c.mainEl : '';
+  }
+}
+
+// ============================================================ 덱
+const DeckSize = 20, MaxCopies = 2;
+const Themes = [['그리스', ['GRE']], ['북유럽', ['NOR']], ['이집트', ['EGY']], ['메소포타미아·페르시아', ['MES', 'PER']],
+  ['인도', ['IND']], ['중국', ['CHN']], ['일본·한국', ['JPN', 'KOR']], ['한국', ['KOR']], ['아메리카', ['AZT', 'MAY', 'INC']],
+  ['게티아 악마', ['GOE']], ['타로', ['TAR']], ['십이지·오행', ['GAN', 'EAS']]];
+
+// 시드 난수 (두 기기에서 같은 결과를 내기 위해)
+function makeRng(seed) {
+  let a = seed >>> 0;
+  const next = () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  return { next, int: n => Math.floor(next() * n) };
+}
+function buildThemed(cards, title, codes, seed) {
+  const rnd = makeRng(seed), byId = new Map(cards.map(c => [c.id, c]));
+  const d = { title: title + ' 덱', ids: [], preset: true };
+  const theme = cards.filter(c => codes.includes(c.mythCode)).sort((a, b) => a.cost - b.cost || a.id - b.id);
+  const many = theme.length >= 14;
+  for (const tc of theme) { d.ids.push(tc.id); if (!many && tc.cost <= 6) d.ids.push(tc.id); }
+  while (d.ids.length > DeckSize) {
+    let hi = 0; d.ids.forEach((id, i) => { if (byId.get(id).cost > byId.get(d.ids[hi]).cost) hi = i; });
+    d.ids.splice(hi, 1);
+  }
+  const others = cards.filter(c => !codes.includes(c.mythCode) && c.cost <= 5).map(c => [rnd.next(), c]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+  let i = 0;
+  while (d.ids.length < DeckSize && others.length > 0 && i <= 500) {
+    const oc = others[i % others.length];
+    if (d.ids.filter(x => x === oc.id).length < MaxCopies) d.ids.push(oc.id);
+    i++;
+  }
+  d.ids.sort((a, b) => byId.get(a).cost - byId.get(b).cost);
+  return d;
+}
+function presets(cards) { return Themes.map((th, i) => buildThemed(cards, th[0], th[1], 12345 + i)); }
+
+// ============================================================ 게임
+const NoTarget = Object.freeze({ side: -1, uid: -1 });
+const T = (side, uid) => ({ side, uid });
+const isHero = t => t.uid === 0;
+const isNone = t => !t || t.side < 0;
+const sameRef = (a, b) => a.side === b.side && a.uid === b.uid;
+
+const GraceCard = new CardDef();
+GraceCard.id = 0; GraceCard.title = '신의 은총'; GraceCard.isSpell = true; GraceCard.cost = 0;
+GraceCard.spellEffects = [{ op: 'MANA', n: 1, n2: 0, target: '', tokenName: '', tokenKw: '', keyword: '' }];
+
+class Game {
+  constructor(deck0, deck1, name0, name1, seed) {
+    this.MaxBoard = 7; this.MaxHand = 10;
+    this.rnd = makeRng(seed);
+    this.players = [0, 1].map(s => ({ side: s, title: s ? name1 : name0, hp: 30, armor: 0, maxMana: 0, mana: 0, fatigue: 0,
+      deck: (s ? deck1 : deck0).slice(), hand: [], board: [], lastEl: '' }));
+    this.current = 0; this.turnNumber = 0; this.winner = -1; this.log = [];
+    this.nextUid = 1; this.sourceCard = null; this.playedIds = [new Set(), new Set()]; this.finisherId = 0;
+    this.tierOf = () => [1, 1];
+    this.startTerm = 0;
+  }
+  say(s) { this.log.push(s); }
+  start(firstSide) {
+    for (const p of this.players) this.shuffle(p.deck);
+    this.current = firstSide;
+    for (let i = 0; i < 3; i++) this.draw(this.players[firstSide]);
+    for (let i = 0; i < 4; i++) this.draw(this.players[1 - firstSide]);
+    this.players[1 - firstSide].hand.push(GraceCard);
+    this.say(this.players[firstSide].title + ' 먼저 시작합니다.');
+    this.beginTurn();
+  }
+  shuffle(list) { for (let i = list.length - 1; i >= 1; i--) { const j = this.rnd.int(i + 1); [list[i], list[j]] = [list[j], list[i]]; } }
+
+  beginTurn() {
+    this.turnNumber++;
+    const p = this.players[this.current];
+    p.maxMana = Math.min(10, p.maxMana + 1); p.mana = p.maxMana;
+    for (const m of p.board) { m.summonedThisTurn = false; m.acted = false; }
+    p.lastEl = '';
+    const t = this.term;
+    this.say('── ' + p.title + '의 턴 (신력 ' + p.maxMana + ') · ' + TermNames[t] + '(' + seasonName(t) + ', ' + seasonElement(t) + ' 강세)');
+    this.draw(p);
+    this.runTrigger(this.current, 'TURN_START');
+    this.cleanup();
+  }
+  endTurnInternal() {
+    this.runTrigger(this.current, 'TURN_END');
+    this.cleanup();
+    if (this.winner >= 0) return;
+    for (const m of this.players[this.current].board) {
+      if (m.frozen) { m.thawPending--; if (m.thawPending <= 0) m.frozen = false; }
+    }
+    this.current = 1 - this.current;
+    this.beginTurn();
+  }
+  runTrigger(side, trigger) {
+    for (const m of this.players[side].board.slice()) {
+      if (m.hp <= 0 || !this.players[side].board.includes(m)) continue;
+      for (const cl of m.def.clausesOf(trigger)) { this.sourceCard = m.def; this.execute(side, m, cl.effects, NoTarget); }
+    }
+  }
+  draw(p) {
+    if (p.deck.length === 0) {
+      p.fatigue++;
+      this.say(p.title + ': 덱이 비어 탈진 피해 ' + p.fatigue);
+      const saved = this.sourceCard; this.sourceCard = null;
+      this.damageHero(p, p.fatigue);
+      this.sourceCard = saved;
+      return;
+    }
+    const c = p.deck.shift();
+    if (p.hand.length >= this.MaxHand) { this.say(p.title + ": 손패가 가득 차 '" + c.title + "' 카드가 불탔습니다."); return; }
+    p.hand.push(c);
+  }
+
+  // ---------------- 오행·절기
+  get term() { return (this.startTerm + Math.max(0, this.turnNumber - 1)) % 24; }
+  boardLimit(side) { return this.MaxBoard - this.players[side].board.filter(x => x.flags.has('NARROW')).length; }
+  costOf(side, c) {
+    if (c === GraceCard) return 0;
+    let cost = c.cost;
+    if (c.isNeutral) cost += 1;
+    else if (c.mainEl) {
+      if (oppositeOf(seasonElement(this.term)) === c.mainEl) cost += 1;
+      if (generates(this.players[side].lastEl, c.mainEl)) cost -= 1;
+    }
+    return Math.max(0, cost);
+  }
+  seasonBonus(m) {
+    const d = m.def;
+    if (d.isNeutral || d.isArbiter || !d.mainEl) return 0;
+    return d.mainEl === seasonElement(this.term) ? 1 : 0;
+  }
+  attackOf(m) {
+    const b = this.players[m.side].board;
+    let a = m.atk + this.seasonBonus(m);
+    const i = b.indexOf(m);
+    if (i >= 0) for (const j of [i - 1, i + 1]) {
+      if (j >= 0 && j < b.length && b[j].def.isArbiter && b[j].hp > 0) a += b[j].flags.has('BALANCE2') ? 2 : 1;
+    }
+    a -= b.filter(x => x.flags.has('WITHER') && x.hp > 0).length;
+    return Math.max(0, a);
+  }
+  elementBonus(att, def) {
+    if (!att || !def || att.def.isNeutral || def.def.isNeutral) return 0;
+    return overcomes(att.def.mainEl, def.def.defenseEl) ? 1 : 0;
+  }
+  fight(x, y) {
+    const dx = this.attackOf(x) + this.elementBonus(x, y), dy = this.attackOf(y) + this.elementBonus(y, x);
+    this.say('  ' + x.def.title + ' ↔ ' + y.def.title + ' 싸움');
+    this.damageMinion(y, dx); this.damageMinion(x, dy);
+  }
+
+  // ---------------- 조회
+  findMinion(uid) { for (const p of this.players) for (const m of p.board) if (m.uid === uid) return m; return null; }
+  skillOf(m, slot) { return slot === 1 ? m.def.active1 : slot === 2 ? m.def.active2 : slot === 3 ? m.def.special : null; }
+  skillUnlocked(m, slot) { return slot === 1 ? true : slot === 2 ? m.tier >= Active2Tier : slot === 3 ? m.tier >= SpecialTier : false; }
+  validTargets(side, spec, source) {
+    const list = [], mine = this.players[side], other = this.players[1 - side];
+    const enemyMins = () => { for (const m of other.board) if (!m.stealth) list.push(T(other.side, m.uid)); };
+    const myMins = () => { for (const m of mine.board) list.push(T(mine.side, m.uid)); };
+    switch (spec) {
+      case 'ANY': list.push(T(other.side, 0)); enemyMins(); list.push(T(mine.side, 0)); myMins(); break;
+      case 'ENEMY': list.push(T(other.side, 0)); enemyMins(); break;
+      case 'FRIEND': list.push(T(mine.side, 0)); myMins(); break;
+      case 'ANY_MIN': enemyMins(); myMins(); break;
+      case 'ENEMY_MIN': enemyMins(); break;
+      case 'FRIEND_MIN': myMins(); break;
+    }
+    return list;
+  }
+  canPlay(side, hi) {
+    if (this.winner >= 0 || side !== this.current) return false;
+    const p = this.players[side];
+    if (hi < 0 || hi >= p.hand.length) return false;
+    const c = p.hand[hi];
+    if (this.costOf(side, c) > p.mana) return false;
+    if (c.isSpell) {
+      const spec = chosenSpec(c.spellEffects);
+      return !(spec && this.validTargets(side, spec, null).length === 0);
+    }
+    return p.board.length < this.boardLimit(side);
+  }
+  playSpec(c) {
+    if (c.isSpell) return chosenSpec(c.spellEffects);
+    for (const cl of c.clausesOf('PLAY')) { const s = chosenSpec(cl.effects); if (s) return s; }
+    return '';
+  }
+  canAttack(m) {
+    if (!m || this.winner >= 0 || m.side !== this.current) return false;
+    if (m.acted || m.frozen || this.attackOf(m) <= 0) return false;
+    if (m.def.isArbiter && !(m.flags.has('LONE') && this.players[m.side].board.length === 1)) return false;
+    if (m.summonedThisTurn && !m.charge) return false;
+    return true;
+  }
+  attackTargets(m) {
+    const other = this.players[1 - m.side];
+    const taunts = other.board.filter(x => x.taunt && !x.stealth);
+    if (taunts.length) return taunts.map(t => T(other.side, t.uid));
+    const list = [T(other.side, 0)];
+    for (const om of other.board) if (!om.stealth) list.push(T(other.side, om.uid));
+    return list;
+  }
+  canUseSkill(m, slot) {
+    if (!m || this.winner >= 0 || m.side !== this.current) return false;
+    const sk = this.skillOf(m, slot);
+    if (!sk || !this.skillUnlocked(m, slot)) return false;
+    if (m.acted || m.frozen) return false;
+    if (slot === 3 && m.specialUsed) return false;
+    if (sk.cost > this.players[m.side].mana) return false;
+    const spec = chosenSpec(sk.effects);
+    if (spec && this.validTargets(m.side, spec, m).length === 0) return false;
+    return true;
+  }
+
+  // ---------------- 행동
+  // act = {kind:'play'|'attack'|'skill'|'end', hand, uid, slot, target, pos, choice}
+  apply(side, act) {
+    if (this.winner >= 0 || side !== this.current) return false;
+    const has = (list, t) => !isNone(t) && list.some(x => sameRef(x, t));
+    switch (act.kind) {
+      case 'end': this.endTurnInternal(); return true;
+      case 'play': {
+        if (!this.canPlay(side, act.hand)) return false;
+        const p = this.players[side], c = p.hand[act.hand], spec = this.playSpec(c);
+        let tgt = act.target || NoTarget;
+        if (spec) {
+          const valid = this.validTargets(side, spec, null);
+          if (c.isSpell) { if (!has(valid, tgt)) return false; }
+          else if (valid.length > 0 && !has(valid, tgt)) return false;
+          else if (valid.length === 0) tgt = NoTarget;
+        }
+        const pay = this.costOf(side, c);
+        p.hand.splice(act.hand, 1);
+        p.mana -= pay;
+        this.sourceCard = c;
+        if (c.id > 0) this.playedIds[side].add(c.id);
+        const opt = c.choices.length === 2 ? c.choices[act.choice === 2 ? 1 : 0] : null;
+        const costNote = pay !== c.cost ? ' (비용 ' + pay + ')' : '';
+        if (c.isSpell) {
+          this.say(p.title + ": 주문 '" + c.title + "'" + costNote);
+          this.execute(side, null, c.spellEffects, tgt);
+          if (opt) { this.say('  선택: ' + opt.title); this.execute(side, null, opt.effects, NoTarget); }
+        } else {
+          const m = this.summon(side, c, false, act.pos == null ? -1 : act.pos);
+          this.say(p.title + ": '" + c.title + "' 출전" + costNote);
+          if (m) {
+            for (const cl of c.clausesOf('PLAY')) this.execute(side, m, cl.effects, tgt);
+            if (opt) { this.say('  선택: ' + opt.title); this.execute(side, m, opt.effects, NoTarget); }
+          }
+        }
+        if (c.mainEl && !c.isNeutral) p.lastEl = c.mainEl;
+        this.cleanup();
+        return true;
+      }
+      case 'attack': {
+        const m = this.findMinion(act.uid);
+        if (!m || m.side !== side || !this.canAttack(m)) return false;
+        if (!has(this.attackTargets(m), act.target)) return false;
+        m.acted = true; m.stealth = false; this.sourceCard = m.def;
+        const foe = this.players[1 - side];
+        if (isHero(act.target)) {
+          const d = this.attackOf(m);
+          this.say(m.def.title + ' → ' + foe.title + ' 공격 (' + d + ')');
+          this.damageHero(foe, d);
+        } else {
+          const t = this.findMinion(act.target.uid);
+          this.say(m.def.title + ' → ' + t.def.title + ' 공격');
+          const a1 = this.attackOf(m) + this.elementBonus(m, t), a2 = this.attackOf(t) + this.elementBonus(t, m);
+          if (this.elementBonus(m, t) > 0) this.say('  상극 +1 (' + m.def.mainEl + '→' + t.def.defenseEl + ')');
+          this.damageMinion(t, a1); this.damageMinion(m, a2);
+        }
+        this.cleanup();
+        return true;
+      }
+      case 'skill': {
+        const m = this.findMinion(act.uid);
+        if (!m || m.side !== side || !this.canUseSkill(m, act.slot)) return false;
+        const sk = this.skillOf(m, act.slot), spec = chosenSpec(sk.effects);
+        if (spec && !has(this.validTargets(side, spec, m), act.target)) return false;
+        this.players[side].mana -= sk.cost;
+        m.acted = true; this.sourceCard = m.def;
+        if (act.slot === 3) m.specialUsed = true;
+        this.say(m.def.title + ': ' + (act.slot === 3 ? '특수능력 ' : '') + "'" + sk.title + "'");
+        this.execute(side, m, sk.effects, act.target || NoTarget);
+        this.cleanup();
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // ---------------- 효과
+  summon(side, c, isTokenSummon, pos) {
+    const p = this.players[side];
+    if (p.board.length >= this.boardLimit(side)) return null;
+    const ts = c.isToken ? [1, 1] : this.tierOf(side, c);
+    const m = { uid: this.nextUid++, def: c, side, atk: c.atk, hp: c.hp, maxHp: c.hp, taunt: false, charge: false, shield: false,
+      stealth: false, frozen: false, thawPending: 0, summonedThisTurn: true, acted: false, specialUsed: false,
+      tier: ts[0], star: ts[1], flags: new Set() };
+    if (!c.isToken) { const b = statBonus(m.tier, m.star); m.atk += b[0]; m.hp += b[1]; m.maxHp += b[1]; }
+    m.taunt = c.hasKeyword('TAUNT'); m.charge = c.hasKeyword('CHARGE'); m.shield = c.hasKeyword('SHIELD'); m.stealth = c.hasKeyword('STEALTH');
+    if (pos >= 0 && pos <= p.board.length) p.board.splice(pos, 0, m); else p.board.push(m);
+    if (isTokenSummon) this.say('  ' + c.title + ' 소환');
+    return m;
+  }
+  execute(side, source, effects, chosen) {
+    for (const ef of effects) {
+      if (this.winner >= 0) return;
+      switch (ef.op) {
+        case 'DRAW': for (let i = 0; i < ef.n; i++) this.draw(this.players[side]); break;
+        case 'MANA': this.players[side].mana = Math.min(10, this.players[side].mana + ef.n); break;
+        case 'ARMOR': this.players[side].armor += ef.n; break;
+        case 'FLAG': if (source) source.flags.add(ef.keyword); break;
+        case 'DISCARD': {
+          const foe = this.players[1 - side];
+          for (let i = 0; i < ef.n && foe.hand.length; i++) {
+            const k = this.rnd.int(foe.hand.length);
+            this.say('  ' + foe.title + "의 '" + foe.hand[k].title + "' 버려짐");
+            foe.hand.splice(k, 1);
+          }
+          break;
+        }
+        case 'FIGHT_ENEMIES': case 'INFIGHT': {
+          const pool = this.players[ef.op === 'FIGHT_ENEMIES' ? 1 - side : side].board.filter(x => x.hp > 0 && x !== source);
+          if (pool.length >= 2) {
+            const i1 = this.rnd.int(pool.length); let i2 = this.rnd.int(pool.length - 1); if (i2 >= i1) i2++;
+            this.fight(pool[i1], pool[i2]);
+          }
+          break;
+        }
+        case 'FACE_OFF': {
+          if (!source) break;
+          const mine = this.players[side].board, theirs = this.players[1 - side].board, idx = mine.indexOf(source);
+          for (const j of [idx - 1, idx + 1]) {
+            if (j >= 0 && j < mine.length && j < theirs.length && mine[j].hp > 0 && theirs[j].hp > 0) this.fight(mine[j], theirs[j]);
+          }
+          break;
+        }
+        case 'SUMMON': {
+          const tk = new CardDef();
+          tk.id = -1; tk.mythCode = source ? source.def.mythCode : ''; tk.title = ef.tokenName; tk.atk = ef.n; tk.hp = ef.n2; tk.isToken = true;
+          if (ef.tokenKw) tk.passive = { title: '', cost: 0, effects: [], choices: [], clauses: [{ trigger: 'KW', keyword: ef.tokenKw, effects: [] }] };
+          this.summon(side, tk, true, -1);
+          break;
+        }
+        default:
+          for (const t of this.resolve(side, source, ef.target, chosen)) this.applyOne(ef, t);
+      }
+    }
+  }
+  resolve(side, source, spec, chosen) {
+    const list = [], mine = this.players[side], other = this.players[1 - side];
+    switch (spec) {
+      case 'SELF': if (source) list.push(T(side, source.uid)); break;
+      case 'MY_HERO': list.push(T(side, 0)); break;
+      case 'ENEMY_HERO': list.push(T(other.side, 0)); break;
+      case 'ALL': case 'ALL_MIN': case 'ALL_ENEMY': case 'ALL_ENEMY_MIN': case 'ALL_FRIEND': case 'ALL_FRIEND_MIN': case 'OTHER_FRIEND_MIN': {
+        const enemyOk = spec === 'ALL' || spec === 'ALL_MIN' || spec.startsWith('ALL_ENEMY');
+        const friendOk = spec === 'ALL' || spec === 'ALL_MIN' || spec.startsWith('ALL_FRIEND') || spec === 'OTHER_FRIEND_MIN';
+        const heroes = !spec.endsWith('_MIN');
+        if (enemyOk) { if (heroes) list.push(T(other.side, 0)); for (const m of other.board) list.push(T(other.side, m.uid)); }
+        if (friendOk) {
+          if (heroes) list.push(T(side, 0));
+          for (const m of mine.board) { if (spec === 'OTHER_FRIEND_MIN' && source && m === source) continue; list.push(T(side, m.uid)); }
+        }
+        break;
+      }
+      case 'RANDOM_ENEMY': case 'RANDOM_ENEMY_MIN': {
+        const pool = [];
+        if (spec === 'RANDOM_ENEMY') pool.push(T(other.side, 0));
+        for (const m of other.board) if (m.hp > 0) pool.push(T(other.side, m.uid));
+        if (pool.length) list.push(pool[this.rnd.int(pool.length)]);
+        break;
+      }
+      default: if (!isNone(chosen)) list.push(chosen);
+    }
+    return list;
+  }
+  applyOne(ef, t) {
+    const m = isHero(t) ? null : this.findMinion(t.uid);
+    if (!isHero(t) && !m) return;
+    switch (ef.op) {
+      case 'DMG': if (isHero(t)) this.damageHero(this.players[t.side], ef.n); else this.damageMinion(m, ef.n); break;
+      case 'HEAL': if (isHero(t)) this.players[t.side].hp = Math.min(30, this.players[t.side].hp + ef.n); else m.hp = Math.min(m.maxHp, m.hp + ef.n); break;
+      case 'BUFF': if (m) { m.atk += ef.n; m.maxHp += ef.n2; m.hp += ef.n2; } break;
+      case 'KW': if (m) { if (ef.keyword === 'TAUNT') m.taunt = true; else if (ef.keyword === 'CHARGE') m.charge = true;
+        else if (ef.keyword === 'SHIELD') m.shield = true; else if (ef.keyword === 'STEALTH') m.stealth = true; } break;
+      case 'FREEZE': if (m) { m.frozen = true; m.thawPending = m.side === this.current ? 2 : 1; this.say('  ' + m.def.title + ' 빙결'); } break;
+      case 'DESTROY': if (m) { m.hp = 0; this.say('  ' + m.def.title + ' 처치'); } break;
+    }
+  }
+  damageHero(p, n) {
+    if (n <= 0) return;
+    const ab = Math.min(p.armor, n); p.armor -= ab; p.hp -= n - ab;
+    if (p.hp <= 0) {
+      if (this.finisherId === 0 && this.sourceCard && !this.sourceCard.isToken) this.finisherId = this.sourceCard.id;
+      this.checkWin();
+    }
+  }
+  damageMinion(m, n) {
+    if (n <= 0 || !m) return;
+    if (m.shield) { m.shield = false; this.say('  ' + m.def.title + '의 신의 가호가 벗겨졌습니다'); return; }
+    m.hp -= n;
+  }
+  cleanup() {
+    for (let guard = 1; guard <= 50; guard++) {
+      const dead = [];
+      for (const sd of [this.current, 1 - this.current]) for (const m of this.players[sd].board) if (m.hp <= 0) dead.push(m);
+      if (!dead.length) break;
+      for (const m of dead) { const b = this.players[m.side].board; b.splice(b.indexOf(m), 1); this.say('  ' + m.def.title + ' 쓰러짐'); }
+      for (const m of dead) for (const cl of m.def.clausesOf('DEATH')) { this.sourceCard = m.def; this.execute(m.side, m, cl.effects, NoTarget); }
+    }
+    this.checkWin();
+  }
+  checkWin() {
+    if (this.winner >= 0) return;
+    const d0 = this.players[0].hp <= 0, d1 = this.players[1].hp <= 0;
+    if (d0 && d1) { this.winner = 2; this.say('무승부!'); }
+    else if (d0) { this.winner = 1; this.say(this.players[1].title + ' 승리!'); }
+    else if (d1) { this.winner = 0; this.say(this.players[0].title + ' 승리!'); }
+  }
+}
+
+// ============================================================ AI
+class AiPlayer {
+  constructor(side) { this.side = side; }
+  nextAction(g) {
+    if (g.winner >= 0 || g.current !== this.side) return { kind: 'end' };
+    return this.tryPlay(g) || this.trySkill(g) || this.tryAttack(g) || { kind: 'end' };
+  }
+  pickChoice(g, c) {
+    if (c.choices.length !== 2) return 1;
+    return this.choiceScore(g, c.choices[1]) > this.choiceScore(g, c.choices[0]) ? 2 : 1;
+  }
+  choiceScore(g, opt) {
+    const me = g.players[this.side], foe = g.players[1 - this.side];
+    let s = 0;
+    for (const ef of opt.effects) {
+      switch (ef.op) {
+        case 'FIGHT_ENEMIES': s += foe.board.length >= 2 ? 4 + Math.min(foe.board.length, 4) : 0; break;
+        case 'DISCARD': s += Math.min(ef.n, foe.hand.length) * 3; break;
+        case 'FACE_OFF': { const mid = Math.floor(me.board.length / 2); s += (foe.board.length > mid + 1 || (mid > 0 && foe.board.length >= mid)) ? 4 : 0; break; }
+        case 'INFIGHT': s -= me.board.length >= 2 ? 4 : 0; break;
+        case 'FLAG':
+          if (ef.keyword === 'LONE') s += me.board.length === 0 ? 4 : 1;
+          else if (ef.keyword === 'BALANCE2') s += me.board.length >= 2 ? 3 : 1;
+          else if (ef.keyword === 'WITHER') s -= me.board.length;
+          else if (ef.keyword === 'NARROW') s -= me.board.length >= 5 ? 3 : 1;
+          break;
+        case 'DRAW': s += 2 * ef.n; break;
+        default: s += 1;
+      }
+    }
+    return s;
+  }
+  tryPlay(g) {
+    const p = g.players[this.side];
+    const order = p.hand.map((_, i) => i).sort((a, b) => g.costOf(this.side, p.hand[b]) - g.costOf(this.side, p.hand[a]));
+    for (const hi of order) {
+      if (!g.canPlay(this.side, hi)) continue;
+      const c = p.hand[hi];
+      if (c === GraceCard) {
+        if (!p.hand.some(x => x !== GraceCard && g.costOf(this.side, x) === p.mana + 1)) continue;
+        return { kind: 'play', hand: hi, target: NoTarget, pos: -1, choice: 1 };
+      }
+      const effects = c.isSpell ? c.spellEffects : c.clausesOf('PLAY').flatMap(cl => cl.effects);
+      const spec = g.playSpec(c);
+      let tgt = NoTarget;
+      if (spec) {
+        const cand = g.validTargets(this.side, spec, null);
+        if (cand.length) {
+          tgt = this.bestTarget(g, effects, cand, null);
+          if (isNone(tgt) && c.isSpell) continue;
+          if (isNone(tgt)) tgt = cand[0];
+        }
+      } else if (c.isSpell && c.spellEffects.length && !this.worthAuto(g, c.spellEffects)) continue;
+      const pos = c.isArbiter ? Math.floor(p.board.length / 2) : -1;
+      return { kind: 'play', hand: hi, target: tgt, pos, choice: this.pickChoice(g, c) };
+    }
+    return null;
+  }
+  worthAuto(g, effects) {
+    const me = g.players[this.side], foe = g.players[1 - this.side];
+    const val = b => b.reduce((s, m) => s + m.atk + m.hp, 0);
+    for (const ef of effects) {
+      switch (ef.op) {
+        case 'DMG': case 'DESTROY':
+          if (ef.target.includes('ENEMY')) return foe.board.length > 0 || ef.target === 'ALL_ENEMY';
+          if (ef.target === 'ALL_MIN' || ef.target === 'ALL') return val(foe.board) > val(me.board) + 2;
+          break;
+        case 'HEAL': return me.hp <= 22 || me.board.some(m => m.hp < m.maxHp);
+        case 'BUFF': case 'KW': return me.board.length > 0;
+        case 'FREEZE': return foe.board.length > 0;
+        case 'MANA': return me.hand.some(x => g.costOf(this.side, x) > me.mana && g.costOf(this.side, x) <= me.mana + ef.n - 1 && !x.spellEffects.some(e => e.op === 'MANA'));
+      }
+    }
+    return true;
+  }
+  bestTarget(g, effects, cand, source) {
+    const spec = chosenSpec(effects), ef = effects.find(x => x.target === spec);
+    let best = NoTarget, bestScore = -Infinity;
+    for (const t of cand) {
+      const mine = t.side === this.side, m = isHero(t) ? null : g.findMinion(t.uid);
+      let score = -Infinity;
+      switch (ef.op) {
+        case 'DMG':
+          if (mine) continue;
+          if (isHero(t)) score = g.players[t.side].hp <= ef.n ? 1000 : 3;
+          else if (m.shield) score = 2;
+          else if (m.hp <= ef.n) score = 10 + m.atk * 2 + m.def.cost;
+          else score = m.atk;
+          break;
+        case 'DESTROY': if (mine || isHero(t)) continue; score = m.atk * 2 + m.hp + m.def.cost; break;
+        case 'FREEZE': if (mine) continue; score = isHero(t) ? 0 : m.atk * 2; break;
+        case 'HEAL': {
+          if (!mine) continue;
+          const lost = isHero(t) ? 30 - g.players[t.side].hp : m.maxHp - m.hp;
+          if (lost <= 0) continue;
+          score = Math.min(lost, ef.n) + (isHero(t) ? 0 : 1); break;
+        }
+        case 'BUFF': case 'KW':
+          if (!mine || isHero(t)) continue;
+          if (source && m === source) continue;
+          score = m.atk + m.hp; break;
+      }
+      if (score > bestScore) { bestScore = score; best = t; }
+    }
+    return best;
+  }
+  trySkill(g) {
+    const p = g.players[this.side];
+    for (const m of p.board.slice()) {
+      for (const slot of [3, 2, 1]) {
+        if (!g.canUseSkill(m, slot)) continue;
+        const sk = g.skillOf(m, slot), spec = chosenSpec(sk.effects);
+        let tgt = NoTarget;
+        if (spec) { tgt = this.bestTarget(g, sk.effects, g.validTargets(this.side, spec, m), m); if (isNone(tgt)) continue; }
+        else if (!this.worthAuto(g, sk.effects)) continue;
+        if (slot !== 3 && g.canAttack(m) && !this.skillBeatsAttack(g, m, sk)) continue;
+        return { kind: 'skill', uid: m.uid, slot, target: tgt };
+      }
+    }
+    return null;
+  }
+  skillBeatsAttack(g, m, sk) {
+    let gain = 0;
+    for (const ef of sk.effects) {
+      switch (ef.op) {
+        case 'DMG': gain += ef.n * (ef.target.startsWith('ALL') ? 2 : 1); break;
+        case 'DESTROY': gain += 6; break;
+        case 'SUMMON': gain += ef.n + ef.n2; break;
+        case 'BUFF': gain += (ef.n + ef.n2) * (ef.target.startsWith('ALL') ? 2 : 1); break;
+        case 'DRAW': gain += 2 * ef.n; break;
+        case 'HEAL': gain += Math.floor(ef.n / 2); break;
+        default: gain += 1;
+      }
+    }
+    return gain > g.attackOf(m);
+  }
+  tryAttack(g) {
+    const p = g.players[this.side], foe = g.players[1 - this.side];
+    const attackers = p.board.filter(x => g.canAttack(x)).sort((a, b) => g.attackOf(b) - g.attackOf(a));
+    if (!attackers.length) return null;
+    const total = attackers.reduce((s, x) => s + g.attackOf(x), 0);
+    for (const m of attackers) {
+      const targets = g.attackTargets(m), faceOk = targets.some(isHero);
+      if (faceOk && total >= foe.hp + foe.armor) return { kind: 'attack', uid: m.uid, target: T(foe.side, 0) };
+      let best = NoTarget, bestScore = -Infinity;
+      for (const t of targets) {
+        if (isHero(t)) continue;
+        const e = g.findMinion(t.uid);
+        const kills = !e.shield && g.attackOf(m) + g.elementBonus(m, e) >= e.hp;
+        const dies = !m.shield && g.attackOf(e) + g.elementBonus(e, m) >= m.hp;
+        let score;
+        if (kills && !dies) score = 100 + e.atk + e.def.cost;
+        else if (kills) score = e.def.cost >= m.def.cost ? 50 + e.def.cost - m.def.cost : -10;
+        else if (!dies && e.shield) score = 20;
+        else score = -50;
+        if (e.taunt) score += 30;
+        if (score > bestScore) { bestScore = score; best = t; }
+      }
+      if (!faceOk) { if (!isNone(best)) return { kind: 'attack', uid: m.uid, target: best }; continue; }
+      if (!isNone(best) && bestScore >= 50) return { kind: 'attack', uid: m.uid, target: best };
+      return { kind: 'attack', uid: m.uid, target: T(foe.side, 0) };
+    }
+    return null;
+  }
+}
+
+const API = { Elements, ElementHanja, ElementColor, generates, overcomes, oppositeOf, TermNames, TermHanja, seasonName, seasonElement,
+  monthGuaOf, termOfDate, TierNames, Active2Tier, SpecialTier, MaxLevel, XpPlayed, XpWin, XpFinisher, tierOfLevel, starOfLevel,
+  rankText, rankTextOfLevel, xpForNext, xpAtLevel, levelFromXp, statBonus, KeywordNames, FlagNames, MythNames, mythName, mythColor,
+  chosenSpec, CardDef, loadCards, describe, describePassive, rulesLine, describeAttr, DeckSize, MaxCopies, Themes, makeRng,
+  buildThemed, presets, NoTarget, T, isHero, isNone, sameRef, GraceCard, Game, AiPlayer };
+if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.MC = API;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+<script>// Voltaic Myth Card Battle (신화 카드 대전) with Claude — 화면 (웹판)
+(function () {
+'use strict';
+const APP_TITLE = 'Voltaic Myth Card Battle (신화 카드 대전) with Claude';
+const VERSION = '2.1.1';
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+
+// ------------------------------------------------------------ 저장 (브라우저 안)
+// PC판(VoltaicMythCards.exe) 안에서 돌 때: 카드·경험치·덱을 exe 가 넘겨주고, 바뀌면 exe 에 알려 파일에 저장한다.
+const HOST = (window.chrome && window.chrome.webview) ? window.chrome.webview : null;
+const HOSTDATA = window.VMC_HOST || null;
+function tellHost(type, data) { if (HOST) { try { HOST.postMessage({ type, data }); } catch (e) { /* 무시 */ } } }
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('vmc.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem('vmc.' + k, JSON.stringify(v)); } catch (e) { /* 저장 못 해도 게임은 된다 */ } }
+};
+
+// ------------------------------------------------------------ 상태
+const S = {
+  cards: [], byId: new Map(), lore: {}, presets: [], xp: {}, decks: [],
+  game: null, ai: null, mySide: 0, practice: false, aiLevelMode: 0, aiLevel: 0,
+  placing: null, pending: null, selUid: 0, aiTimer: 0, resultShown: false, hoverKey: '',
+  last: store.get('last', { my: 'p:0', ai: 'rand', first: 'rand', mode: 0, practice: false })
+};
+function saveXp() { if (HOST) tellHost('xp', S.xp); else store.set('xp', S.xp); }
+function saveDecks() { if (HOST) tellHost('decks', S.decks); else store.set('decks', S.decks); }
+const levelOfCard = c => MC.levelFromXp(S.xp[c.id] || 0);
+const deckList = () => S.presets.map((d, i) => ({ key: 'p:' + i, d })).concat(S.decks.map((d, i) => ({ key: 'u:' + i, d })));
+const deckOf = key => { const [t, i] = key.split(':'); return t === 'p' ? S.presets[+i] : S.decks[+i]; };
+const cardsOf = d => d.ids.map(id => S.byId.get(id)).filter(Boolean);
+
+function init() {
+  document.title = APP_TITLE;
+  try {
+    S.cards = MC.loadCards(HOSTDATA && HOSTDATA.cards ? HOSTDATA.cards : DATA.cards, HOSTDATA && HOSTDATA.tags ? HOSTDATA.tags : DATA.tags);
+  } catch (e) { document.body.innerHTML = '<pre style="padding:16px;white-space:pre-wrap">' + esc(e.message) + '<\/pre>'; return; }
+  S.cards.forEach(c => S.byId.set(c.id, c));
+  S.lore = Object.assign({}, DATA.lore || {}, HOSTDATA && HOSTDATA.lore ? HOSTDATA.lore : {});
+  S.presets = MC.presets(S.cards);
+  S.xp = HOSTDATA ? (HOSTDATA.xp || {}) : store.get('xp', {});
+  S.decks = (HOSTDATA ? (HOSTDATA.decks || []) : store.get('decks', [])).map(d => ({ title: d.title, ids: d.ids.filter(id => S.byId.has(id)) }));
+  showHome();
+  wirePointer();
+}
+
+// ============================================================ 홈
+function showHome() {
+  stopAi();
+  netClose();
+  S.game = null;
+  $('#app').innerHTML = `<div id="home">
+    <h1>신화 카드 대전<\/h1><p>${esc(APP_TITLE)} · v${VERSION}<\/p>
+    <p>카드 ${S.cards.length}장 · 오행·24절기<\/p>
+    <button class="primary" data-a="new">새 대전 (AI)<\/button>
+    <button data-a="net">대인전 (방 코드)<\/button>
+    <button data-a="decks">덱 편집<\/button>
+    <button data-a="coll">내 카드 등급<\/button>
+    <button data-a="rules">규칙<\/button><\/div>`;
+  $('#home').onclick = e => {
+    const a = e.target.closest('[data-a]'); if (!a) return;
+    ({ new: newGameSheet, net: netLobby, decks: deckEditor, coll: collection, rules: rulesSheet })[a.dataset.a]();
+  };
+}
+
+// ============================================================ 창(시트)
+function sheet(html, onClick, opts = {}) {
+  const back = document.createElement('div');
+  back.className = 'sheetBack';
+  back.innerHTML = `<div class="sheet">${html}<\/div>`;
+  document.body.appendChild(back);
+  const close = () => back.remove();
+  back.addEventListener('click', e => {
+    if (e.target === back) { if (!opts.modal) { close(); opts.onCancel && opts.onCancel(); } return; }
+    const b = e.target.closest('[data-a]');
+    if (b && onClick) onClick(b.dataset.a, b, close, back);
+  });
+  return { close, el: back };
+}
+function ask(msg, yesText, onYes) {
+  sheet(`<h2>${esc(msg)}<\/h2><div class="btns"><button data-a="no">취소<\/button><button class="primary" data-a="yes">${esc(yesText)}<\/button><\/div>`,
+    (a, b, close) => { close(); if (a === 'yes') onYes(); });
+}
+function toast(s) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = s; document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
+// ------------------------------------------------------------ 새 대전
+function newGameSheet() {
+  const opts = deckList().map(x => `<option value="${x.key}">${x.key[0] === 'p' ? '[추천] ' : ''}${esc(x.d.title)}<\/option>`).join('');
+  const L = S.last;
+  const s = sheet(`<h2>새 대전<\/h2>
+    <h3>내 덱<\/h3><select id="ngMy">${opts}<\/select>
+    <h3>AI 덱<\/h3><select id="ngAi"><option value="rand">무작위 추천 덱<\/option>${opts}<\/select>
+    <div class="grid2"><div><h3>선공<\/h3><select id="ngFirst"><option value="rand">무작위<\/option><option value="0">나<\/option><option value="1">AI<\/option><\/select><\/div>
+    <div><h3>AI 등급<\/h3><select id="ngMode"><option value="0">내 덱 평균<\/option><option value="1">정령<\/option><option value="2">태초신<\/option><\/select><\/div><\/div>
+    <label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="checkbox" id="ngPrac"> 연습 (양쪽 모두 태초신, 경험치 없음)<\/label>
+    <div class="btns"><button data-a="cancel">취소<\/button><button class="primary" data-a="go">시작<\/button><\/div>`,
+    (a, b, close) => {
+      if (a === 'cancel') return close();
+      const my = $('#ngMy').value, ai = $('#ngAi').value, first = $('#ngFirst').value, mode = +$('#ngMode').value, prac = $('#ngPrac').checked;
+      S.last = { my, ai, first, mode, practice: prac }; store.set('last', S.last);
+      close(); startGame(my, ai, first, mode, prac);
+    });
+  const setSel = (id, v) => { const el = s.el.querySelector(id); if ([...el.options].some(o => o.value === v)) el.value = v; };
+  setSel('#ngMy', L.my); setSel('#ngAi', L.ai); setSel('#ngFirst', String(L.first)); setSel('#ngMode', String(L.mode));
+  s.el.querySelector('#ngPrac').checked = !!L.practice;
+}
+
+function startGame(myKey, aiKey, first, mode, practice) {
+  const myDeck = deckOf(myKey) || S.presets[0];
+  const aiDeck = aiKey === 'rand' ? S.presets[Math.floor(Math.random() * S.presets.length)] : (deckOf(aiKey) || S.presets[1]);
+  const seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0;
+  const g = new MC.Game(cardsOf(myDeck), cardsOf(aiDeck), '나', 'AI · ' + aiDeck.title, seed);
+  g.startTerm = MC.termOfDate(new Date());
+  S.practice = practice; S.aiLevelMode = mode;
+  const mine = cardsOf(myDeck).filter(c => !c.isSpell);
+  S.aiLevel = mode === 2 ? MC.MaxLevel : mode === 1 ? 0 : (mine.length ? Math.floor(mine.reduce((s, c) => s + levelOfCard(c), 0) / mine.length) : 0);
+  g.tierOf = (sd, c) => {
+    const lv = practice ? MC.MaxLevel : sd === S.mySide ? levelOfCard(c) : S.aiLevel;
+    return [MC.tierOfLevel(lv), MC.starOfLevel(lv)];
+  };
+  netClose();
+  S.game = g; S.ai = new MC.AiPlayer(1); S.mySide = 0;
+  S.placing = null; S.pending = null; S.selUid = 0; S.resultShown = false;
+  buildBattle();
+  g.start(first === 'rand' ? Math.floor(Math.random() * 2) : +first);
+  render();
+  if (g.current === 1) runAi();
+}
+
+// ============================================================ 대전 화면
+function buildBattle() {
+  $('#app').innerHTML = `
+  <div id="topbar"><div class="term" id="term"><\/div><div class="track" id="track"><\/div><button id="chatBtn" class="hidden" aria-label="말하기">💬<\/button><button id="menuBtn" aria-label="메뉴">☰<\/button><\/div>
+  <div id="main">
+    <div id="board">
+      <div class="hero foe" id="foeHero" data-k="hero:1"><\/div>
+      <div class="row" id="foeRow"><\/div>
+      <div class="mid"><span id="banner"><\/span><\/div>
+      <div class="row" id="myRow"><\/div>
+      <div class="hero me" id="myHero" data-k="hero:0"><\/div>
+    <\/div>
+    <div id="side"><div id="sideInfo">카드 위에 마우스를 올리면 설명이 나옵니다.<\/div><div id="sideLog"><\/div><\/div>
+  <\/div>
+  <div id="handWrap"><div id="actbar"><\/div><div id="hand"><\/div><div id="logLine"><\/div><\/div>`;
+  $('#menuBtn').onclick = battleMenu;
+  $('#chatBtn').onclick = chatSheet;
+  $('#chatBtn').classList.toggle('hidden', !S.net);
+  $('#logLine').onclick = logSheet;
+}
+
+function myTurn() { const g = S.game; return g && g.winner < 0 && g.current === S.mySide && !S.aiTimer && !(S.net && S.net.ended); }
+
+function currentTargets() {
+  const g = S.game; if (!g || !myTurn()) return [];
+  if (S.pending) {
+    if (S.pending.kind === 'play') return g.validTargets(S.mySide, g.playSpec(g.players[S.mySide].hand[S.pending.hand]), null);
+    if (S.pending.kind === 'skill') { const m = g.findMinion(S.pending.uid); return g.validTargets(S.mySide, MC.chosenSpec(g.skillOf(m, S.pending.slot).effects), m); }
+  }
+  if (S.selUid) { const m = g.findMinion(S.selUid); if (m && g.canAttack(m)) return g.attackTargets(m); }
+  return [];
+}
+
+function elBadge(el, cls) {
+  return `<span class="elb ${cls || ''}" style="background:${MC.ElementColor[el] || '#777'}">${MC.ElementHanja[el] || ''}<\/span>`;
+}
+function attrBadges(c, m) {
+  if (c.isToken) return '';
+  if (c.isNeutral) return `<span class="elb" style="background:#787880">無<\/span>`;
+  if (c.isArbiter) return `<span class="elb" style="background:linear-gradient(90deg,${MC.ElementColor[c.mainEl]} 50%,${MC.ElementColor[c.subEl]} 50%)">調<\/span>`;
+  if (!c.mainEl) return '';
+  const seasonal = m && S.game && S.game.seasonBonus(m) > 0;
+  let h = elBadge(c.mainEl, seasonal ? 'season' : '');
+  if (c.attrKind === '양' && c.subEl) h += elBadge(c.subEl, 'sub');
+  return h;
+}
+
+function cardHtml(c, m, o = {}) {
+  const g = S.game;
+  const col = c.isToken ? '#6e737d' : MC.mythColor(c.mythCode);
+  const cls = ['card'];
+  const taunt = m ? m.taunt : c.hasKeyword('TAUNT'), shield = m ? m.shield : c.hasKeyword('SHIELD');
+  if (taunt) cls.push('taunt'); if (shield) cls.push('shield');
+  if (o.cls) cls.push(...o.cls);
+  const kind = c.isSpell ? '주문' : c.isToken ? '소환물' : MC.mythName(c.mythCode);
+  let h = `<div class="${cls.join(' ')}" data-k="${o.key}">`;
+  h += `<div class="band" style="background:${col}">${esc(c.title)}<small>${esc(kind)}<\/small><\/div>`;
+  h += `<div class="rule">${esc(MC.rulesLine(c))}<\/div>`;
+  h += `<div class="rank">${o.rank && !c.isSpell && !c.isToken ? esc(o.rank) : ''}<\/div><div class="foot"><\/div>`;
+  if (o.showCost) {
+    const cc = o.cost == null ? c.cost : o.cost;
+    h += `<div class="cost ${cc < c.cost ? 'dn' : cc > c.cost ? 'up' : ''}">${cc}<\/div>`;
+  }
+  h += attrBadges(c, m);
+  if (!c.isSpell) {
+    const bonus = o.bonus || [0, 0];
+    const atk = m ? (g ? g.attackOf(m) : m.atk) : c.atk + bonus[0];
+    const hp = m ? m.hp : c.hp + bonus[1];
+    const aCls = m ? (atk < m.atk ? 'dn' : atk > c.atk ? 'up' : '') : bonus[0] > 0 ? 'up' : '';
+    const hCls = m && m.hp < m.maxHp ? 'dn' : (!m && bonus[1] > 0) || (m && m.maxHp > c.hp) ? 'up' : '';
+    h += `<div class="st a"><span class="${aCls}">${atk}<\/span><\/div><div class="st h"><span class="${hCls}">${hp}<\/span><\/div>`;
+  }
+  if (m) {
+    if (m.stealth) h += `<div class="ov stl">그림자<\/div>`;
+    if (m.frozen) h += `<div class="ov frz">빙결<\/div>`;
+    if (m.side === S.mySide && m.summonedThisTurn && !m.charge && !m.acted && !c.isArbiter) h += `<div class="note">출전 대기<\/div>`;
+    else if (m.side === S.mySide && m.acted) h += `<div class="note">행동 완료<\/div>`;
+  }
+  if (o.badge) h += `<div class="badge">${esc(o.badge)}<\/div>`;
+  return h + '<\/div>';
+}
+
+function heroHtml(p, isMe, tgt) {
+  const g = S.game, turn = g.current === p.side && g.winner < 0;
+  let info = isMe
+    ? `<span class="mana">${Array.from({ length: 10 }, (_, i) => `<i class="${i < p.mana ? 'on' : i < p.maxMana ? 'max' : ''}"><\/i>`).join('')}<\/span><span class="sub">${p.mana}/${p.maxMana} · 덱 ${p.deck.length}<\/span>`
+    : `<span class="sub">손패 ${p.hand.length} · 덱 ${p.deck.length} · 신력 ${p.mana}/${p.maxMana}<\/span>`;
+  return `<span class="nm">${esc(p.title)}${turn ? ' ▶' : ''}<\/span>${info}<span>${p.armor > 0 ? `<span class="sub">방어 ${p.armor} <\/span>` : ''}<span class="hp ${p.hp <= 10 ? 'low' : ''}">♥${p.hp}<\/span><\/span>`;
+}
+
+function render() {
+  const g = S.game; if (!g) return;
+  const me = g.players[S.mySide], foe = g.players[1 - S.mySide];
+  const targets = currentTargets();
+  const isT = (side, uid) => targets.some(t => t.side === side && t.uid === uid);
+  // 맨 위 절기 띠
+  const t = g.term, el = MC.seasonElement(t);
+  $('#term').innerHTML = `<span class="nm">${MC.TermNames[t]} ${MC.TermHanja[t]}<\/span>${elBadge(el)}<span class="rest">${MC.seasonName(t)} · ${el} 강세 공격+1 · ${MC.oppositeOf(el) ? MC.oppositeOf(el) + ' 비용+1 · ' : ''}상생 연속 −1 · 소식괘 ${MC.monthGuaOf(t)}<\/span>`;
+  $('#term').querySelector('.elb').style.cssText += ';width:18px;height:18px;font-size:11px';
+  $('#track').innerHTML = Array.from({ length: 24 }, (_, i) => `<i style="background:${MC.ElementColor[MC.seasonElement(i)]};opacity:${i === t ? 1 : .35};${i === t ? 'outline:1.5px solid #fff' : ''}"><\/i>`).join('');
+  // 영웅
+  const fh = $('#foeHero'), mh = $('#myHero');
+  fh.innerHTML = heroHtml(foe, false); mh.innerHTML = heroHtml(me, true);
+  fh.dataset.k = 'hero:' + foe.side; mh.dataset.k = 'hero:' + me.side;
+  fh.classList.toggle('turn', g.current === foe.side && g.winner < 0); mh.classList.toggle('turn', g.current === me.side && g.winner < 0);
+  fh.classList.toggle('tgt', isT(foe.side, 0)); mh.classList.toggle('tgt', isT(me.side, 0));
+  // 하수인 줄
+  const atker = S.selUid ? g.findMinion(S.selUid) : null;
+  const rowHtml = (p, mine) => {
+    if (!p.board.length && !(mine && S.placing)) return `<span class="empty">${mine ? '내 전장' : '상대 전장'}<\/span>`;
+    let h = '';
+    p.board.forEach((m, i) => {
+      if (mine && S.placing) h += `<div class="gap" data-k="gap:${i}">▼<\/div>`;
+      const cls = [];
+      if (mine && myTurn() && g.canAttack(m)) cls.push('ready');
+      if (m.uid === S.selUid) cls.push('sel');
+      if (isT(p.side, m.uid)) cls.push('tgt');
+      const badge = !mine && atker && isT(p.side, m.uid) && g.elementBonus(atker, m) > 0 ? '상극 +1' : '';
+      h += cardHtml(m.def, m, { key: 'min:' + m.uid, cls, rank: MC.rankText(m.tier, m.star), badge });
+    });
+    if (mine && S.placing) h += `<div class="gap" data-k="gap:${p.board.length}">▼<\/div>`;
+    return h;
+  };
+  sizeCards(foe.board.length, me.board.length + (S.placing ? 1 : 0));
+  $('#foeRow').innerHTML = rowHtml(foe, false);
+  $('#myRow').innerHTML = rowHtml(me, true);
+  $('#banner').textContent = bannerText();
+  // 손패
+  const pendHand = S.placing ? S.placing.hand : S.pending && S.pending.kind === 'play' ? S.pending.hand : -1;
+  $('#hand').innerHTML = me.hand.map((c, i) => {
+    const ok = myTurn() && g.canPlay(S.mySide, i);
+    const lv = S.practice ? MC.MaxLevel : levelOfCard(c);
+    const bonus = c.isSpell ? [0, 0] : MC.statBonus(MC.tierOfLevel(lv), MC.starOfLevel(lv));
+    return cardHtml(c, null, { key: 'hand:' + i, showCost: true, cost: g.costOf(S.mySide, c), bonus,
+      rank: c === MC.GraceCard ? '' : MC.rankTextOfLevel(lv), cls: [ok ? 'play' : 'dim', i === pendHand ? 'sel' : ''].filter(Boolean) });
+  }).join('');
+  renderActbar();
+  // 기록
+  const lastLines = g.log.slice(-1);
+  $('#logLine').textContent = '기록 ▸ ' + (lastLines[0] || '');
+  const sl = $('#sideLog');
+  if (sl && getComputedStyle($('#side')).display !== 'none') {
+    sl.innerHTML = g.log.slice(-200).map(x => `<div>${esc(x)}<\/div>`).join('');
+    sl.scrollTop = sl.scrollHeight;
+  }
+  if (g.winner >= 0 && !S.resultShown) { S.resultShown = true; setTimeout(showResult, 700); }
+}
+
+// 전장 하수인 수와 화면 크기에 맞춰 카드 크기를 정한다
+function sizeCards(nFoe, nMe) {
+  const bd = $('#board'); if (!bd) return;
+  const n = Math.max(4, nFoe, nMe);
+  const wide = window.innerWidth >= 980 && window.innerHeight >= 560;
+  const byW = (bd.clientWidth - 16) / n - 8 - (S.placing ? 20 : 0);
+  const byH = ((bd.clientHeight - 130) / 2 - 12) / 1.32;
+  const cw = Math.max(40, Math.floor(Math.min(wide ? 118 : 92, byW, byH)));
+  bd.style.setProperty('--cw', cw + 'px');
+  bd.style.setProperty('--ch', Math.round(cw * 1.32) + 'px');
+}
+window.addEventListener('resize', () => { if (S.game) render(); });
+
+function bannerText() {
+  const g = S.game;
+  if (g.winner >= 0) return g.winner === S.mySide ? '승리했습니다!' : g.winner === 2 ? '무승부' : '패배했습니다';
+  if (S.net && S.net.ended) return '상대와 연결이 끊겼습니다';
+  if (S.net && g.current !== S.mySide) return '상대 차례 · ' + g.players[1 - S.mySide].title;
+  if (S.aiTimer || g.current !== S.mySide) return '상대가 생각하는 중…';
+  if (S.placing) return '놓을 자리(▼)를 누르세요';
+  if (S.pending) return '대상을 누르세요';
+  if (S.selUid) return '공격할 대상을 누르거나 스킬을 쓰세요';
+  return '내 차례';
+}
+
+function renderActbar() {
+  const g = S.game, bar = $('#actbar');
+  let h = '';
+  const m = S.selUid ? g.findMinion(S.selUid) : null;
+  if (m && m.side === S.mySide && myTurn()) {
+    for (const slot of [1, 2, 3]) {
+      const sk = g.skillOf(m, slot); if (!sk) continue;
+      const head = slot === 3 ? '특수' : '액티브' + slot;
+      if (!g.skillUnlocked(m, slot)) { h += `<button class="sk" disabled>🔒 ${head} ${esc(sk.title)}<\/button>`; continue; }
+      if (slot === 3 && m.specialUsed) { h += `<button class="sk" disabled>${head} ${esc(sk.title)} (사용함)<\/button>`; continue; }
+      h += `<button class="sk" data-sk="${slot}" ${g.canUseSkill(m, slot) ? '' : 'disabled'}>${head} · ${esc(sk.title)} [${sk.cost}]<\/button>`;
+    }
+    h += `<button class="sk" data-info="min:${m.uid}">설명<\/button>`;
+  } else if (S.placing || S.pending) {
+    h += `<span class="hint">${S.placing ? '▼ 자리를 고르세요' : '빨갛게 표시된 대상을 누르세요'}<\/span><button data-cancel="1">취소<\/button>`;
+  } else {
+    h += `<span class="hint">${myTurn() ? '카드를 누르면 냅니다 · 길게 누르면 설명' : ''}<\/span>`;
+  }
+  if (!(S.placing || S.pending)) h += `<button id="endTurn" ${myTurn() ? '' : 'disabled'}>턴 종료<\/button>`;
+  bar.innerHTML = h;
+  bar.onclick = e => {
+    const b = e.target.closest('button'); if (!b || b.disabled) return;
+    if (b.id === 'endTurn') return endMyTurn();
+    if (b.dataset.cancel) return cancelSel();
+    if (b.dataset.info) return detailSheet(b.dataset.info);
+    if (b.dataset.sk) return useSkill(+b.dataset.sk);
+  };
+}
+
+// ============================================================ 누르기 처리 (탭 / 길게 누르기)
+function wirePointer() {
+  let timer = 0, startKey = '', sx = 0, sy = 0, longDone = false;
+  document.addEventListener('pointerdown', e => {
+    if (e.target.closest('.sheetBack')) return;
+    const el = e.target.closest('[data-k]'); startKey = el ? el.dataset.k : '';
+    sx = e.clientX; sy = e.clientY; longDone = false;
+    clearTimeout(timer);
+    if (startKey && S.game && !startKey.startsWith('gap')) {
+      timer = setTimeout(() => { longDone = true; detailSheet(startKey); }, 480);
+    }
+  });
+  document.addEventListener('pointermove', e => {
+    if (Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy) > 12) clearTimeout(timer);
+  });
+  document.addEventListener('pointerup', e => {
+    clearTimeout(timer);
+    if (longDone || !S.game || e.target.closest('.sheetBack') || e.target.closest('button')) return;
+    if (Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy) > 12) return;
+    if (!e.target.closest('#board') && !e.target.closest('#hand')) return;
+    if (e.button === 2) return;
+    const el = e.target.closest('[data-k]');
+    onTap(el ? el.dataset.k : '');
+  });
+  document.addEventListener('contextmenu', e => {
+    if (!S.game || e.target.closest('.sheetBack')) return;
+    e.preventDefault();
+    const el = e.target.closest('[data-k]');
+    if (el && !el.dataset.k.startsWith('gap')) detailSheet(el.dataset.k); else cancelSel();
+  });
+  document.addEventListener('mouseover', e => {
+    if (!S.game) return;
+    const el = e.target.closest('[data-k]'); const k = el ? el.dataset.k : '';
+    if (k && k !== S.hoverKey) { S.hoverKey = k; sideInfo(k); }
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cancelSel(); });
+}
+
+function keyCard(k) {
+  const g = S.game; if (!g || !k) return null;
+  const [t, v] = k.split(':');
+  if (t === 'hand') { const c = g.players[S.mySide].hand[+v]; return c ? { c, m: null } : null; }
+  if (t === 'min') { const m = g.findMinion(+v); return m ? { c: m.def, m } : null; }
+  return null;
+}
+
+function onTap(k) {
+  const g = S.game;
+  if (!k) { cancelSel(); return; }
+  if (!myTurn()) return;
+  const [t, v] = k.split(':'); const n = +v;
+  if (t === 'gap') {
+    if (!S.placing) return;
+    const act = S.placing; S.placing = null; act.pos = n; continuePlay(act); return;
+  }
+  if (t === 'hand') {
+    S.selUid = 0;
+    const pend = S.placing ? S.placing.hand : S.pending && S.pending.kind === 'play' ? S.pending.hand : -1;
+    if (pend === n) { cancelSel(); return; }
+    S.placing = null; S.pending = null;
+    const p = g.players[S.mySide], c = p.hand[n];
+    if (!g.canPlay(S.mySide, n)) {
+      toast(g.costOf(S.mySide, c) > p.mana ? '신력이 모자랍니다' : !c.isSpell ? '전장이 가득 찼습니다' : '고를 수 있는 대상이 없습니다');
+      render(); return;
+    }
+    const act = { kind: 'play', hand: n, target: MC.NoTarget, pos: -1, choice: 1 };
+    if (!c.isSpell && p.board.length > 0) { S.placing = act; render(); return; }
+    continuePlay(act); return;
+  }
+  const ref = t === 'hero' ? MC.T(n, 0) : (() => { const m = g.findMinion(n); return m ? MC.T(m.side, m.uid) : null; })();
+  if (!ref) return;
+  if (S.placing) { toast('먼저 놓을 자리(▼)를 고르세요'); return; }
+  if (S.pending) {
+    if (currentTargets().some(x => MC.sameRef(x, ref))) {
+      const act = S.pending; S.pending = null; S.selUid = 0; act.target = ref;
+      if (act.kind === 'play') finishPlay(act); else doMine(act);
+    } else toast('그 대상은 고를 수 없습니다');
+    return;
+  }
+  if (S.selUid && ref.side !== S.mySide) {
+    const m = g.findMinion(S.selUid);
+    if (m && g.canAttack(m) && g.attackTargets(m).some(x => MC.sameRef(x, ref))) {
+      S.selUid = 0; doMine({ kind: 'attack', uid: m.uid, target: ref }); return;
+    }
+    toast('그 대상은 공격할 수 없습니다 (수호 먼저)'); return;
+  }
+  if (ref.side === S.mySide && !MC.isHero(ref)) {
+    S.selUid = S.selUid === ref.uid ? 0 : ref.uid;
+    sideInfo('min:' + ref.uid);
+    render();
+  }
+}
+
+function continuePlay(act) {
+  const g = S.game, c = g.players[S.mySide].hand[act.hand], spec = g.playSpec(c);
+  if (spec && g.validTargets(S.mySide, spec, null).length > 0) { S.pending = act; render(); return; }
+  finishPlay(act);
+}
+function finishPlay(act) {
+  const c = S.game.players[S.mySide].hand[act.hand];
+  if (c.choices.length === 2) {
+    choiceSheet(c, ch => { if (!ch) { S.pending = null; S.placing = null; render(); return; } act.choice = ch; doMine(act); });
+    return;
+  }
+  doMine(act);
+}
+function useSkill(slot) {
+  const g = S.game, m = g.findMinion(S.selUid);
+  if (!m || !g.canUseSkill(m, slot)) return;
+  const sk = g.skillOf(m, slot);
+  if (MC.chosenSpec(sk.effects)) { S.pending = { kind: 'skill', uid: m.uid, slot, target: MC.NoTarget }; render(); return; }
+  S.selUid = 0; doMine({ kind: 'skill', uid: m.uid, slot, target: MC.NoTarget });
+}
+function cancelSel() {
+  if (!S.game || (!S.placing && !S.pending && !S.selUid)) return;
+  S.placing = null; S.pending = null; S.selUid = 0; render();
+}
+
+// ------------------------------------------------------------ 적용 + 숫자 띄우기
+function snapshot() {
+  const g = S.game, m = new Map();
+  for (const p of g.players) { m.set('hero:' + p.side, p.hp + p.armor); for (const x of p.board) m.set('min:' + x.uid, x.hp); }
+  return m;
+}
+function applyAndShow(side, act) {
+  const before = snapshot();
+  // 쓰러지는 하수인 위치를 알기 위해 그리기 전에 자리를 기억
+  const pos = new Map();
+  before.forEach((_, k) => { const el = document.querySelector(`[data-k="${k}"]`); if (el) pos.set(k, el.getBoundingClientRect()); });
+  const ok = S.game.apply(side, act);
+  render();
+  const after = snapshot();
+  before.forEach((v, k) => {
+    const now = after.has(k) ? after.get(k) : 0, d = now - v;
+    if (!d) return;
+    const el = document.querySelector(`[data-k="${k}"]`);
+    const r = el ? el.getBoundingClientRect() : pos.get(k); if (!r) return;
+    const f = document.createElement('div'); f.className = 'float' + (d > 0 ? ' heal' : '');
+    f.textContent = (d > 0 ? '+' : '') + d; f.style.left = (r.left + r.width / 2) + 'px'; f.style.top = (r.top + r.height / 3) + 'px';
+    document.body.appendChild(f); setTimeout(() => f.remove(), 1000);
+  });
+  return ok;
+}
+function doMine(act) {
+  if (applyAndShow(S.mySide, act)) netSend({ t: 'act', a: act });
+  else toast('그 행동은 할 수 없습니다');
+}
+function endMyTurn() {
+  if (!myTurn()) return;
+  S.placing = null; S.pending = null; S.selUid = 0;
+  applyAndShow(S.mySide, { kind: 'end' });
+  netSend({ t: 'act', a: { kind: 'end' } });
+  if (!S.net && S.game.winner < 0 && S.game.current === 1) runAi();
+}
+
+// ------------------------------------------------------------ AI 차례
+function stopAi() { clearTimeout(S.aiTimer); S.aiTimer = 0; }
+function runAi() {
+  const step = () => {
+    const g = S.game;
+    if (!g || g.winner >= 0 || g.current !== 1) { S.aiTimer = 0; render(); return; }
+    const act = S.ai.nextAction(g);
+    let ok = applyAndShow(1, act);
+    if (!ok) { applyAndShow(1, { kind: 'end' }); }
+    if (!ok || act.kind === 'end' || g.winner >= 0) { S.aiTimer = 0; render(); return; }
+    S.aiTimer = setTimeout(step, 750);
+  };
+  S.aiTimer = setTimeout(step, 600);
+  render();
+}
+
+// ============================================================ 설명
+function detailHtml(c, m) {
+  const g = S.game;
+  let h = `<h2 style="color:${MC.mythColor(c.mythCode)}">${esc(c.title)}<\/h2>`;
+  const kind = c.isSpell ? '주문' : c.isToken ? '소환물' : '하수인';
+  let cost = '';
+  if (!c.isToken) {
+    cost = ' · 신력 ' + c.cost;
+    if (!m && g) { const now = g.costOf(S.mySide, c); if (now !== c.cost) cost += ` (지금 ${now})`; }
+  }
+  h += `<div class="muted">${c.isToken ? '' : esc(MC.mythName(c.mythCode)) + ' · '}${kind}${cost}`;
+  if (!c.isSpell) {
+    const atk = m ? (g ? g.attackOf(m) : m.atk) : c.atk, hp = m ? m.hp : c.hp;
+    h += ` · 공격 ${atk} / 체력 ${hp}`;
+  }
+  h += '<\/div>';
+  const attr = MC.describeAttr(c);
+  if (attr && !c.isToken) h += `<div style="font-weight:600;color:${MC.ElementColor[c.mainEl] || '#666'}">${esc(attr)}<\/div>`;
+  if (m && m.flags.size) h += `<div style="color:#2a6aa0">선택 효과: ${[...m.flags].map(f => MC.FlagNames[f]).join(', ')}<\/div>`;
+  if (c.choices.length === 2) h += `<div style="color:#784a90">선택: ${esc(c.choices[0].title)} (${esc(MC.describe(c.choices[0].effects))}) / ${esc(c.choices[1].title)} (${esc(MC.describe(c.choices[1].effects))})<\/div>`;
+  if (c.isSpell) { if (c.spellEffects.length) h += `<p>${esc(MC.describe(c.spellEffects))}<\/p>`; }
+  else {
+    if (c.passive && c.passive.clauses.length) h += `<h3>패시브 · ${esc(c.passive.title)}<\/h3><div>${esc(MC.describePassive(c.passive))}<\/div>`;
+    const tier = m ? m.tier : MC.tierOfLevel(S.practice && g ? MC.MaxLevel : levelOfCard(c));
+    const sk = (head, s, open, from) => s ? `<h3 class="${open ? '' : 'lock'}">${head} · ${esc(s.title)} [신력 ${s.cost}]${open ? '' : ' 🔒 ' + from + '부터'}<\/h3><div class="${open ? '' : 'lock'}">${esc(MC.describe(s.effects))}<\/div>` : '';
+    h += sk('액티브1', c.active1, true, '') + sk('액티브2', c.active2, tier >= MC.Active2Tier, MC.TierNames[MC.Active2Tier]) + sk('특수능력', c.special, tier >= MC.SpecialTier, MC.TierNames[MC.SpecialTier]);
+    if (m) {
+      const st = []; if (m.taunt) st.push('수호'); if (m.charge) st.push('질주'); if (m.shield) st.push('신의 가호'); if (m.stealth) st.push('그림자'); if (m.frozen) st.push('빙결');
+      if (st.length) h += `<div style="color:#2a6aa0;margin-top:6px">지금 상태: ${st.join(', ')}<\/div>`;
+      h += `<div class="muted">등급 ${MC.rankText(m.tier, m.star)}<\/div>`;
+    }
+  }
+  if (!c.isSpell && !c.isToken && (!m || m.side === S.mySide)) {
+    const lv = levelOfCard(c);
+    h += `<div class="muted" style="color:#9a6a10">내 카드 등급: ${MC.rankTextOfLevel(lv)} · 경험치 ${S.xp[c.id] || 0}${lv >= MC.MaxLevel ? '' : ' / ' + MC.xpAtLevel(lv + 1)}<\/div>`;
+  }
+  const lore = S.lore[c.mythCode + '|' + c.title];
+  if (lore) h += `<div class="lore">${esc(lore)}<\/div>`;
+  return h;
+}
+function detailSheet(k) {
+  let x = keyCard(k);
+  if (!x && k && k.startsWith('card:')) { const c = S.byId.get(+k.split(':')[1]); if (c) x = { c, m: null }; }
+  if (!x) return;
+  sheet(detailHtml(x.c, x.m) + `<div class="btns"><button data-a="close">닫기<\/button><\/div>`, (a, b, close) => close());
+}
+function sideInfo(k) {
+  const box = $('#sideInfo'); if (!box) return;
+  const x = keyCard(k); if (!x) return;
+  box.innerHTML = detailHtml(x.c, x.m);
+}
+function choiceSheet(c, done) {
+  let answered = false;
+  const s = sheet(`<h2>調 ${esc(c.title)}<\/h2><div class="muted">${esc(c.mainEl)}↔${esc(c.subEl)} — 상쇄된 힘을 어느 쪽으로 풀까요?<\/div>
+    <div class="choice">${c.choices.map((o, i) => `<button data-a="c${i + 1}"><b>${esc(o.title)}<\/b>${esc(MC.describe(o.effects))}<\/button>`).join('')}<\/div>
+    <div class="btns"><button data-a="cancel">취소<\/button><\/div>`,
+    (a, b, close) => { answered = true; close(); done(a === 'cancel' ? 0 : +a.substring(1)); },
+    { onCancel: () => { if (!answered) done(0); } });
+  return s;
+}
+function logSheet() {
+  const g = S.game; if (!g) return;
+  sheet(`<h2>기록<\/h2><div style="font-size:12.5px;max-height:60vh;overflow:auto" id="logBox">${g.log.slice(-300).map(x => `<div>${esc(x)}<\/div>`).join('')}<\/div><div class="btns"><button data-a="close">닫기<\/button><\/div>`,
+    (a, b, close) => close());
+  const lb = document.getElementById('logBox'); lb.scrollTop = lb.scrollHeight;
+}
+function battleMenu() {
+  sheet(`<h2>메뉴<\/h2><div class="btns" style="flex-direction:column">
+    <button data-a="new">${S.net ? '대전 나가고 새 대전' : '새 대전'}<\/button><button data-a="log">기록 보기<\/button><button data-a="rules">규칙<\/button><button data-a="home">처음 화면으로<\/button><button data-a="close">닫기<\/button><\/div>`,
+    (a, b, close) => {
+      close();
+      if (a === 'new') { stopAi(); if (S.net && S.game && S.game.winner < 0 && !S.net.ended) ask('대전을 나갈까요? (경험치 없음)', '나가기', () => { netClose(); newGameSheet(); }); else { netClose(); newGameSheet(); } }
+      else if (a === 'log') logSheet();
+      else if (a === 'rules') rulesSheet();
+      else if (a === 'home') { if (S.game && S.game.winner < 0) ask('대전을 그만둘까요? (경험치 없음)', '그만두기', showHome); else showHome(); }
+    });
+}
+
+// ============================================================ 결과
+function showResult() {
+  const g = S.game; stopAi();
+  const msg = g.winner === S.mySide ? '승리했습니다!' : g.winner === 2 ? '무승부입니다.' : '패배했습니다.';
+  const gains = [];
+  const netNoXp = S.net && (S.net.fair >= 0 || S.net.ended);
+  if (!S.practice && !netNoXp) {
+    for (const id of g.playedIds[S.mySide]) {
+      const c = S.byId.get(id); if (!c) continue;
+      let amt = MC.XpPlayed; const parts = ['출전 ' + MC.XpPlayed];
+      if (g.winner === S.mySide) { amt += MC.XpWin; parts.push('승리 ' + MC.XpWin); }
+      if (g.winner === S.mySide && g.finisherId === id) { amt += MC.XpFinisher; parts.push('마무리 ' + MC.XpFinisher); }
+      const lv0 = MC.levelFromXp(S.xp[id] || 0);
+      S.xp[id] = (S.xp[id] || 0) + amt;
+      const lv1 = MC.levelFromXp(S.xp[id]);
+      gains.push({ c, amt, parts, lv0, lv1 });
+    }
+    saveXp();
+  }
+  gains.sort((a, b) => (b.lv1 - b.lv0) - (a.lv1 - a.lv0) || b.amt - a.amt);
+  const note = S.practice ? '연습 대전이라 경험치는 쌓이지 않았습니다.' : netNoXp ? (S.net.ended ? '연결이 끊겨 경험치 없이 끝났습니다.' : '공정 모드라 경험치는 쌓이지 않았습니다.') : `낸 카드 +${MC.XpPlayed}${g.winner === S.mySide ? ', 승리 +' + MC.XpWin : ''}, 마무리 일격 +${MC.XpFinisher}`;
+  sheet(`<h2>${msg}<\/h2><div class="muted">${note}<\/div><div style="margin-top:8px">${gains.map(x =>
+    `<div class="gain"><span>${esc(x.c.title)} <span class="muted">+${x.amt} (${x.parts.join(', ')})<\/span><\/span>${x.c.isSpell ? '' : `<span class="${x.lv1 > x.lv0 ? 'up' : ''}">${x.lv1 > x.lv0 ? MC.rankTextOfLevel(x.lv0) + ' → ' : ''}${MC.rankTextOfLevel(x.lv1)}<\/span>`}<\/div>`).join('')}<\/div>
+    <div class="btns"><button data-a="board">판 보기<\/button><button class="primary" data-a="again">${S.net ? '대인전 다시' : '새 대전'}<\/button><\/div>`,
+    (a, b, close) => { close(); if (a === 'again') { if (S.net) { netClose(); netLobby(); } else newGameSheet(); } });
+}
+
+// ============================================================ 덱 편집
+function deckEditor() {
+  let cur = S.decks.length ? 0 : -1;
+  let work = cur >= 0 ? S.decks[0].ids.slice() : [];
+  let title = cur >= 0 ? S.decks[0].title : '새 덱';
+  let filter = '';
+  const s = sheet('<div id="de"><\/div>', null, { modal: true });
+  const root = s.el.querySelector('#de');
+  const draw = () => {
+    const opts = S.decks.map((d, i) => `<option value="${i}" ${i === cur ? 'selected' : ''}>${esc(d.title)}<\/option>`).join('');
+    const codes = [...new Set(S.cards.map(c => c.mythCode))];
+    const pool = S.cards.filter(c => !filter || c.mythCode === filter).sort((a, b) => a.cost - b.cost || a.id - b.id);
+    const groups = new Map(); work.forEach(id => groups.set(id, (groups.get(id) || 0) + 1));
+    root.innerHTML = `<h2>덱 편집<\/h2>
+      <div class="grid2"><select id="deSel"><option value="-1">+ 새 덱<\/option>${opts}<\/select><input type="text" id="deName" value="${esc(title)}"><\/div>
+      <h3>덱 ${work.length}/${MC.DeckSize} <span class="muted">(누르면 뺌 · 같은 카드 ${MC.MaxCopies}장까지)<\/span><\/h3>
+      <div class="list" style="max-height:24vh">${[...groups.entries()].sort((a, b) => S.byId.get(a[0]).cost - S.byId.get(b[0]).cost).map(([id, n]) => {
+        const c = S.byId.get(id); return `<div class="it" data-a="rm:${id}"><span class="c">${c.cost}<\/span><span class="t">${esc(c.title)}<\/span><span class="m">×${n}<\/span><\/div>`; }).join('') || '<div class="it muted">아래 목록에서 카드를 누르세요<\/div>'}<\/div>
+      <h3>카드 <select id="deFilter" style="width:auto;padding:4px"><option value="">전체<\/option>${codes.map(cd => `<option value="${cd}" ${cd === filter ? 'selected' : ''}>${esc(MC.mythName(cd))}<\/option>`).join('')}<\/select><\/h3>
+      <div class="list" style="max-height:30vh">${pool.map(c => `<div class="it" data-a="add:${c.id}"><span class="c">${c.cost}<\/span><span class="t">${esc(c.title)}<\/span><span class="m">${c.isSpell ? '주문' : c.atk + '/' + c.hp} · ${esc(MC.mythName(c.mythCode))}<\/span><span class="m" data-a="info:${c.id}">ⓘ<\/span><\/div>`).join('')}<\/div>
+      <div class="btns"><button data-a="del">삭제<\/button><button data-a="close">닫기<\/button><button class="primary" data-a="save">저장<\/button><\/div>`;
+    root.querySelector('#deSel').onchange = e => { cur = +e.target.value; work = cur >= 0 ? S.decks[cur].ids.slice() : []; title = cur >= 0 ? S.decks[cur].title : '새 덱'; draw(); };
+    root.querySelector('#deName').oninput = e => { title = e.target.value; };
+    root.querySelector('#deFilter').onchange = e => { filter = e.target.value; draw(); };
+  };
+  root.addEventListener('click', e => {
+    const b = e.target.closest('[data-a]'); if (!b) return;
+    const [a, v] = b.dataset.a.split(':');
+    if (a === 'info') { e.stopPropagation(); detailSheet('card:' + v); return; }
+    if (a === 'rm') { const i = work.indexOf(+v); if (i >= 0) work.splice(i, 1); draw(); }
+    else if (a === 'add') {
+      if (work.length >= MC.DeckSize) return toast('덱이 가득 찼습니다 (20장)');
+      if (work.filter(x => x === +v).length >= MC.MaxCopies) return toast('같은 카드는 2장까지');
+      work.push(+v); draw();
+    } else if (a === 'save') {
+      if (work.length !== MC.DeckSize) return toast('덱은 정확히 20장이어야 합니다');
+      const d = { title: (title || '내 덱').trim(), ids: work.slice() };
+      if (cur >= 0) S.decks[cur] = d; else { S.decks.push(d); cur = S.decks.length - 1; }
+      saveDecks(); toast('저장했습니다'); draw();
+    } else if (a === 'del') {
+      if (cur < 0) return;
+      ask('이 덱을 지울까요?', '삭제', () => { S.decks.splice(cur, 1); saveDecks(); cur = -1; work = []; title = '새 덱'; draw(); });
+    } else if (a === 'close') s.close();
+  });
+  draw();
+}
+
+// ============================================================ 내 카드 등급
+function collection() {
+  const list = S.cards.filter(c => !c.isSpell).sort((a, b) => (S.xp[b.id] || 0) - (S.xp[a.id] || 0) || a.cost - b.cost || a.id - b.id);
+  const s = sheet(`<h2>내 카드 등급<\/h2><div class="muted">경험치: 낸 카드 +10, 승리 +25, 마무리 일격 +5 · 이 기기(브라우저)에 저장됩니다<\/div>
+    <div class="list" style="margin-top:8px">${list.map(c => {
+      const xp = S.xp[c.id] || 0, lv = MC.levelFromXp(xp);
+      return `<div class="it" data-a="info:${c.id}"><span class="c">${c.cost}<\/span><span class="t">${esc(c.title)}<\/span><span class="m">${MC.rankTextOfLevel(lv)} · ${xp}<\/span><\/div>`; }).join('')}<\/div>
+    <h3>다른 기기와 옮기기<\/h3><div class="muted">${HOST ? 'PC판은 Documents\\Voltaic\\MythCards\\cards_xp.txt 에 자동 저장됩니다. 아래 글을 복사해 폰에 붙여 넣으면 옮겨집니다.' : 'PC판 Documents\\Voltaic\\MythCards\\cards_xp.txt 내용(번호|경험치)을 붙여 넣거나, 여기 내용을 복사해 다른 기기에 붙여 넣으세요.'}<\/div>
+    <textarea id="xpText" style="width:100%;height:90px;margin-top:6px;font:12px monospace">${Object.keys(S.xp).sort((a, b) => a - b).map(k => k + '|' + S.xp[k]).join('\n')}<\/textarea>
+    <div class="btns"><button data-a="import">붙여 넣은 내용 합치기<\/button><button data-a="close">닫기<\/button><\/div>`,
+    (a, b, close) => {
+      if (a.startsWith('info:')) return detailSheet('card:' + a.split(':')[1]);
+      if (a === 'import') {
+        let n = 0;
+        for (const line of s.el.querySelector('#xpText').value.split(/\r?\n/)) {
+          const p = line.split('|'); const id = +p[0], v = +p[1];
+          if (S.byId.has(id) && v > 0 && v > (S.xp[id] || 0)) { S.xp[id] = v; n++; }
+        }
+        saveXp(); toast(n + '장 갱신'); close(); collection(); return;
+      }
+      close();
+    });
+}
+
+// ============================================================ 규칙
+function rulesSheet() {
+  sheet(`<h2>규칙<\/h2>
+  <div>• 영웅 생명력 30. 상대 영웅을 0으로 만들면 승리.<br>• 신력은 턴마다 1씩 늘어 10까지. 카드와 스킬에 씁니다.<br>
+  • 덱 20장, 같은 카드 2장까지. 후공은 4장과 '신의 은총'(신력 +1)을 받습니다.<br>
+  • 하수인은 출전한 다음 턴부터 공격(질주는 바로). 스킬은 출전한 턴에도 쓸 수 있지만, 쓰면 그 턴 공격은 못 합니다.<br>• 특수능력은 대전마다 한 번.<\/div>
+  <h3>키워드<\/h3><div>수호 — 먼저 공격받아야 함 · 질주 — 바로 공격 · 신의 가호 — 첫 피해를 막음 · 그림자 — 공격 전까지 지정 불가 · 빙결 — 다음 차례에 행동 불가 · 출전/최후 — 낼 때/쓰러질 때<\/div>
+  <h3>오행·절기<\/h3><div>• 한 턴에 절기 하나씩(오늘 날짜의 절기에서 시작).<br>• 계절 오행과 같은 주속성 하수인 공격 +1, 계절의 정반대 오행 카드 비용 +1.<br>
+  • 같은 턴에 상생 순서(목→화→토→금→수→목)로 이어 내면 비용 −1.<br>• 공격하는 쪽 주속성이 맞는 쪽 방어 속성(양속성은 보조)을 상극하면 피해 +1.<br>
+  • 무속성(無): 비용 +1, 상극·계절의 영향 없음.<br>• 조정자(調): 공격 불가, 양옆 아군 공격 +1, 낼 때 효과 둘 중 하나 선택.<\/div>
+  <h3>등급<\/h3><div>정령 → 수호령 → 반신(액티브2) → 하급신 → 상급신(특수능력) → 대신 → 주신 → 태초신. 한 단계마다 체력 +1, 두 단계마다 공격 +1.<\/div>
+  <h3>조작<\/h3><div>카드를 누르면 냅니다(하수인은 ▼ 자리를 고름). 내 하수인을 누른 뒤 빨간 대상을 누르면 공격. 길게 누르면(PC는 오른쪽 클릭) 설명. 빈 곳을 누르면 취소.<\/div>
+  <div class="btns"><button data-a="close">닫기<\/button><\/div>`, (a, b, close) => close());
+}
+
+// ============================================================ 대인전 (방 코드)
+// 연결: PeerJS(WebRTC). 처음 만날 때만 공개 중개 서버(0.peerjs.com)를 쓰고, 그 뒤로는 두 기기가 직접 행동을 주고받는다.
+// 메시지(JSON)
+//   참가자 → 방장  {t:'hello', proto, hash, name, deck:[번호…], levels:{번호:레벨}}
+//   방장 → 참가자  {t:'start', seed, first, term, name, deck, levels, fair}   또는 {t:'err', why}
+//   서로           {t:'act', a:행동} {t:'chat', s:글} {t:'bye'}
+// 두 기기는 같은 시드·같은 행동 순서로 같은 결과를 계산한다(v1.6 같은 네트워크 대전과 같은 원리).
+const NET_PROTO = 'VMC3';
+const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+const PEER_PREFIX = 'voltaic-mythcards-';
+// 연결 도우미 서버(STUN/TURN). PeerJS 기본값에 구글 STUN 을 더한다.
+const PEER_OPTS = { config: { iceServers: [
+  { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302'] },
+  { urls: 'turn:eu-0.turn.peerjs.com:3478', username: 'peerjs', credential: 'peerjsp' },
+  { urls: 'turn:us-0.turn.peerjs.com:3478', username: 'peerjs', credential: 'peerjsp' }] } };
+const PHRASES = ['안녕하세요', '잘 부탁해요', '잘했어요!', '고민 중…', '아이고', '한 판 더?', '좋은 대전이었어요'];
+let peerLib = null, lobby = null;
+
+function cardsHash() {
+  const src = ((HOSTDATA && HOSTDATA.cards) || DATA.cards) + '\n#tags\n' + ((HOSTDATA && HOSTDATA.tags) || DATA.tags);
+  const text = src.replace(/\r/g, '');
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; }
+  return h.toString(16);
+}
+function netAvailable() {
+  if (/(^|\.)claude\.ai$|claudeusercontent|claude\.site/.test(location.hostname)) return '이 링크(claude.ai) 안에서는 대인전 연결이 막혀 있습니다. 내 웹 주소나 PC판(exe)에서 열어 주세요.';
+  if (typeof RTCPeerConnection === 'undefined') return '이 브라우저는 대인전 연결(WebRTC)을 지원하지 않습니다.';
+  return '';
+}
+function loadPeer() {
+  if (window.Peer) return Promise.resolve(window.Peer);
+  if (peerLib) return peerLib;
+  peerLib = new Promise((ok, fail) => {
+    const sc = document.createElement('script');
+    sc.src = 'https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js';
+    sc.onload = () => window.Peer ? ok(window.Peer) : fail(new Error('연결 도구를 읽지 못했습니다'));
+    sc.onerror = () => { peerLib = null; fail(new Error('인터넷에 연결되어 있는지 확인하세요 (연결 도구를 받지 못함)')); };
+    document.head.appendChild(sc);
+  });
+  return peerLib;
+}
+// 시험용: 주소에 ?bc=1 이 있으면 같은 브라우저의 두 탭끼리 BroadcastChannel 로 연결한다.
+function useLoopback() { return /[?&]bc=1/.test(location.search) && typeof BroadcastChannel !== 'undefined'; }
+function loopbackConn(code, me) {
+  const ch = new BroadcastChannel('vmc-' + code), handlers = {};
+  ch.onmessage = e => { if (e.data.from !== me && handlers.data) handlers.data(e.data.m); };
+  return { send: m => ch.postMessage({ from: me, m }), on: (ev, fn) => { handlers[ev] = fn; }, close: () => ch.close(), open: true };
+}
+
+function makeCode() { let s = ''; for (let i = 0; i < 6; i++) s += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)]; return s; }
+function deckValid(ids) {
+  if (!Array.isArray(ids) || ids.length !== MC.DeckSize) return false;
+  const n = new Map();
+  for (const id of ids) { if (!S.byId.has(id)) return false; n.set(id, (n.get(id) || 0) + 1); if (n.get(id) > MC.MaxCopies) return false; }
+  return true;
+}
+function myLevels(ids) { const o = {}; for (const id of new Set(ids)) o[id] = levelOfCard(S.byId.get(id)); return o; }
+
+function netSend(m) {
+  const n = S.net; if (!n || n.ended || !n.conn) return;
+  try { n.conn.send(m); } catch (e) { netLost('연결이 끊겼습니다.'); }
+}
+function netClose() {
+  if (lobby) { lobby.cleanup(); lobby = null; }
+  const n = S.net; if (!n) return;
+  try { if (!n.ended && n.conn) n.conn.send({ t: 'bye' }); } catch (e) { /* 무시 */ }
+  setTimeout(() => { try { n.conn && n.conn.close(); } catch (e) { } try { n.peer && n.peer.destroy(); } catch (e) { } }, 300);
+  S.net = null;
+  const cb = document.getElementById('chatBtn'); if (cb) cb.classList.add('hidden');
+}
+function netLost(why) {
+  const n = S.net; if (!n || n.ended) return;
+  n.ended = true;
+  if (S.game) { S.game.log.push('※ ' + why); render(); }
+  if (S.game && S.game.winner < 0) sheet(`<h2>${esc(why)}<\/h2><div class="muted">이 대전은 경험치 없이 끝납니다.<\/div><div class="btns"><button data-a="home">처음 화면<\/button><button class="primary" data-a="lobby">대인전 다시<\/button><\/div>`,
+    (a, b, close) => { close(); if (a === 'home') showHome(); else { netClose(); netLobby(); } });
+}
+function onNetData(m) {
+  const n = S.net; if (!n || !m || typeof m !== 'object') return;
+  if (m.t === 'act' && S.game) {
+    if (!applyAndShow(1 - S.mySide, m.a)) { toast('상대 행동을 적용하지 못했습니다(두 기기 상태가 어긋남)'); S.game.log.push('※ 동기화 오류'); }
+  } else if (m.t === 'chat') {
+    const s = String(m.s || '').slice(0, 60);
+    if (S.game) { S.game.log.push(S.game.players[1 - S.mySide].title + ': ' + s); render(); }
+    bubble(s);
+  } else if (m.t === 'bye') netLost('상대가 대전을 나갔습니다.');
+}
+function bubble(s) {
+  const fh = document.getElementById('foeHero'); if (!fh) { toast(s); return; }
+  const r = fh.getBoundingClientRect(), b = document.createElement('div');
+  b.className = 'toast'; b.style.top = (r.bottom + 6) + 'px'; b.style.background = '#fff'; b.style.color = '#222'; b.textContent = '💬 ' + s;
+  document.body.appendChild(b); setTimeout(() => b.remove(), 3200);
+}
+function chatSheet() {
+  if (!S.net || S.net.ended) return;
+  const s = sheet(`<h2>말하기<\/h2><div class="btns" style="flex-wrap:wrap">${PHRASES.map((p, i) => `<button data-a="p${i}" style="flex:0 0 auto">${esc(p)}<\/button>`).join('')}<\/div>
+    <div style="display:flex;gap:8px;margin-top:10px"><input type="text" id="chatIn" maxlength="60" placeholder="직접 쓰기"><button class="primary" data-a="send" style="flex:none">보내기<\/button><\/div>`,
+    (a, b, close) => {
+      let text = '';
+      if (a.startsWith('p')) text = PHRASES[+a.substring(1)];
+      else if (a === 'send') text = s.el.querySelector('#chatIn').value.trim();
+      if (!text) return;
+      close(); netSend({ t: 'chat', s: text });
+      if (S.game) { S.game.log.push(S.game.players[S.mySide].title + ': ' + text); render(); }
+    });
+  s.el.querySelector('#chatIn').addEventListener('keydown', e => { if (e.key === 'Enter') s.el.querySelector('[data-a=send]').click(); });
+}
+
+// ------------------------------------------------------------ 대기실
+function netLobby() {
+  const why = netAvailable();
+  if (why && !useLoopback()) {
+    sheet(`<h2>대인전<\/h2><p>${esc(why)}<\/p><div class="btns"><button data-a="close">닫기<\/button><\/div>`, (a, b, close) => close());
+    return;
+  }
+  const opts = deckList().map(x => `<option value="${x.key}">${x.key[0] === 'p' ? '[추천] ' : ''}${esc(x.d.title)}<\/option>`).join('');
+  const L = S.last;
+  const s = sheet(`<h2>대인전<\/h2>
+    <div class="grid2"><div><h3>내 이름<\/h3><input type="text" id="nName" maxlength="12" value="${esc(L.name || '')}" placeholder="이름"><\/div>
+    <div><h3>내 덱<\/h3><select id="nDeck">${opts}<\/select><\/div><\/div>
+    <h3>방 만들기<\/h3>
+    <div style="display:flex;gap:8px"><select id="nFair"><option value="-1">랭크 적용 (경험치 쌓임)<\/option><option value="0">공정 · 정령<\/option><option value="6">공정 · 반신<\/option><option value="12">공정 · 상급신<\/option><option value="23">공정 · 태초신<\/option><\/select>
+    <button class="primary" data-a="host" style="flex:none">방 만들기<\/button><\/div>
+    <h3>참가하기<\/h3>
+    <div style="display:flex;gap:8px"><input type="text" id="nCode" maxlength="6" placeholder="방 코드 6자리" style="text-transform:uppercase;letter-spacing:4px;text-align:center"><button class="primary" data-a="join" style="flex:none">참가<\/button><\/div>
+    <div id="nStatus" class="muted" style="margin-top:12px;min-height:1.5em"><\/div>
+    <div id="nCodeBox" class="hidden" style="font-size:34px;font-weight:700;letter-spacing:8px;text-align:center;background:#f6e3b0;border-radius:10px;padding:10px;margin-top:6px"><\/div>
+    <div class="btns"><button data-a="cancel">닫기<\/button><\/div>`,
+    (a, b, close) => {
+      if (a === 'cancel') { if (lobby) { lobby.cleanup(); lobby = null; } close(); return; }
+      if (lobby) return;
+      const name = (s.el.querySelector('#nName').value.trim() || '이름 없음').slice(0, 12);
+      const deckKey = s.el.querySelector('#nDeck').value;
+      S.last.name = name; S.last.netDeck = deckKey; store.set('last', S.last);
+      const deck = deckOf(deckKey);
+      if (!deck || !deckValid(deck.ids)) { status('덱이 올바르지 않습니다(20장).'); return; }
+      if (a === 'host') hostRoom(name, deck.ids.slice(), +s.el.querySelector('#nFair').value, close, status, s.el);
+      else if (a === 'join') {
+        const code = s.el.querySelector('#nCode').value.trim().toUpperCase();
+        if (!/^[A-Z0-9]{6}$/.test(code)) { status('방 코드 6자리를 넣으세요.'); return; }
+        joinRoom(code, name, deck.ids.slice(), close, status);
+      }
+    }, { modal: true });
+  const status = t => { const el = s.el.querySelector('#nStatus'); if (el) el.textContent = t; };
+  if (L.netDeck && [...s.el.querySelector('#nDeck').options].some(o => o.value === L.netDeck)) s.el.querySelector('#nDeck').value = L.netDeck;
+  else if ([...s.el.querySelector('#nDeck').options].some(o => o.value === L.my)) s.el.querySelector('#nDeck').value = L.my;
+}
+
+function hostRoom(name, deckIds, fair, closeLobby, status, el) {
+  const code = makeCode();
+  const box = el.querySelector('#nCodeBox');
+  box.textContent = code; box.classList.remove('hidden');
+  status('이 코드를 상대에게 알려 주세요 · 연결 준비 중…');
+  let peer = null, done = false;
+  lobby = { cleanup: () => { if (!done) { try { peer && peer.destroy(); } catch (e) { } } } };
+  const onHello = (conn, m) => {
+    if (done) return;
+    const refuse = why => { try { conn.send({ t: 'err', why }); } catch (e) { } };
+    if (!m || m.t !== 'hello') return;
+    if (m.proto !== NET_PROTO) return refuse('프로그램 버전이 다릅니다. 둘 다 새로 고쳐 주세요.');
+    if (m.hash !== cardsHash()) return refuse('두 기기의 카드 목록이 다릅니다.');
+    if (!deckValid(m.deck)) return refuse('상대 덱이 올바르지 않습니다.');
+    done = true;
+    const start = { t: 'start', seed: (Math.random() * 2 ** 31) >>> 0, first: Math.floor(Math.random() * 2), term: MC.termOfDate(new Date()),
+      name, deck: deckIds, levels: myLevels(deckIds), fair };
+    conn.send(start);
+    lobby = null; closeLobby();
+    beginNetGame(0, conn, peer, start, { name, deck: deckIds, levels: start.levels },
+      { name: String(m.name || '상대').slice(0, 12), deck: m.deck, levels: m.levels || {} });
+  };
+  if (useLoopback()) {
+    const conn = loopbackConn(code, 'host');
+    conn.on('data', m => { if (!done) onHello(conn, m); else onNetData(m); });
+    status('이 코드를 상대에게 알려 주세요 · 기다리는 중… (시험 연결)');
+    lobby = { cleanup: () => { if (!done) conn.close(); } };
+    return;
+  }
+  loadPeer().then(Peer => {
+    status('중개 서버에 연결하는 중…');
+    peer = new Peer(PEER_PREFIX + code, PEER_OPTS);
+    const openTimer = setTimeout(() => { if (!done && !peer.open) status('중개 서버에 연결하지 못했습니다. 인터넷 연결을 확인하고 닫았다가 다시 만들어 주세요.'); }, 15000);
+    peer.on('open', () => { clearTimeout(openTimer); status('이 코드를 상대에게 알려 주세요 · 기다리는 중… (이 화면을 켜 둔 채로)'); });
+    // 폰 화면이 꺼지거나 다른 앱으로 가면 중개 서버 연결이 끊긴다 → 다시 붙는다
+    peer.on('disconnected', () => { if (!done) { status('중개 서버 연결이 끊겨 다시 연결하는 중…'); try { peer.reconnect(); } catch (e) { } } });
+    peer.on('error', err => {
+      if (done) { if (S.net && S.net.peer === peer) netLost('연결 오류: ' + (err.type || err.message)); return; }
+      status(err.type === 'unavailable-id' ? '코드가 겹쳤습니다. 닫고 다시 만들어 주세요.' : '연결 준비 실패: ' + (err.type || err.message));
+    });
+    peer.on('connection', conn => {
+      if (!done) status('상대가 들어오는 중…');
+      if (done) { conn.on('open', () => { conn.send({ t: 'err', why: '이미 대전 중인 방입니다.' }); setTimeout(() => conn.close(), 500); }); return; }
+      conn.on('data', m => { if (!done) onHello(conn, m); else if (S.net && S.net.conn === conn) onNetData(m); });
+      conn.on('close', () => { if (S.net && S.net.conn === conn) netLost('상대와 연결이 끊겼습니다.'); });
+    });
+  }).catch(e => status(e.message));
+}
+
+function joinRoom(code, name, deckIds, closeLobby, status) {
+  status('연결하는 중…');
+  let peer = null, done = false;
+  lobby = { cleanup: () => { if (!done) { try { peer && peer.destroy(); } catch (e) { } } } };
+  const hello = { t: 'hello', proto: NET_PROTO, hash: cardsHash(), name, deck: deckIds, levels: myLevels(deckIds) };
+  const onMsg = (conn, m) => {
+    if (done) { if (S.net && S.net.conn === conn) onNetData(m); return; }
+    if (m && m.t === 'err') { status('방장이 거절했습니다: ' + m.why); lobby && lobby.cleanup(); lobby = null; return; }
+    if (m && m.t === 'start') {
+      if (!deckValid(m.deck)) { status('방장의 덱을 읽을 수 없습니다.'); return; }
+      done = true; lobby = null; closeLobby();
+      beginNetGame(1, conn, peer, m, { name: String(m.name || '방장').slice(0, 12), deck: m.deck, levels: m.levels || {} },
+        { name, deck: deckIds, levels: hello.levels });
+    }
+  };
+  if (useLoopback()) {
+    const conn = loopbackConn(code, 'guest');
+    conn.on('data', m => onMsg(conn, m));
+    lobby = { cleanup: () => { if (!done) conn.close(); } };
+    conn.send(hello);
+    return;
+  }
+  loadPeer().then(Peer => {
+    status('중개 서버에 연결하는 중…');
+    peer = new Peer(PEER_OPTS);
+    let stage = 0; // 0 중개 서버, 1 방 찾는 중(직접 연결 협상), 2 연결됨
+    const fail = msg => { if (done) return; clearTimeout(timer); status(msg); if (lobby) { lobby.cleanup(); lobby = null; } };
+    const timer = setTimeout(() => {
+      if (stage === 0) fail('중개 서버에 연결하지 못했습니다. 인터넷 연결을 확인한 뒤 다시 [참가]를 누르세요.');
+      else if (stage === 1) fail('방에 직접 연결하지 못했습니다. 방장 화면이 켜져 있는지 확인하고 다시 [참가]를 누르세요. 계속 안 되면 두 기기를 같은 와이파이에 두고 해 보세요.');
+      else fail('방장이 응답하지 않습니다. 다시 [참가]를 누르세요.');
+    }, 25000);
+    peer.on('open', () => {
+      stage = 1; status('방을 찾는 중…');
+      const conn = peer.connect(PEER_PREFIX + code, { reliable: true });
+      conn.on('open', () => { stage = 2; status('방을 찾았습니다 · 시작 준비 중…'); conn.send(hello); });
+      conn.on('error', err => fail('연결 실패: ' + (err && (err.type || err.message) || '')));
+      conn.on('data', m => onMsg(conn, m));
+      conn.on('close', () => { if (S.net && S.net.conn === conn) netLost('상대와 연결이 끊겼습니다.'); });
+    });
+    peer.on('error', err => {
+      clearTimeout(timer);
+      if (done) { if (S.net && S.net.peer === peer) netLost('연결 오류: ' + (err.type || err.message)); return; }
+      fail(err.type === 'peer-unavailable' ? '그 코드의 방이 없습니다. 코드와, 방장 화면이 켜져 있는지 확인하세요.' : '연결 실패: ' + (err.type || err.message));
+    });
+  }).catch(e => status(e.message));
+}
+
+// 두 기기 모두: 방장 = 0번, 참가자 = 1번
+function beginNetGame(mySide, conn, peer, start, hostInfo, guestInfo) {
+  stopAi();
+  const deck0 = hostInfo.deck.map(id => S.byId.get(id)), deck1 = guestInfo.deck.map(id => S.byId.get(id));
+  const g = new MC.Game(deck0, deck1, hostInfo.name, guestInfo.name, start.seed);
+  g.startTerm = start.term % 24;
+  const levels = [hostInfo.levels || {}, guestInfo.levels || {}];
+  g.tierOf = (sd, c) => {
+    const lv = start.fair >= 0 ? start.fair : (levels[sd][c.id] || 0);
+    return [MC.tierOfLevel(lv), MC.starOfLevel(lv)];
+  };
+  S.net = { conn, peer, fair: start.fair, ended: false };
+  S.game = g; S.ai = null; S.mySide = mySide; S.practice = false;
+  S.placing = null; S.pending = null; S.selUid = 0; S.resultShown = false;
+  buildBattle();
+  g.start(start.first);
+  g.log.push('대인전: ' + hostInfo.name + ' 대 ' + guestInfo.name + ' · ' + (start.fair >= 0 ? '공정 모드 ' + MC.rankTextOfLevel(start.fair) : '랭크 적용'));
+  render();
+  toast('연결되었습니다 · ' + (g.current === mySide ? '내가 먼저' : '상대가 먼저'));
+}
+
+// exe 메뉴에서 부르는 명령
+window.VMC = {
+  cmd(name) {
+    document.querySelectorAll('.sheetBack').forEach(x => x.remove());
+    if (name === 'home') { if (S.game && S.game.winner < 0) ask('대전을 그만둘까요? (경험치 없음)', '그만두기', showHome); else showHome(); return; }
+    if (name === 'new') { if (S.game && S.game.winner < 0) ask('지금 대전을 그만두고 새로 시작할까요?', '새 대전', () => { stopAi(); newGameSheet(); }); else newGameSheet(); return; }
+    if (name === 'net') { if (S.game && S.game.winner < 0) ask('지금 대전을 그만두고 대인전을 열까요?', '대인전', () => { stopAi(); netClose(); netLobby(); }); else netLobby(); return; }
+    const f = { decks: deckEditor, coll: collection, rules: rulesSheet, log: logSheet }[name]; if (f) f();
+  },
+  // 신화 연표에서 얻은 경험치 등 exe 쪽 값과 합친다(큰 값을 남김)
+  mergeXp(obj) {
+    for (const k in obj) if ((obj[k] || 0) > (S.xp[k] || 0)) S.xp[k] = obj[k];
+    if (S.game) render();
+  },
+  isHosted: () => !!HOST
+};
+window.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+</body>
+</html>
