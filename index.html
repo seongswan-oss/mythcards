@@ -137,11 +137,19 @@ select,input[type=text]{font:inherit;color:var(--text);background:#20242c;border
 .float.heal{color:#7fff8a}
 @keyframes up{from{transform:translate(-50%,0);opacity:1}to{transform:translate(-50%,-36px);opacity:0}}
 .toast{position:fixed;left:50%;top:44px;transform:translateX(-50%);background:#111;color:#fff;padding:8px 14px;border-radius:8px;font-size:13px;z-index:60;opacity:.92;max-width:90%}
+
+.card .kws{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;margin:2px 2px 0;flex:none}
+.card .kw{font-size:max(8px,calc(var(--cw)*0.105));line-height:1.35;background:#2e4a7a;color:#fff;border-radius:6px;padding:0 4px;white-space:nowrap}
+.gchip{display:inline-block;color:#fff;border-radius:8px;padding:0 7px;font-size:12px;font-weight:600;margin-right:4px}
+.gbtn{border:1.5px solid;border-radius:14px;padding:4px 10px;margin:3px;font-size:13px}
+
+.card .kw.sg{background:#9a6a10}.card .kw.rv{background:#b03030}.card .kw.pu{background:#5a5a66}
+#hand .card.chain{border-color:#ffd24a;box-shadow:0 0 0 3px #ffd24a}
 </style>
 </head>
 <body>
 <div id="app"></div>
-<script>const DATA={"cards": "# 신화 카드 대전 카드 목록 (UTF-8). 이 파일을 고치면 다음 실행 때 바로 반영됩니다.\n# 번호|신화|이름|종류|비용|공격|체력|패시브|액티브1|액티브2|특수능력\n#\n# 종류: 하수인 / 주문      (주문은 8번째 칸에 효과식만 적고 9~11번째 칸은 비웁니다)\n# 패시브   = 이름=절&절...     절: KW:키워드  또는  계기>효과식\n#            키워드: TAUNT(수호) CHARGE(질주) SHIELD(신의 가호) STEALTH(그림자)\n#            계기:   PLAY(출전) DEATH(최후) TURN_START(내 턴 시작) TURN_END(내 턴 끝)\n# 액티브/특수 = 이름(신력 비용)=효과식      — 쓰면 그 턴에는 공격할 수 없습니다.\n# 효과식   = 효과;효과...\n#   DMG:n:대상  HEAL:n:대상  BUFF:공:체:대상  KW:키워드:대상  FREEZE:대상  DESTROY:대상\n#   DRAW:n  MANA:n  ARMOR:n  SUMMON:이름:공:체[:키워드]\n# 대상 (직접 고름): ANY ENEMY FRIEND ANY_MIN ENEMY_MIN FRIEND_MIN\n#      (자동):      SELF MY_HERO ENEMY_HERO ALL ALL_MIN ALL_ENEMY ALL_ENEMY_MIN ALL_FRIEND ALL_FRIEND_MIN\n#                   OTHER_FRIEND_MIN RANDOM_ENEMY RANDOM_ENEMY_MIN\n# 조정자(⚖) 선택지: 패시브 절에 CHOOSE>이름{효과식}/이름{효과식}  (주문은 8번째 칸 전체를 CHOOSE>… 로)\n#   조정자 효과: FIGHT_ENEMIES(적끼리 싸움) FACE_OFF(양옆 아군이 맞은편과 싸움) INFIGHT(아군끼리 싸움) DISCARD:n(상대 손패 버리기)\n#   FLAG:LONE(혼자면 공격 가능) FLAG:WITHER(아군 공격 −1) FLAG:NARROW(내 전장 −1칸) FLAG:BALANCE2(양옆 +2)\n# 번호는 바꾸지 마세요(덱과 경험치가 번호로 저장됩니다).\n# ================= 그리스·로마\n1|GRE|제우스|하수인|8|6|7|천공의 왕=KW:SHIELD|번개(2)=DMG:3:ENEMY|독수리의 눈(1)=DRAW:1|티타노마키아(0)=DMG:3:ALL_ENEMY\n2|GRE|아테나|하수인|6|4|6|지혜의 방패=KW:TAUNT|지혜(1)=DRAW:1|아이기스(2)=KW:SHIELD:FRIEND_MIN|승리의 여신(0)=BUFF:2:2:ALL_FRIEND_MIN\n3|GRE|포세이돈|하수인|7|5|7|바다의 주인=TURN_END>DMG:1:ALL_ENEMY_MIN|해일(3)=DMG:2:ALL_ENEMY_MIN|지진(2)=FREEZE:ENEMY|삼지창(0)=DESTROY:ENEMY_MIN\n4|GRE|하데스|하수인|6|4|5|저승의 왕=DEATH>SUMMON:망령:2:2|저승의 손길(2)=DMG:2:ENEMY_MIN|영혼 거두기(2)=HEAL:4:MY_HERO|투명 투구(0)=KW:STEALTH:SELF;BUFF:3:0:SELF\n5|GRE|헤라클레스|하수인|5|5|4|장사=KW:CHARGE|곤봉(1)=DMG:2:ENEMY_MIN|사자 가죽(2)=KW:SHIELD:SELF|12과업(0)=BUFF:3:3:SELF\n6|GRE|아킬레우스|하수인|4|5|2|불사의 몸=KW:SHIELD|창 던지기(1)=DMG:2:ENEMY|분노(1)=BUFF:2:0:SELF|스틱스의 축복(0)=KW:SHIELD:SELF;HEAL:5:SELF\n7|GRE|메두사|하수인|3|2|4|돌의 눈=PLAY>FREEZE:ENEMY_MIN|응시(2)=FREEZE:ENEMY|뱀 머리카락(1)=DMG:1:ALL_ENEMY_MIN|석화(0)=DESTROY:ENEMY_MIN\n8|GRE|판도라의 항아리|주문|3|0|0|DMG:2:ALL_MIN;DRAW:1|||\n9|GRE|프로메테우스의 불|주문|2|0|0|DMG:3:ENEMY|||\n# ================= 북유럽\n10|NOR|오딘|하수인|8|6|8|만물의 아버지=TURN_START>DRAW:1|궁니르(2)=DMG:4:ENEMY|까마귀(1)=DRAW:1|발할라(0)=SUMMON:에인헤랴르:3:3:TAUNT;SUMMON:에인헤랴르:3:3:TAUNT\n11|NOR|토르|하수인|6|5|5|천둥=KW:CHARGE|묠니르(2)=DMG:3:ENEMY|천둥 폭풍(3)=DMG:1:ALL_ENEMY|거인 살해(0)=DESTROY:ENEMY_MIN\n12|NOR|로키|하수인|3|2|3|변신술=KW:STEALTH|장난(1)=DMG:2:ANY_MIN|속임수(1)=FREEZE:ENEMY|라그나로크의 불씨(0)=DMG:2:ALL_MIN\n13|NOR|프레이야|하수인|5|3|5|사랑의 여신=TURN_END>HEAL:2:ALL_FRIEND|세이드 마법(2)=BUFF:1:2:FRIEND_MIN|깃털 망토(1)=KW:STEALTH:SELF|폴크방(0)=HEAL:8:MY_HERO\n14|NOR|헤임달|하수인|4|2|6|파수꾼=KW:TAUNT|걀라르호른(1)=DRAW:1|무지개다리(2)=KW:TAUNT:FRIEND_MIN|최후의 뿔피리(0)=BUFF:1:1:ALL_FRIEND_MIN\n15|NOR|펜리르|하수인|5|6|4|굶주린 늑대=KW:CHARGE|물어뜯기(1)=DMG:2:ENEMY_MIN|사슬 끊기(1)=BUFF:2:0:SELF|신을 삼킴(0)=DESTROY:ENEMY_MIN\n16|NOR|브륀힐드|하수인|2|2|2|전사자 인도=DEATH>DRAW:1|창(1)=DMG:1:ENEMY|날개(1)=KW:SHIELD:SELF|선택받은 자(0)=BUFF:2:2:FRIEND_MIN\n17|NOR|라그나로크|주문|8|0|0|DMG:6:ALL_MIN|||\n# ================= 이집트\n18|EGY|라|하수인|7|5|6|태양의 배=TURN_END>DMG:2:RANDOM_ENEMY|태양 광선(2)=DMG:3:ENEMY|새벽(2)=HEAL:4:FRIEND|아펩 격퇴(0)=DMG:4:ALL_ENEMY_MIN\n19|EGY|오시리스|하수인|5|3|6|부활=DEATH>SUMMON:오시리스의 미라:3:3:TAUNT|생명의 나일(2)=HEAL:3:ALL_FRIEND|심판(2)=DMG:2:ENEMY_MIN|저승의 왕좌(0)=BUFF:0:4:ALL_FRIEND_MIN\n20|EGY|이시스|하수인|4|2|5|마법의 어머니=PLAY>HEAL:4:FRIEND|치유(1)=HEAL:3:FRIEND|날개 보호(2)=KW:SHIELD:FRIEND_MIN|되살림(0)=SUMMON:되살아난 자:4:4\n21|EGY|아누비스|하수인|3|3|3|망자의 인도=DEATH>DMG:2:RANDOM_ENEMY_MIN|저울(1)=DMG:2:ENEMY_MIN|미라 붕대(1)=FREEZE:ENEMY_MIN|심장 달기(0)=DESTROY:ENEMY_MIN\n22|EGY|세트|하수인|4|4|3|사막 폭풍=KW:CHARGE|모래 바람(2)=DMG:1:ALL_ENEMY|혼돈(1)=DMG:2:ANY|형제 살해(0)=DMG:5:ENEMY\n23|EGY|세크메트|하수인|2|3|2|피의 사자=PLAY>DMG:1:ENEMY|포효(1)=BUFF:1:0:SELF|역병(2)=DMG:1:ALL_ENEMY_MIN|붉은 맥주(0)=HEAL:4:MY_HERO\n# ================= 메소포타미아·페르시아\n24|MES|길가메시|하수인|5|4|5|3분의 2는 신=KW:SHIELD|도끼(1)=DMG:2:ENEMY_MIN|우정(2)=SUMMON:엔키두의 혼:3:3:TAUNT|영생의 풀(0)=HEAL:10:MY_HERO\n25|MES|엔키두|하수인|3|3|4|야생의 힘=KW:TAUNT|박치기(1)=DMG:2:ENEMY_MIN|들짐승(1)=BUFF:1:1:SELF|하늘 황소 잡기(0)=DESTROY:ENEMY_MIN\n26|MES|티아마트|하수인|8|7|7|혼돈의 바다=PLAY>SUMMON:혼돈의 괴물:2:2;SUMMON:혼돈의 괴물:2:2|바다뱀(2)=SUMMON:바다뱀:2:3:TAUNT|독의 피(2)=DMG:2:ALL_ENEMY_MIN|태초의 물(0)=DMG:4:ALL\n27|MES|마르두크|하수인|7|6|6|신들의 왕=PLAY>DMG:4:ENEMY_MIN|바람 그물(2)=FREEZE:ENEMY|화살(2)=DMG:3:ENEMY|운명의 서판(0)=BUFF:2:2:ALL_FRIEND_MIN\n28|PER|로스탐|하수인|5|5|5|최고의 용사=KW:TAUNT|철퇴(1)=DMG:2:ENEMY_MIN|라흐시(1)=KW:CHARGE:SELF|일곱 과업(0)=BUFF:2:2:SELF;KW:SHIELD:SELF\n29|MES|아트라하시스의 홍수|주문|7|0|0|DESTROY:ALL_MIN|||\n# ================= 인도\n30|IND|시바|하수인|8|6|6|파괴의 춤=TURN_END>DMG:1:ALL_ENEMY|셋째 눈(3)=DMG:4:ENEMY|명상(1)=HEAL:4:SELF|탄다바(0)=DMG:5:ALL_ENEMY_MIN\n31|IND|비슈누|하수인|7|4|8|유지자=KW:TAUNT&TURN_END>HEAL:2:ALL_FRIEND_MIN|수다르샤나(2)=DMG:3:ENEMY_MIN|아바타라(2)=SUMMON:화신:3:3|칼키(0)=DMG:4:ALL_ENEMY\n32|IND|가네샤|하수인|3|2|5|장애 제거=PLAY>DRAW:1|지혜(1)=DRAW:1|코끼리 힘(1)=BUFF:0:3:SELF|길을 열다(0)=MANA:3\n33|IND|하누만|하수인|4|4|4|바람의 아들=KW:CHARGE|산 들기(2)=HEAL:5:FRIEND|꼬리 불(2)=DMG:2:ALL_ENEMY_MIN|랑카로 도약(0)=DMG:4:ENEMY_HERO\n34|IND|인드라|하수인|6|5|5|천둥왕=PLAY>DMG:3:ENEMY|바즈라(2)=DMG:3:ENEMY|소마(1)=BUFF:1:1:SELF|브리트라 격퇴(0)=DESTROY:ENEMY_MIN\n# ================= 중국\n35|CHN|반고|하수인|9|8|9|천지개벽=PLAY>DMG:3:ALL_ENEMY_MIN|도끼(2)=DMG:4:ENEMY|거인의 숨(1)=HEAL:4:MY_HERO|몸이 세상이 되다(0)=BUFF:3:3:ALL_FRIEND_MIN\n36|CHN|여와|하수인|5|2|6|하늘 깁기=KW:TAUNT|흙 사람(2)=SUMMON:흙 사람:2:2|오색 돌(2)=HEAL:4:FRIEND|인간 창조(0)=SUMMON:흙 사람:2:2;SUMMON:흙 사람:2:2;SUMMON:흙 사람:2:2\n37|CHN|후예|하수인|4|3|3|명궁=PLAY>DMG:2:ENEMY|활(1)=DMG:2:ENEMY|연발(2)=DMG:1:ALL_ENEMY|아홉 해 쏘기(0)=DMG:3:ALL_ENEMY_MIN\n38|CHN|치우|하수인|5|5|4|전쟁의 신=KW:CHARGE|짙은 안개(1)=KW:STEALTH:SELF|병기(1)=BUFF:2:0:SELF|구려 군단(0)=SUMMON:구려 전사:3:2:CHARGE;SUMMON:구려 전사:3:2:CHARGE\n39|CHN|우의 치수|주문|3|0|0|FREEZE:ALL_ENEMY_MIN|||\n40|CHN|신농의 약초|주문|1|0|0|HEAL:6:FRIEND|||\n# ================= 일본\n41|JPN|아마테라스|하수인|6|4|6|태양 여신=TURN_START>HEAL:2:MY_HERO|햇살(2)=DMG:2:ENEMY;HEAL:2:MY_HERO|거울(1)=KW:SHIELD:SELF|동굴에서 나오다(0)=BUFF:2:2:ALL_FRIEND_MIN\n42|JPN|스사노오|하수인|5|5|4|폭풍=KW:CHARGE|검(1)=DMG:2:ENEMY_MIN|폭풍우(2)=DMG:1:ALL_ENEMY|오로치 퇴치(0)=DESTROY:ENEMY_MIN\n43|JPN|야마타노오로치|하수인|7|8|8|여덟 머리=KW:TAUNT|독 숨결(2)=DMG:2:ALL_ENEMY_MIN|꼬리(1)=DMG:3:ENEMY_MIN|여덟 술통(0)=HEAL:8:SELF\n# ================= 한국\n44|KOR|환웅|하수인|7|5|6|천부인=PLAY>SUMMON:풍백:1:3;SUMMON:우사:1:3;SUMMON:운사:1:3|바람(1)=DMG:1:ALL_ENEMY_MIN|비(2)=HEAL:3:ALL_FRIEND|신시(0)=BUFF:1:2:ALL_FRIEND_MIN\n45|KOR|단군|하수인|5|4|5|홍익인간=TURN_END>HEAL:1:ALL_FRIEND|아사달(1)=KW:TAUNT:SELF|고조선(2)=BUFF:1:1:ALL_FRIEND_MIN|산신이 되다(0)=HEAL:6:ALL_FRIEND\n46|KOR|웅녀|하수인|2|1|4|백일의 인내=KW:TAUNT|쑥과 마늘(1)=HEAL:3:FRIEND|인내(1)=BUFF:0:2:SELF|사람이 되다(0)=BUFF:3:3:SELF\n47|KOR|주몽|하수인|4|4|3|신궁=PLAY>DMG:1:ENEMY|활(1)=DMG:2:ENEMY|자라 다리(1)=KW:STEALTH:SELF|고구려 건국(0)=SUMMON:고구려 무사:3:3:TAUNT\n48|KOR|바리공주|하수인|4|2|5|저승 인도=DEATH>HEAL:5:MY_HERO|생명수(2)=HEAL:4:FRIEND|꽃(1)=HEAL:2:ALL_FRIEND_MIN|되살림(0)=SUMMON:되살아난 부모:3:3;SUMMON:되살아난 부모:3:3\n49|KOR|박혁거세|하수인|3|2|3|알에서 태어남=KW:SHIELD|빛(1)=DMG:1:ENEMY|서라벌(1)=BUFF:1:1:FRIEND_MIN|신라 건국(0)=BUFF:1:1:ALL_FRIEND_MIN\n# ================= 아메리카\n50|AZT|케찰코아틀|하수인|6|4|6|깃털 뱀=KW:SHIELD|바람(2)=DMG:2:ENEMY;DRAW:1|뼈와 피(2)=SUMMON:사람:2:2|다섯째 태양(0)=HEAL:5:ALL_FRIEND\n51|AZT|우이칠로포치틀리|하수인|5|5|4|완전 무장=KW:CHARGE&KW:SHIELD|불뱀(2)=DMG:3:ENEMY|태양의 길(1)=BUFF:1:1:SELF|달을 꺾다(0)=DMG:4:ENEMY_MIN\n52|MAY|우나푸|하수인|4|3|3|영웅 쌍둥이=PLAY>SUMMON:슈발랑케:3:3|바람총(1)=DMG:2:ENEMY|공놀이(1)=FREEZE:ENEMY_MIN|해와 달(0)=BUFF:2:2:ALL_FRIEND_MIN\n53|INC|비라코차|하수인|7|5|7|창조자=TURN_END>SUMMON:돌 거인:2:2|해 띄우기(2)=DMG:3:ENEMY|홍수(3)=DMG:2:ALL_MIN|운누 파차쿠티(0)=DMG:5:ALL_MIN\n# ================= 그 밖의 주문\n54|POL|마우이의 낚싯바늘|주문|2|0|0|DRAW:2|||\n55|MNG|텡그리의 축복|주문|1|0|0|BUFF:2:2:FRIEND_MIN|||\n56|CEL|다그다의 가마솥|주문|3|0|0|HEAL:4:ALL_FRIEND;ARMOR:3|||\n57|SLA|페룬의 번개|주문|4|0|0|DMG:5:ENEMY|||\n# ================= 북유럽 룬 (주문) — 고대 게르만의 엘더 푸타르크 24자 가운데 19자\n58|NOR|페후의 룬|주문|1|0|0|MANA:2|||\n59|NOR|우루즈의 룬|주문|2|0|0|BUFF:3:1:FRIEND_MIN|||\n60|NOR|투리사즈의 룬|주문|2|0|0|KW:TAUNT:FRIEND_MIN;BUFF:0:3:FRIEND_MIN|||\n61|NOR|안수즈의 룬|주문|3|0|0|DRAW:2;ARMOR:2|||\n62|NOR|라이도의 룬|주문|1|0|0|KW:CHARGE:FRIEND_MIN;BUFF:1:0:FRIEND_MIN|||\n63|NOR|케나즈의 룬|주문|2|0|0|DMG:3:ENEMY_MIN|||\n64|NOR|게보의 룬|주문|3|0|0|BUFF:1:1:ALL_FRIEND_MIN|||\n65|NOR|하갈라즈의 룬|주문|3|0|0|DMG:1:ALL_ENEMY;FREEZE:RANDOM_ENEMY_MIN|||\n66|NOR|나우디즈의 룬|주문|2|0|0|FREEZE:ENEMY;DRAW:1|||\n67|NOR|이사의 룬|주문|2|0|0|FREEZE:ENEMY_MIN;DMG:2:ENEMY_MIN|||\n68|NOR|예라의 룬|주문|4|0|0|HEAL:3:ALL_FRIEND;DRAW:1|||\n69|NOR|에이와즈의 룬|주문|2|0|0|KW:SHIELD:FRIEND_MIN;HEAL:4:FRIEND_MIN|||\n70|NOR|알기즈의 룬|주문|5|0|0|KW:SHIELD:ALL_FRIEND_MIN|||\n71|NOR|소윌로의 룬|주문|4|0|0|DMG:4:ENEMY;HEAL:2:MY_HERO|||\n72|NOR|티와즈의 룬|주문|3|0|0|BUFF:2:2:FRIEND_MIN;KW:TAUNT:FRIEND_MIN|||\n73|NOR|베르카나의 룬|주문|3|0|0|SUMMON:자작나무 정령:2:3;SUMMON:자작나무 정령:2:3|||\n74|NOR|에와즈의 룬|주문|4|0|0|KW:CHARGE:ALL_FRIEND_MIN|||\n75|NOR|다가즈의 룬|주문|5|0|0|DMG:3:ALL_ENEMY_MIN|||\n76|NOR|오실라의 룬|주문|5|0|0|SUMMON:조상의 영혼:3:3:TAUNT;SUMMON:조상의 영혼:3:3:TAUNT|||\n# ================= 게티아 (솔로몬의 72악마 가운데 16, 중세 마도서 '레메게톤' 전승)\n77|GOE|바알|하수인|7|6|6|투명의 왕=KW:STEALTH|세 개의 머리(2)=DMG:3:ENEMY|군단 소환(3)=SUMMON:악마 군단병:2:2;SUMMON:악마 군단병:2:2|66군단(0)=BUFF:2:2:ALL_FRIEND_MIN\n78|GOE|아가레스|하수인|4|3|4|지진=PLAY>FREEZE:ENEMY_MIN|땅 흔들기(2)=DMG:1:ALL_ENEMY_MIN|악어 탄 노인(1)=KW:TAUNT:SELF|대지진(0)=DMG:2:ALL_ENEMY_MIN;FREEZE:RANDOM_ENEMY_MIN\n79|GOE|바사고|하수인|3|1|4|예지=PLAY>DRAW:1|미래 보기(1)=DRAW:1|감춘 것 드러내기(1)=DMG:2:ANY_MIN|과거와 미래(0)=DRAW:2\n80|GOE|가미긴|하수인|3|2|3|망령 소환자=DEATH>SUMMON:망자의 영혼:2:1|영혼 부르기(2)=SUMMON:망자의 영혼:2:1|저승의 말(1)=BUFF:1:1:SELF|바다에 잠든 혼(0)=SUMMON:익사자의 혼:2:2:TAUNT;SUMMON:익사자의 혼:2:2:TAUNT\n81|GOE|마르바스|하수인|4|4|4|사자 대장=KW:TAUNT|역병(2)=DMG:1:ALL_ENEMY|치유(2)=HEAL:4:FRIEND|변신술(0)=BUFF:3:0:SELF;KW:CHARGE:SELF\n82|GOE|발레포르|하수인|2|3|2|도둑의 길=KW:STEALTH|기습(1)=DMG:2:ENEMY_MIN|훔치기(1)=MANA:2|도둑 무리(0)=SUMMON:도둑:2:1:CHARGE;SUMMON:도둑:2:1:CHARGE\n83|GOE|아몬 후작|하수인|5|5|4|불 뿜는 늑대=KW:CHARGE|불꽃 숨(2)=DMG:3:ENEMY|다툼 풀기(1)=HEAL:3:ALL_FRIEND|지옥불(0)=DMG:3:ALL_ENEMY\n84|GOE|바르바토스|하수인|4|3|4|사냥꾼의 뿔=PLAY>SUMMON:사냥개:2:1:CHARGE|활(1)=DMG:2:ENEMY|짐승의 말(1)=BUFF:1:1:OTHER_FRIEND_MIN|숨은 보물(0)=DRAW:2\n85|GOE|파이몬|하수인|7|5|7|학문의 왕=TURN_END>ARMOR:2|학문(1)=DRAW:1|나팔 소리(2)=FREEZE:ENEMY|200군단(0)=SUMMON:파이몬의 군단:3:3:TAUNT;SUMMON:파이몬의 군단:3:3:TAUNT\n86|GOE|부에르|하수인|3|2|4|치유의 바퀴=TURN_END>HEAL:2:ALL_FRIEND_MIN|약초(1)=HEAL:4:FRIEND|회전(2)=DMG:1:ALL_ENEMY_MIN|만병통치(0)=HEAL:8:ALL_FRIEND\n87|GOE|아스타로트|하수인|6|5|6|독의 숨=PLAY>DMG:2:ALL_ENEMY_MIN|비밀 지식(1)=DRAW:1|용 타기(2)=KW:CHARGE:SELF;BUFF:2:0:SELF|타락(0)=DESTROY:ENEMY_MIN\n88|GOE|벨리알|하수인|8|7|7|불의 전차=KW:CHARGE&KW:SHIELD|불 수레(2)=DMG:3:ENEMY|거짓 은혜(2)=BUFF:2:2:FRIEND_MIN|무법의 왕(0)=DMG:4:ALL_ENEMY_MIN\n89|GOE|아스모데우스|하수인|7|6|6|세 머리=TURN_END>DMG:2:RANDOM_ENEMY|기하학(1)=DRAW:1|보물 창고(1)=MANA:2|진노(0)=DMG:3:ALL_ENEMY\n90|GOE|포칼로르|하수인|5|4|5|폭풍의 바다=PLAY>DMG:3:ENEMY_MIN|침몰(2)=DMG:3:ENEMY_MIN|바람 지배(1)=FREEZE:ENEMY|해일(0)=DMG:2:ALL_ENEMY_MIN;FREEZE:RANDOM_ENEMY_MIN\n91|GOE|단탈리온|하수인|4|3|5|천의 얼굴=KW:STEALTH|마음 읽기(1)=DRAW:1|생각 바꾸기(2)=FREEZE:ENEMY_MIN|환영(0)=SUMMON:환영:3:3;SUMMON:환영:3:3\n92|GOE|안드로말리우스|하수인|3|3|3|뱀을 든 백작=KW:TAUNT|뱀(1)=DMG:2:ENEMY_MIN|되찾기(2)=HEAL:4:MY_HERO|악인 처벌(0)=DESTROY:ENEMY_MIN\n93|GOE|소환진|주문|2|0|0|SUMMON:하급 악마:2:2;DRAW:1|||\n94|GOE|솔로몬의 인장|주문|4|0|0|FREEZE:ALL_ENEMY_MIN;DMG:1:ALL_ENEMY_MIN|||\n95|GOE|솔로몬의 반지|주문|6|0|0|SUMMON:봉인된 악마:4:4:TAUNT;SUMMON:봉인된 악마:4:4:TAUNT|||\n# ================= 북유럽 룬 (나머지 5자 — 이로써 24자 완성)\n96|NOR|우뇨의 룬|주문|3|0|0|HEAL:2:ALL_FRIEND;BUFF:1:0:ALL_FRIEND_MIN|||\n97|NOR|페르스의 룬|주문|3|0|0|DMG:3:RANDOM_ENEMY;DRAW:1|||\n98|NOR|라구즈의 룬|주문|4|0|0|DMG:2:ALL_ENEMY_MIN;HEAL:2:ALL_FRIEND_MIN|||\n99|NOR|인구즈의 룬|주문|3|0|0|HEAL:6:MY_HERO;DRAW:1|||\n100|NOR|만나즈의 룬|주문|3|0|0|SUMMON:마을 사람:1:2;SUMMON:마을 사람:1:2;SUMMON:마을 사람:1:2|||\n# ================= 타로 메이저 아르카나 22장 (주문) — 정방향의 뜻을 효과로\n101|TAR|0 바보|주문|1|0|0|DRAW:1;MANA:1|||\n102|TAR|1 마법사|주문|3|0|0|DMG:2:ANY;DRAW:1|||\n103|TAR|2 여사제|주문|2|0|0|DRAW:1;ARMOR:3|||\n104|TAR|3 여황제|주문|4|0|0|SUMMON:풍요의 아이:2:2;SUMMON:풍요의 아이:2:2;HEAL:3:MY_HERO|||\n105|TAR|4 황제|주문|4|0|0|KW:TAUNT:ALL_FRIEND_MIN;BUFF:0:2:ALL_FRIEND_MIN|||\n106|TAR|5 교황|주문|3|0|0|BUFF:1:3:FRIEND_MIN;DRAW:1|||\n107|TAR|6 연인|주문|3|0|0|KW:SHIELD:FRIEND_MIN;HEAL:3:ALL_FRIEND_MIN|||\n108|TAR|7 전차|주문|2|0|0|KW:CHARGE:FRIEND_MIN;BUFF:2:0:FRIEND_MIN|||\n109|TAR|8 힘|주문|3|0|0|BUFF:2:4:FRIEND_MIN|||\n110|TAR|9 은둔자|주문|2|0|0|KW:STEALTH:FRIEND_MIN;DRAW:1|||\n111|TAR|10 운명의 수레바퀴|주문|4|0|0|DMG:2:RANDOM_ENEMY;DMG:2:RANDOM_ENEMY;DMG:2:RANDOM_ENEMY|||\n112|TAR|11 정의|주문|3|0|0|CHOOSE>이간{FIGHT_ENEMIES;HEAL:3:MY_HERO}/탈취{DISCARD:1;HEAL:3:MY_HERO}|||\n113|TAR|12 매달린 남자|주문|1|0|0|DESTROY:FRIEND_MIN;DRAW:2|||\n114|TAR|13 죽음|주문|8|0|0|DESTROY:ALL_MIN;DRAW:2|||\n115|TAR|14 절제|주문|3|0|0|HEAL:4:ALL_FRIEND|||\n116|TAR|15 악마|주문|2|0|0|BUFF:4:0:FRIEND_MIN;DMG:3:MY_HERO|||\n117|TAR|16 탑|주문|4|0|0|DMG:3:ALL|||\n118|TAR|17 별|주문|3|0|0|HEAL:5:MY_HERO;DRAW:1|||\n119|TAR|18 달|주문|3|0|0|KW:STEALTH:ALL_FRIEND_MIN;FREEZE:RANDOM_ENEMY_MIN|||\n120|TAR|19 태양|주문|6|0|0|DMG:2:ALL_ENEMY;HEAL:3:ALL_FRIEND|||\n121|TAR|20 심판|주문|6|0|0|SUMMON:깨어난 영혼:4:4:TAUNT;SUMMON:깨어난 영혼:4:4|||\n122|TAR|21 세계|주문|8|0|0|BUFF:3:3:ALL_FRIEND_MIN;DRAW:2;HEAL:5:MY_HERO|||\n# ================= 십이지(띠) 하수인 12장 + 오행 주문 5장\n123|GAN|쥐 (자子)|하수인|1|1|2|재빠른 첫째=KW:STEALTH|갉아먹기(1)=DMG:1:ENEMY_MIN|새끼 치기(1)=SUMMON:생쥐:1:1|첫째 자리(0)=DRAW:2\n124|GAN|소 (축丑)|하수인|3|2|5|우직함=KW:TAUNT|밭갈이(1)=ARMOR:3|되새김(1)=BUFF:0:2:SELF|황소걸음(0)=BUFF:2:2:SELF\n125|GAN|호랑이 (인寅)|하수인|5|5|4|산군=KW:CHARGE|할퀴기(1)=DMG:2:ENEMY_MIN|포효(2)=FREEZE:ENEMY_MIN|백수의 왕(0)=DMG:4:ENEMY\n126|GAN|토끼 (묘卯)|하수인|2|2|2|영리함=PLAY>DRAW:1|깡충(1)=KW:STEALTH:SELF|달의 절구(1)=HEAL:3:FRIEND|토끼의 꾀(0)=FREEZE:ALL_ENEMY_MIN\n127|GAN|용 (진辰)|하수인|8|7|7|비구름=KW:SHIELD&TURN_END>DMG:1:ALL_ENEMY|여의주(2)=DMG:4:ENEMY|단비(2)=HEAL:4:ALL_FRIEND|승천(0)=DMG:4:ALL_ENEMY\n128|GAN|뱀 (사巳)|하수인|3|3|2|풀숲=KW:STEALTH|독니(1)=DMG:3:ENEMY_MIN|허물 벗기(1)=HEAL:3:SELF|똬리(0)=KW:TAUNT:SELF;BUFF:0:4:SELF\n129|GAN|말 (오午)|하수인|4|4|3|질풍=KW:CHARGE|발굽(1)=DMG:2:ENEMY_MIN|함께 달리기(2)=KW:CHARGE:OTHER_FRIEND_MIN|천리마(0)=BUFF:3:0:ALL_FRIEND_MIN\n130|GAN|양 (미未)|하수인|2|1|4|온순함=KW:TAUNT|풀 뜯기(1)=HEAL:2:ALL_FRIEND_MIN|양털(1)=ARMOR:3|양 떼(0)=SUMMON:양:1:3:TAUNT;SUMMON:양:1:3:TAUNT\n131|GAN|원숭이 (신申)|하수인|3|3|3|장난꾸러기=PLAY>DMG:1:RANDOM_ENEMY_MIN|재주(1)=DRAW:1|흉내(1)=BUFF:2:0:SELF|분신술(0)=SUMMON:분신:3:3;SUMMON:분신:3:3\n132|GAN|닭 (유酉)|하수인|2|2|2|새벽 알림=TURN_START>HEAL:1:MY_HERO|쪼기(1)=DMG:1:ENEMY|홰치기(1)=DRAW:1|해를 부름(0)=HEAL:6:ALL_FRIEND\n133|GAN|개 (술戌)|하수인|3|3|3|충직함=KW:TAUNT&DEATH>DMG:2:RANDOM_ENEMY_MIN|물기(1)=DMG:2:ENEMY_MIN|집 지키기(1)=BUFF:0:2:SELF|지킴이(0)=KW:SHIELD:ALL_FRIEND_MIN\n134|GAN|돼지 (해亥)|하수인|4|3|6|넉넉함=TURN_END>HEAL:2:SELF|돌진(2)=DMG:3:ENEMY_MIN|복 부르기(1)=MANA:2|복돼지(0)=DRAW:2;ARMOR:3\n135|GAN|목(木) 오행|주문|3|0|0|SUMMON:나무 정령:2:3:TAUNT;HEAL:3:MY_HERO|||\n136|GAN|화(火) 오행|주문|4|0|0|DMG:3:ENEMY;DMG:1:ALL_ENEMY_MIN|||\n137|GAN|토(土) 오행|주문|2|0|0|ARMOR:5|||\n138|GAN|금(金) 오행|주문|2|0|0|BUFF:3:0:FRIEND_MIN|||\n139|GAN|수(水) 오행|주문|3|0|0|FREEZE:ENEMY;HEAL:3:ALL_FRIEND_MIN|||\n# ================= 동양 상징 · 조정자\n140|EAS|춘분 (春分)|하수인|3|1|5|낮밤의 저울=CHOOSE>이간{FIGHT_ENEMIES}/균형 강화{FLAG:BALANCE2;FLAG:NARROW}|싹틔움(1)=HEAL:3:FRIEND_MIN|봄비(1)=BUFF:1:1:OTHER_FRIEND_MIN|천지 균형(0)=HEAL:4:ALL_FRIEND;DRAW:1\n141|EAS|추분 (秋分)|하수인|3|1|5|결실의 저울=CHOOSE>탈취{DISCARD:1}/대치{FACE_OFF}|거둠(1)=ARMOR:3|서리 바람(1)=FREEZE:ENEMY_MIN|가을걷이(0)=DRAW:2\n142|EAS|수화기제 (水火旣濟)|하수인|4|2|6|이미 건넘=KW:TAUNT&CHOOSE>대치{FACE_OFF}/이간{FIGHT_ENEMIES;FLAG:WITHER}|물불 다스림(2)=FREEZE:ENEMY_MIN|끓는 솥(1)=DMG:2:ENEMY_MIN|완성(0)=HEAL:5:ALL_FRIEND_MIN\n143|EAS|화수미제 (火水未濟)|하수인|4|2|6|아직 못 건넘=CHOOSE>고독{FLAG:LONE}/탈취{DISCARD:2;INFIGHT}|불길(2)=DMG:2:ENEMY|여우 꼬리(1)=DRAW:1|새 시작(0)=MANA:2;DRAW:1\n", "tags": "# 신화 카드 속성 (번호|주속성|보조속성|종류|팔괘|정역|근거)\n# 종류: 단 = 속성 하나 / 양 = 공격할 때 주속성, 방어할 때 보조 속성 / 조정자 = 정반대(수↔화, 목↔금)를 품어 상쇄됨 / 무 = 속성 없음(비용 +1)\n# 팔괘: 乾 兌 離 震 巽 坎 艮 坤 (震 동, 巽 동남, 離 남, 坤 남서, 兌 서, 乾 북서, 坎 북, 艮 동북) / 정역: Y = 룬·타로\n1|목||단|震||천둥(우레)\n2|금||단|兌||지혜·전쟁(창과 방패)\n3|수||단|坎||바다\n4|수||단|坎||저승(어둠·겨울)\n5|토||단|艮||산 같은 힘, 장사\n6|금||단|乾||전사\n7|토||단|艮||돌로 만드는 눈\n8|토||단|坤||흙 항아리, 재앙의 근원\n9|화||단|離||불\n10|금||단|乾||하늘의 아버지(乾=아버지)\n11|목||단|震||천둥\n12|화||단|離||불의 거인 혈통·속임수\n13|목||단|巽||사랑·풍요, 깃털 망토(바람)\n14|토||단|艮||파수꾼(산=멈춤·지킴)\n15|화|금|양|乾||늑대의 이빨, 신을 삼킴 → 상극을 품어 이기는 쪽이 주속성\n16|금||단|兌||발키리(전사·창)\n17|화||단|離||세상을 태우는 불\n18|화||단|離||태양\n19|수||단|坎||저승·나일의 부활\n20|토||단|坤||어머니(坤=어머니)\n21|토||단|艮||무덤·미라의 수호\n22|토|금|양|坤||사막 폭풍\n23|화||단|離||불타는 사자\n24|금||단|乾||왕·도끼\n25|목||단|巽||야생의 숲\n26|수||단|坎||태초의 바닷물\n27|목|수|양|震||바람과 폭풍의 왕\n28|금||단|兌||용사·철퇴\n29|수||단|坎||홍수\n30|화||단|離||파괴의 춤, 셋째 눈의 불\n31|수||단|坎||우유 바다에 누운 유지자\n32|목|토|양|坤||장애 제거, 대지의 풍요 → 상극을 품어 이기는 쪽이 주속성\n33|목||단|巽||바람의 아들\n34|목||단|震||천둥왕(바즈라)\n35|토||단|艮||천지개벽, 몸이 산과 땅이 됨\n36|토||단|坤||흙으로 사람을 빚음\n37|화|금|양|乾||활(쇠·금속) → 상극을 품어 이기는 쪽이 주속성\n38|금||단|兌||병기를 만든 전쟁의 신\n39|수||단|坎||물을 다스림\n40|목||단|巽||약초\n41|화||단|離||태양 여신\n42|목|수|양|震||폭풍\n43|수||단|坎||강의 큰 뱀\n44|목||단|巽||풍백·우사·운사(바람·비·구름)\n45|토||단|艮||산신이 됨\n46|토||단|坤||곰에서 사람, 인내(땅)\n47|금||단|乾||신궁(활)\n48|수||단|坎||생명수·저승\n49|화||단|離||빛, 알에서 태어남\n50|목||단|巽||바람의 신\n51|화||단|離||태양·전쟁\n52|화|목|양|離||해가 된 쌍둥이\n53|수||단|坎||티티카카 호수, 홍수\n54|수||단|坎||바다에서 섬을 낚음\n55|금||단|乾||영원한 푸른 하늘(乾)\n56|토||단|坤||풍요의 가마솥\n57|목||단|震||번개\n58|화||단|離|Y|룬 원소: 불\n59|토||단|艮|Y|룬 원소: 흙\n60|화||단|離|Y|룬 원소: 불\n61|목||단|巽|Y|룬 원소: 바람\n62|목||단|巽|Y|룬 원소: 공기\n63|화||단|離|Y|룬 원소: 불(횃불)\n64|목||단|巽|Y|룬 원소: 바람\n65|수||단|坎|Y|룬 원소: 물·눈\n66|화||단|離|Y|룬 원소: 불(필요의 불꽃)\n67|수||단|坎|Y|룬 원소: 물(얼음)\n68|토||단|坤|Y|룬 원소: 흙(수확)\n69|금||단|乾|Y|룬 원소: 자료에 \"모든 원소\" — 생사의 주목나무로 금\n70|목||단|巽|Y|룬 원소: 바람\n71|목|화|양|巽|Y|룬 원소: 자료는 공기, 뜻은 태양(화도 가능)\n72|목||단|巽|Y|룬 원소: 바람\n73|토||단|坤|Y|룬 원소: 흙\n74|토||단|坤|Y|룬 원소: 흙\n75|화||단|離|Y|룬 원소: 불\n76|||무||Y|룬 원소: 자료에 원소 없음 — 물려받은 땅으로 토 → 무속성\n77|목|화|양|震||폭풍의 신 바알\n78|토||단|艮||지진\n79|수||단|坎||예언(감춘 것)\n80|수||단|坎||망자·물에 잠든 혼\n81|금||단|兌||기계·질병의 사자\n82|금|수|양|兌||도둑(날붙이)\n83|화||단|離||불 뿜는 늑대\n84|목||단|巽||사냥꾼·짐승의 말\n85|금||단|乾||왕·학문\n86|목||단|巽||약초\n87|수|금|양|坎||독의 숨\n88|화||단|離||불의 전차\n89|화|토|양|離||진노의 불\n90|수||단|坎||바다\n91|목|수|양|巽||마음(바람처럼 스며듦)\n92|금||단|兌||악인 처벌(정의)\n93|토||단|坤||소환진(땅에 그림)\n94|금||단|乾||인장(금속)\n95|금||단|兌||반지(금속)\n96|토||단|坤|Y|룬 원소: 흙\n97|수||단|坎|Y|룬 원소: 물\n98|수||단|坎|Y|룬 원소: 물\n99|||무||Y|룬 원소: 자료에 원소 없음 — 풍요의 신 잉으로 토 → 무속성\n100|목||단|巽|Y|룬 원소: 바람\n101|목||단|巽|Y|타로: 천왕성·공기\n102|수||단|坎|Y|타로: 수성(水星)\n103|수||단|坎|Y|타로: 달·물\n104|금||단|兌|Y|타로: 금성(金星)\n105|화||단|離|Y|타로: 양자리·불\n106|토||단|艮|Y|타로: 황소자리·흙\n107|목||단|巽|Y|타로: 쌍둥이자리·공기\n108|수||단|坎|Y|타로: 게자리·물\n109|화||단|離|Y|타로: 사자자리·불\n110|토||단|艮|Y|타로: 처녀자리·흙\n111|목||단|震|Y|타로: 목성(木星)\n112|목|금|조정자|巽|Y|타로: 천칭자리·공기 (저울·칼로 금도 가능) → 목↔금 정반대라 상쇄\n113|수||단|坎|Y|타로: 해왕성·물\n114|수||단|坎|Y|타로: 전갈자리·물\n115|화||단|離|Y|타로: 궁수자리·불\n116|토||단|坤|Y|타로: 염소자리·흙\n117|화||단|離|Y|타로: 화성(火星)\n118|목||단|巽|Y|타로: 물병자리·공기\n119|수||단|坎|Y|타로: 물고기자리·물\n120|화||단|離|Y|타로: 태양\n121|화||단|離|Y|타로: 명왕성·불\n122|토||단|坤|Y|타로: 토성(土星)\n123|수||단|坎||간지: 자(子)=수\n124|토||단|艮||간지: 축(丑)=토\n125|목||단|震||간지: 인(寅)=목\n126|목||단|巽||간지: 묘(卯)=목\n127|토|수|양|艮||간지: 진(辰)=토 (용이지만 지지는 토)\n128|화||단|離||간지: 사(巳)=화\n129|화||단|離||간지: 오(午)=화\n130|토||단|坤||간지: 미(未)=토\n131|금||단|兌||간지: 신(申)=금\n132|금||단|兌||간지: 유(酉)=금\n133|토||단|艮||간지: 술(戌)=토\n134|수||단|坎||간지: 해(亥)=수\n135|목||단|震||간지: 목\n136|화||단|離||간지: 화\n137|토||단|坤||간지: 토\n138|금||단|乾||간지: 금\n139|수||단|坎||간지: 수\n140|목|금|조정자|震||절기: 춘분 — 낮과 밤이 같음, 봄(목)이 가을(금)과 맞섬\n141|금|목|조정자|兌||절기: 추분 — 낮과 밤이 같음, 가을(금)이 봄(목)과 맞섬\n142|수|화|조정자|坎||64괘 63 수화기제 — 물이 불 위, 이미 균형\n143|화|수|조정자|離||64괘 64 화수미제 — 불이 물 위, 아직 어긋남\n", "lore": {"GRE|제우스": "제우스 (Zeus) — 신, 하늘·천둥\n올림포스의 주신. 로마의 유피테르\n나오는 이야기: 크로노스와 자식 삼키기, 티타노마키아, 세계를 나누다, 기간토마키아와 티폰, 프로메테우스와 불, 판도라의 항아리, 데우칼리온의 홍수, 헤르메스, 소를 훔치다, 두 번 태어난 디오니소스, 레토의 쌍둥이", "GRE|포세이돈": "포세이돈 (Poseidon) — 신, 바다·지진\n삼지창의 바다 신. 로마의 넵투누스\n나오는 이야기: 티타노마키아, 세계를 나누다", "GRE|하데스": "하데스 (Hades) — 신, 저승\n저승의 왕. 로마의 플루톤\n나오는 이야기: 티타노마키아, 세계를 나누다, 오르페우스의 저승 여행", "GRE|아테나": "아테나 (Athena) — 여신, 지혜·전쟁\n제우스의 머리에서 태어났다. 로마의 미네르바\n나오는 이야기: 페르세우스와 메두사", "GRE|메두사": "메두사 (Medusa) — 괴물, 돌로 만드는 눈\n머리카락이 뱀인 고르곤\n나오는 이야기: 페르세우스와 메두사", "GRE|헤라클레스": "헤라클레스 (Herakles) — 영웅, 힘\n12가지 과업. 죽은 뒤 신이 되었다\n나오는 이야기: 기간토마키아와 티폰, 헤라클레스의 12가지 과업", "GRE|아킬레우스": "아킬레우스 (Achilleus) — 영웅, 전사\n발뒤꿈치만 약점인 트로이 전쟁의 영웅\n나오는 이야기: 트로이 전쟁", "NOR|오딘": "오딘 (Óðinn) — 신, 지혜·전쟁·죽음\n아스 신족의 주신. 외눈, 까마귀 두 마리\n나오는 이야기: 이미르의 몸으로 세상을 만들다, 아스 신족과 바니르 신족의 전쟁, 오딘의 지혜, 아스크와 엠블라, 라그나로크, 펜리르를 묶다", "NOR|토르": "토르 (Þórr) — 신, 천둥·힘\n망치 묠니르를 든 천둥신\n나오는 이야기: 묠니르의 탄생, 라그나로크", "NOR|로키": "로키 (Loki) — 신, 속임수\n장난과 꾀의 신. 거인족 출신\n나오는 이야기: 묠니르의 탄생, 발드르의 죽음, 라그나로크, 펜리르를 묶다", "NOR|헤임달": "헤임달 (Heimdallr) — 신, 파수꾼\n무지개다리 비프로스트를 지킨다\n나오는 이야기: 라그나로크", "NOR|프레이야": "프레이야 (Freyja) — 여신, 사랑·전쟁·마법\n바니르 신족, 전사자의 절반을 맞는다\n나오는 이야기: 아스 신족과 바니르 신족의 전쟁", "NOR|펜리르": "펜리르 (Fenrir) — 괴물, 늑대\n로키의 아들, 라그나로크에 오딘을 삼킨다\n나오는 이야기: 라그나로크, 펜리르를 묶다", "NOR|브륀힐드": "브륀힐드 (Brynhildr) — 영웅, 발키리\n시구르드와 얽힌 발키리\n나오는 이야기: 시구르드와 용 파프니르", "EGY|라": "라 (Ra) — 신, 태양\n태양신. 매 머리\n나오는 이야기: 태초의 언덕과 아툼, 라의 밤 항해, 라의 눈물에서 인간이, 하토르(세크메트)의 분노, 아몬-라, 라의 눈, 세크메트", "EGY|오시리스": "오시리스 (Osiris) — 신, 저승·부활\n저승의 왕\n나오는 이야기: 오시리스와 세트, 이시스, 오시리스를 되살리다, 사후 심판(마아트의 저울)", "EGY|이시스": "이시스 (Isis) — 여신, 마법·어머니\n오시리스의 아내, 호루스의 어머니\n나오는 이야기: 이시스, 오시리스를 되살리다, 호루스와 세트의 다툼", "EGY|세트": "세트 (Set) — 신, 사막·폭풍·혼돈\n오시리스를 죽인 동생\n나오는 이야기: 오시리스와 세트, 호루스와 세트의 다툼, 라의 밤 항해", "EGY|아누비스": "아누비스 (Anubis) — 신, 미라·장례\n자칼 머리의 신\n나오는 이야기: 이시스, 오시리스를 되살리다, 사후 심판(마아트의 저울)", "EGY|세크메트": "세크메트 (Sekhmet) — 여신, 전쟁·역병\n사자 머리의 여신\n나오는 이야기: 하토르(세크메트)의 분노, 라의 눈, 세크메트", "MES|티아마트": "티아마트 (Tiamat) — 원초신, 바닷물\n바다와 혼돈의 여신\n나오는 이야기: 압주와 티아마트, 마르두크와 티아마트", "MES|마르두크": "마르두크 (Marduk) — 신, 바빌론의 주신\n티아마트를 이긴 신들의 왕\n나오는 이야기: 마르두크와 티아마트, 신들의 노동을 대신할 인간", "MES|길가메시": "길가메시 (Gilgamesh) — 영웅, 우루크 왕\n3분의 2는 신, 3분의 1은 인간\n나오는 이야기: 길가메시와 엔키두, 영생을 찾아서", "MES|엔키두": "엔키두 (Enkidu) — 영웅, 야생인\n길가메시의 친구\n나오는 이야기: 길가메시와 엔키두", "IND|비슈누": "비슈누 (Vishnu) — 신, 유지\n세상을 지키며 여러 화신으로 내려온다\n나오는 이야기: 우유 바다 젓기, 삼주신, 마누와 물고기, 유가의 순환", "IND|시바": "시바 (Shiva) — 신, 파괴·재생\n춤추는 신, 셋째 눈\n나오는 이야기: 우유 바다 젓기, 삼주신, 가네샤의 코끼리 머리", "IND|가네샤": "가네샤 (Ganesha) — 신, 지혜·장애 제거\n코끼리 머리의 신\n나오는 이야기: 가네샤의 코끼리 머리", "IND|인드라": "인드라 (Indra) — 신, 천둥·하늘\n베다 시대 신들의 왕\n나오는 이야기: 인드라와 브리트라, 아그니와 제사의 불", "IND|하누만": "하누만 (Hanuman) — 신, 원숭이·힘\n라마를 도운 원숭이 장수\n나오는 이야기: 라마야나", "CHN|반고": "반고 (盤古) — 원초신, 천지개벽\n알 속에서 깨어나 하늘과 땅을 갈랐다\n나오는 이야기: 혼돈과 계란 같은 우주, 반고 개천벽지, 반고의 몸이 세상이 되다", "CHN|여와": "여와 (女媧) — 여신, 인간 창조·하늘 수리\n뱀의 몸을 한 여신\n나오는 이야기: 여와의 인간 창조, 여와, 하늘을 기우다", "CHN|치우": "치우 (蚩尤) — 신, 전쟁·병기\n구려족의 우두머리, 전쟁의 신\n나오는 이야기: 탁록 대전", "CHN|후예": "후예 (后羿) — 영웅, 활\n아홉 해를 쏘아 떨어뜨렸다\n나오는 이야기: 후예, 아홉 해를 쏘다, 항아, 달로 가다", "JPN|아마테라스": "아마테라스 (天照) — 여신, 태양\n천황가의 조상신\n나오는 이야기: 삼귀자의 탄생, 아마노이와토(천암호), 천손 강림", "JPN|스사노오": "스사노오 (須佐之男) — 신, 폭풍·바다\n야마타노오로치를 물리쳤다\n나오는 이야기: 삼귀자의 탄생, 아마노이와토(천암호), 야마타노오로치 퇴치", "JPN|야마타노오로치": "야마타노오로치 (八岐大蛇) — 괴물, 큰 뱀\n머리와 꼬리가 여덟 개인 뱀\n나오는 이야기: 야마타노오로치 퇴치", "KOR|환웅": "환웅 (桓雄) — 신, 하늘에서 내려온 신\n풍백·우사·운사를 거느렸다\n나오는 이야기: 환인과 환웅, 곰과 호랑이, 단군의 고조선 건국", "KOR|웅녀": "웅녀 (熊女) — 인간, 곰에서 사람으로\n단군의 어머니\n나오는 이야기: 곰과 호랑이, 단군의 고조선 건국", "KOR|단군": "단군 (檀君) — 영웅, 고조선 시조\n단군왕검\n나오는 이야기: 단군의 고조선 건국", "KOR|주몽": "주몽 (朱蒙) — 영웅, 고구려 시조\n동명성왕\n나오는 이야기: 주몽의 고구려 건국", "KOR|박혁거세": "박혁거세 (朴赫居世) — 영웅, 신라 시조\n알에서 태어났다\n나오는 이야기: 박혁거세", "KOR|바리공주": "바리공주 (바리데기) — 여신, 무조신·저승 인도\n버려진 일곱째 공주\n나오는 이야기: 바리공주", "PER|로스탐": "로스탐 (Rostam) — 영웅, 최고의 용사\n샤나메의 영웅\n나오는 이야기: 로스탐과 소랍", "MAY|우나푸": "우나푸 (Hunahpu) — 영웅, 해\n영웅 쌍둥이\n나오는 이야기: 거짓 태양 부쿱 칵시, 시발바의 공놀이", "AZT|케찰코아틀": "케찰코아틀 (Quetzalcoatl) — 신, 바람·지혜\n깃털 달린 뱀\n나오는 이야기: 이원의 신, 대지 괴물을 찢다, 네 번의 태양, 뼈와 피로 만든 사람", "AZT|우이칠로포치틀리": "우이칠로포치틀리 (Huitzilopochtli) — 신, 태양·전쟁\n아즈텍의 수호신\n나오는 이야기: 우이칠로포치틀리의 탄생, 독수리와 선인장, 다섯째 태양의 끝", "INC|비라코차": "비라코차 (Viracocha) — 원초신, 창조\n티티카카 호수에서 나온 창조신\n나오는 이야기: 티티카카의 어둠, 돌 거인들, 운누 파차쿠티, 해와 달을 띄우다, 다시 만든 사람들"}};</script>
+<script>const DATA={"cards": "# 신화 카드 대전 카드 목록 (UTF-8). 이 파일을 고치면 다음 실행 때 바로 반영됩니다.\n# 번호|신화|이름|종류|비용|공격|체력|패시브|액티브1|액티브2|특수능력\n#\n# 종류: 하수인 / 주문      (주문은 8번째 칸에 효과식만 적고 9~11번째 칸은 비웁니다)\n# 패시브   = 이름=절&절...     절: KW:키워드  또는  계기>효과식\n#            키워드: TAUNT(수호) CHARGE(질주) SHIELD(신의 가호) STEALTH(그림자)\n#            계기:   PLAY(출전) DEATH(최후) TURN_START(내 턴 시작) TURN_END(내 턴 끝)\n# 액티브/특수 = 이름(신력 비용)=효과식      — 쓰면 그 턴에는 공격할 수 없습니다.\n# 효과식   = 효과;효과...\n#   DMG:n:대상  HEAL:n:대상  BUFF:공:체:대상  KW:키워드:대상  FREEZE:대상  DESTROY:대상\n#   DRAW:n  MANA:n  ARMOR:n  SUMMON:이름:공:체[:키워드]\n# 대상 (직접 고름): ANY ENEMY FRIEND ANY_MIN ENEMY_MIN FRIEND_MIN\n#      (자동):      SELF MY_HERO ENEMY_HERO ALL ALL_MIN ALL_ENEMY ALL_ENEMY_MIN ALL_FRIEND ALL_FRIEND_MIN\n#                   OTHER_FRIEND_MIN RANDOM_ENEMY RANDOM_ENEMY_MIN\n# 조정자(⚖) 선택지: 패시브 절에 CHOOSE>이름{효과식}/이름{효과식}  (주문은 8번째 칸 전체를 CHOOSE>… 로)\n#   조정자 효과: FIGHT_ENEMIES(적끼리 싸움) FACE_OFF(양옆 아군이 맞은편과 싸움) INFIGHT(아군끼리 싸움) DISCARD:n(상대 손패 버리기)\n#   FLAG:LONE(혼자면 공격 가능) FLAG:WITHER(아군 공격 −1) FLAG:NARROW(내 전장 −1칸) FLAG:BALANCE2(양옆 +2)\n# 번호는 바꾸지 마세요(덱과 경험치가 번호로 저장됩니다).\n# ================= 그리스·로마\n1|GRE|제우스|하수인|8|6|7|천공의 왕=KW:SHIELD|번개(2)=DMG:3:ENEMY|독수리의 눈(1)=DRAW:1|티타노마키아(0)=DMG:3:ALL_ENEMY\n2|GRE|아테나|하수인|6|4|6|지혜의 방패=KW:TAUNT|지혜(1)=DRAW:1|아이기스(2)=KW:SHIELD:FRIEND_MIN|승리의 여신(0)=BUFF:2:2:ALL_FRIEND_MIN\n3|GRE|포세이돈|하수인|7|5|7|바다의 주인=TURN_END>DMG:1:ALL_ENEMY_MIN|해일(3)=DMG:2:ALL_ENEMY_MIN|지진(2)=FREEZE:ENEMY|삼지창(0)=DESTROY:ENEMY_MIN\n4|GRE|하데스|하수인|6|4|5|저승의 왕=DEATH>SUMMON:망령:2:2|저승의 손길(2)=DMG:2:ENEMY_MIN|영혼 거두기(2)=HEAL:4:MY_HERO|투명 투구(0)=KW:STEALTH:SELF;BUFF:3:0:SELF\n5|GRE|헤라클레스|하수인|5|5|4|장사=KW:CHARGE|곤봉(1)=DMG:2:ENEMY_MIN|사자 가죽(2)=KW:SHIELD:SELF|12과업(0)=BUFF:3:3:SELF\n6|GRE|아킬레우스|하수인|4|5|2|불사의 몸=KW:SHIELD|창 던지기(1)=DMG:2:ENEMY|분노(1)=BUFF:2:0:SELF|스틱스의 축복(0)=KW:SHIELD:SELF;HEAL:5:SELF\n7|GRE|메두사|하수인|3|2|4|돌의 눈=PLAY>FREEZE:ENEMY_MIN|응시(2)=FREEZE:ENEMY|뱀 머리카락(1)=DMG:1:ALL_ENEMY_MIN|석화(0)=DESTROY:ENEMY_MIN\n8|GRE|판도라의 항아리|주문|3|0|0|DMG:2:ALL_MIN;DRAW:1|||\n9|GRE|프로메테우스의 불|주문|2|0|0|DMG:3:ENEMY|||\n# ================= 북유럽\n10|NOR|오딘|하수인|8|6|8|만물의 아버지=TURN_START>DRAW:1|궁니르(2)=DMG:4:ENEMY|까마귀(1)=DRAW:1|발할라(0)=SUMMON:에인헤랴르:3:3:TAUNT;SUMMON:에인헤랴르:3:3:TAUNT\n11|NOR|토르|하수인|6|5|5|천둥=KW:CHARGE|묠니르(2)=DMG:3:ENEMY|천둥 폭풍(3)=DMG:1:ALL_ENEMY|거인 살해(0)=DESTROY:ENEMY_MIN\n12|NOR|로키|하수인|3|2|3|변신술=KW:STEALTH|장난(1)=DMG:2:ANY_MIN|속임수(1)=FREEZE:ENEMY|라그나로크의 불씨(0)=DMG:2:ALL_MIN\n13|NOR|프레이야|하수인|5|3|5|사랑의 여신=TURN_END>HEAL:2:ALL_FRIEND|세이드 마법(2)=BUFF:1:2:FRIEND_MIN|깃털 망토(1)=KW:STEALTH:SELF|폴크방(0)=HEAL:8:MY_HERO\n14|NOR|헤임달|하수인|4|2|6|파수꾼=KW:TAUNT|걀라르호른(1)=DRAW:1|무지개다리(2)=KW:TAUNT:FRIEND_MIN|최후의 뿔피리(0)=BUFF:1:1:ALL_FRIEND_MIN\n15|NOR|펜리르|하수인|5|6|4|굶주린 늑대=KW:CHARGE|물어뜯기(1)=DMG:2:ENEMY_MIN|사슬 끊기(1)=BUFF:2:0:SELF|신을 삼킴(0)=DESTROY:ENEMY_MIN\n16|NOR|브륀힐드|하수인|2|2|2|전사자 인도=DEATH>DRAW:1|창(1)=DMG:1:ENEMY|날개(1)=KW:SHIELD:SELF|선택받은 자(0)=BUFF:2:2:FRIEND_MIN\n17|NOR|라그나로크|주문|8|0|0|DMG:6:ALL_MIN|||\n# ================= 이집트\n18|EGY|라|하수인|7|5|6|태양의 배=TURN_END>DMG:2:RANDOM_ENEMY|태양 광선(2)=DMG:3:ENEMY|새벽(2)=HEAL:4:FRIEND|아펩 격퇴(0)=DMG:4:ALL_ENEMY_MIN\n19|EGY|오시리스|하수인|5|3|6|부활=DEATH>SUMMON:오시리스의 미라:3:3:TAUNT|생명의 나일(2)=HEAL:3:ALL_FRIEND|심판(2)=DMG:2:ENEMY_MIN|저승의 왕좌(0)=BUFF:0:4:ALL_FRIEND_MIN\n20|EGY|이시스|하수인|4|2|5|마법의 어머니=PLAY>HEAL:4:FRIEND|치유(1)=HEAL:3:FRIEND|날개 보호(2)=KW:SHIELD:FRIEND_MIN|되살림(0)=SUMMON:되살아난 자:4:4\n21|EGY|아누비스|하수인|3|3|3|망자의 인도=DEATH>DMG:2:RANDOM_ENEMY_MIN|저울(1)=DMG:2:ENEMY_MIN|미라 붕대(1)=FREEZE:ENEMY_MIN|심장 달기(0)=DESTROY:ENEMY_MIN\n22|EGY|세트|하수인|4|4|3|사막 폭풍=KW:CHARGE|모래 바람(2)=DMG:1:ALL_ENEMY|혼돈(1)=DMG:2:ANY|형제 살해(0)=DMG:5:ENEMY\n23|EGY|세크메트|하수인|2|3|2|피의 사자=PLAY>DMG:1:ENEMY|포효(1)=BUFF:1:0:SELF|역병(2)=DMG:1:ALL_ENEMY_MIN|붉은 맥주(0)=HEAL:4:MY_HERO\n# ================= 메소포타미아·페르시아\n24|MES|길가메시|하수인|5|4|5|3분의 2는 신=KW:SHIELD|도끼(1)=DMG:2:ENEMY_MIN|우정(2)=SUMMON:엔키두의 혼:3:3:TAUNT|영생의 풀(0)=HEAL:10:MY_HERO\n25|MES|엔키두|하수인|3|3|4|야생의 힘=KW:TAUNT|박치기(1)=DMG:2:ENEMY_MIN|들짐승(1)=BUFF:1:1:SELF|하늘 황소 잡기(0)=DESTROY:ENEMY_MIN\n26|MES|티아마트|하수인|8|7|7|혼돈의 바다=PLAY>SUMMON:혼돈의 괴물:2:2;SUMMON:혼돈의 괴물:2:2|바다뱀(2)=SUMMON:바다뱀:2:3:TAUNT|독의 피(2)=DMG:2:ALL_ENEMY_MIN|태초의 물(0)=DMG:4:ALL\n27|MES|마르두크|하수인|7|6|6|신들의 왕=PLAY>DMG:4:ENEMY_MIN|바람 그물(2)=FREEZE:ENEMY|화살(2)=DMG:3:ENEMY|운명의 서판(0)=BUFF:2:2:ALL_FRIEND_MIN\n28|PER|로스탐|하수인|5|5|5|최고의 용사=KW:TAUNT|철퇴(1)=DMG:2:ENEMY_MIN|라흐시(1)=KW:CHARGE:SELF|일곱 과업(0)=BUFF:2:2:SELF;KW:SHIELD:SELF\n29|MES|아트라하시스의 홍수|주문|7|0|0|DESTROY:ALL_MIN|||\n# ================= 인도\n30|IND|시바|하수인|8|6|6|파괴의 춤=TURN_END>DMG:1:ALL_ENEMY|셋째 눈(3)=DMG:4:ENEMY|명상(1)=HEAL:4:SELF|탄다바(0)=DMG:5:ALL_ENEMY_MIN\n31|IND|비슈누|하수인|7|4|8|유지자=KW:TAUNT&TURN_END>HEAL:2:ALL_FRIEND_MIN|수다르샤나(2)=DMG:3:ENEMY_MIN|아바타라(2)=SUMMON:화신:3:3|칼키(0)=DMG:4:ALL_ENEMY\n32|IND|가네샤|하수인|3|2|5|장애 제거=PLAY>DRAW:1|지혜(1)=DRAW:1|코끼리 힘(1)=BUFF:0:3:SELF|길을 열다(0)=MANA:3\n33|IND|하누만|하수인|4|4|4|바람의 아들=KW:CHARGE|산 들기(2)=HEAL:5:FRIEND|꼬리 불(2)=DMG:2:ALL_ENEMY_MIN|랑카로 도약(0)=DMG:4:ENEMY_HERO\n34|IND|인드라|하수인|6|5|5|천둥왕=PLAY>DMG:3:ENEMY|바즈라(2)=DMG:3:ENEMY|소마(1)=BUFF:1:1:SELF|브리트라 격퇴(0)=DESTROY:ENEMY_MIN\n# ================= 중국\n35|CHN|반고|하수인|9|8|9|천지개벽=PLAY>DMG:3:ALL_ENEMY_MIN|도끼(2)=DMG:4:ENEMY|거인의 숨(1)=HEAL:4:MY_HERO|몸이 세상이 되다(0)=BUFF:3:3:ALL_FRIEND_MIN\n36|CHN|여와|하수인|5|2|6|하늘 깁기=KW:TAUNT|흙 사람(2)=SUMMON:흙 사람:2:2|오색 돌(2)=HEAL:4:FRIEND|인간 창조(0)=SUMMON:흙 사람:2:2;SUMMON:흙 사람:2:2;SUMMON:흙 사람:2:2\n37|CHN|후예|하수인|4|3|3|명궁=PLAY>DMG:2:ENEMY|활(1)=DMG:2:ENEMY|연발(2)=DMG:1:ALL_ENEMY|아홉 해 쏘기(0)=DMG:3:ALL_ENEMY_MIN\n38|CHN|치우|하수인|5|5|4|전쟁의 신=KW:CHARGE|짙은 안개(1)=KW:STEALTH:SELF|병기(1)=BUFF:2:0:SELF|구려 군단(0)=SUMMON:구려 전사:3:2:CHARGE;SUMMON:구려 전사:3:2:CHARGE\n39|CHN|우의 치수|주문|3|0|0|FREEZE:ALL_ENEMY_MIN|||\n40|CHN|신농의 약초|주문|1|0|0|HEAL:6:FRIEND|||\n# ================= 일본\n41|JPN|아마테라스|하수인|6|4|6|태양 여신=TURN_START>HEAL:2:MY_HERO&SAGA:아마테라스:3&CHAIN>BUFF:2:2:ALL_FRIEND_MIN|햇살(2)=DMG:2:ENEMY;HEAL:2:MY_HERO|거울(1)=KW:SHIELD:SELF|동굴에서 나오다(0)=BUFF:2:2:ALL_FRIEND_MIN\n42|JPN|스사노오|하수인|5|5|4|폭풍=KW:CHARGE&SAGA:오로치:2&CHAIN>DMG:3:RANDOM_ENEMY_MIN|검(1)=DMG:2:ENEMY_MIN|폭풍우(2)=DMG:1:ALL_ENEMY|오로치 퇴치(0)=DESTROY:ENEMY_MIN\n43|JPN|야마타노오로치|하수인|7|8|8|여덟 머리=KW:TAUNT|독 숨결(2)=DMG:2:ALL_ENEMY_MIN|꼬리(1)=DMG:3:ENEMY_MIN|여덟 술통(0)=HEAL:8:SELF\n# ================= 한국\n44|KOR|환웅|하수인|7|5|6|천부인=PLAY>SUMMON:풍백:1:3;SUMMON:우사:1:3;SUMMON:운사:1:3&SAGA:단군:3&CHAIN>DRAW:1|바람(1)=DMG:1:ALL_ENEMY_MIN|비(2)=HEAL:3:ALL_FRIEND|신시(0)=BUFF:1:2:ALL_FRIEND_MIN\n45|KOR|단군|하수인|5|4|5|홍익인간=TURN_END>HEAL:1:ALL_FRIEND&SAGA:단군:5&CHAIN>SUMMON:고조선 백성:2:3:TAUNT|아사달(1)=KW:TAUNT:SELF|고조선(2)=BUFF:1:1:ALL_FRIEND_MIN|산신이 되다(0)=HEAL:6:ALL_FRIEND\n46|KOR|웅녀|하수인|2|1|4|백일의 인내=KW:TAUNT&SAGA:단군:2&CHAIN>BUFF:1:1:SELF|쑥과 마늘(1)=HEAL:3:FRIEND|인내(1)=BUFF:0:2:SELF|사람이 되다(0)=BUFF:3:3:SELF\n47|KOR|주몽|하수인|4|4|3|신궁=PLAY>DMG:1:ENEMY&SAGA:주몽:3&CHAIN>DMG:2:RANDOM_ENEMY_MIN|활(1)=DMG:2:ENEMY|자라 다리(1)=KW:STEALTH:SELF|고구려 건국(0)=SUMMON:고구려 무사:3:3:TAUNT\n48|KOR|바리공주|하수인|4|2|5|저승 인도=DEATH>HEAL:5:MY_HERO|생명수(2)=HEAL:4:FRIEND|꽃(1)=HEAL:2:ALL_FRIEND_MIN|되살림(0)=SUMMON:되살아난 부모:3:3;SUMMON:되살아난 부모:3:3\n49|KOR|박혁거세|하수인|3|2|3|알에서 태어남=KW:SHIELD|빛(1)=DMG:1:ENEMY|서라벌(1)=BUFF:1:1:FRIEND_MIN|신라 건국(0)=BUFF:1:1:ALL_FRIEND_MIN\n# ================= 아메리카\n50|AZT|케찰코아틀|하수인|6|4|6|깃털 뱀=KW:SHIELD|바람(2)=DMG:2:ENEMY;DRAW:1|뼈와 피(2)=SUMMON:사람:2:2|다섯째 태양(0)=HEAL:5:ALL_FRIEND\n51|AZT|우이칠로포치틀리|하수인|5|5|4|완전 무장=KW:CHARGE&KW:SHIELD|불뱀(2)=DMG:3:ENEMY|태양의 길(1)=BUFF:1:1:SELF|달을 꺾다(0)=DMG:4:ENEMY_MIN\n52|MAY|우나푸|하수인|4|3|3|영웅 쌍둥이=PLAY>SUMMON:슈발랑케:3:3|바람총(1)=DMG:2:ENEMY|공놀이(1)=FREEZE:ENEMY_MIN|해와 달(0)=BUFF:2:2:ALL_FRIEND_MIN\n53|INC|비라코차|하수인|7|5|7|창조자=TURN_END>SUMMON:돌 거인:2:2|해 띄우기(2)=DMG:3:ENEMY|홍수(3)=DMG:2:ALL_MIN|운누 파차쿠티(0)=DMG:5:ALL_MIN\n# ================= 그 밖의 주문\n54|POL|마우이의 낚싯바늘|주문|2|0|0|DRAW:2|||\n55|MNG|텡그리의 축복|주문|1|0|0|BUFF:2:2:FRIEND_MIN|||\n56|CEL|다그다의 가마솥|주문|3|0|0|HEAL:4:ALL_FRIEND;ARMOR:3|||\n57|SLA|페룬의 번개|주문|4|0|0|DMG:5:ENEMY|||\n# ================= 북유럽 룬 (주문) — 고대 게르만의 엘더 푸타르크 24자 가운데 19자\n58|NOR|페후의 룬|주문|1|0|0|MANA:2|||\n59|NOR|우루즈의 룬|주문|2|0|0|BUFF:3:1:FRIEND_MIN|||\n60|NOR|투리사즈의 룬|주문|2|0|0|KW:TAUNT:FRIEND_MIN;BUFF:0:3:FRIEND_MIN|||\n61|NOR|안수즈의 룬|주문|3|0|0|DRAW:2;ARMOR:2|||\n62|NOR|라이도의 룬|주문|1|0|0|KW:CHARGE:FRIEND_MIN;BUFF:1:0:FRIEND_MIN|||\n63|NOR|케나즈의 룬|주문|2|0|0|DMG:3:ENEMY_MIN|||\n64|NOR|게보의 룬|주문|3|0|0|BUFF:1:1:ALL_FRIEND_MIN|||\n65|NOR|하갈라즈의 룬|주문|3|0|0|DMG:1:ALL_ENEMY;FREEZE:RANDOM_ENEMY_MIN|||\n66|NOR|나우디즈의 룬|주문|2|0|0|FREEZE:ENEMY;DRAW:1|||\n67|NOR|이사의 룬|주문|2|0|0|FREEZE:ENEMY_MIN;DMG:2:ENEMY_MIN|||\n68|NOR|예라의 룬|주문|4|0|0|HEAL:3:ALL_FRIEND;DRAW:1|||\n69|NOR|에이와즈의 룬|주문|2|0|0|KW:SHIELD:FRIEND_MIN;HEAL:4:FRIEND_MIN|||\n70|NOR|알기즈의 룬|주문|5|0|0|KW:SHIELD:ALL_FRIEND_MIN|||\n71|NOR|소윌로의 룬|주문|4|0|0|DMG:4:ENEMY;HEAL:2:MY_HERO|||\n72|NOR|티와즈의 룬|주문|3|0|0|BUFF:2:2:FRIEND_MIN;KW:TAUNT:FRIEND_MIN|||\n73|NOR|베르카나의 룬|주문|3|0|0|SUMMON:자작나무 정령:2:3;SUMMON:자작나무 정령:2:3|||\n74|NOR|에와즈의 룬|주문|4|0|0|KW:CHARGE:ALL_FRIEND_MIN|||\n75|NOR|다가즈의 룬|주문|5|0|0|DMG:3:ALL_ENEMY_MIN|||\n76|NOR|오실라의 룬|주문|5|0|0|SUMMON:조상의 영혼:3:3:TAUNT;SUMMON:조상의 영혼:3:3:TAUNT|||\n# ================= 게티아 (솔로몬의 72악마 가운데 16, 중세 마도서 '레메게톤' 전승)\n77|GOE|바알|하수인|7|6|6|투명의 왕=KW:STEALTH|세 개의 머리(2)=DMG:3:ENEMY|군단 소환(3)=SUMMON:악마 군단병:2:2;SUMMON:악마 군단병:2:2|66군단(0)=BUFF:2:2:ALL_FRIEND_MIN\n78|GOE|아가레스|하수인|4|3|4|지진=PLAY>FREEZE:ENEMY_MIN|땅 흔들기(2)=DMG:1:ALL_ENEMY_MIN|악어 탄 노인(1)=KW:TAUNT:SELF|대지진(0)=DMG:2:ALL_ENEMY_MIN;FREEZE:RANDOM_ENEMY_MIN\n79|GOE|바사고|하수인|3|1|4|예지=PLAY>DRAW:1|미래 보기(1)=DRAW:1|감춘 것 드러내기(1)=DMG:2:ANY_MIN|과거와 미래(0)=DRAW:2\n80|GOE|가미긴|하수인|3|2|3|망령 소환자=DEATH>SUMMON:망자의 영혼:2:1|영혼 부르기(2)=SUMMON:망자의 영혼:2:1|저승의 말(1)=BUFF:1:1:SELF|바다에 잠든 혼(0)=SUMMON:익사자의 혼:2:2:TAUNT;SUMMON:익사자의 혼:2:2:TAUNT\n81|GOE|마르바스|하수인|4|4|4|사자 대장=KW:TAUNT|역병(2)=DMG:1:ALL_ENEMY|치유(2)=HEAL:4:FRIEND|변신술(0)=BUFF:3:0:SELF;KW:CHARGE:SELF\n82|GOE|발레포르|하수인|2|3|2|도둑의 길=KW:STEALTH|기습(1)=DMG:2:ENEMY_MIN|훔치기(1)=MANA:2|도둑 무리(0)=SUMMON:도둑:2:1:CHARGE;SUMMON:도둑:2:1:CHARGE\n83|GOE|아몬 후작|하수인|5|5|4|불 뿜는 늑대=KW:CHARGE|불꽃 숨(2)=DMG:3:ENEMY|다툼 풀기(1)=HEAL:3:ALL_FRIEND|지옥불(0)=DMG:3:ALL_ENEMY\n84|GOE|바르바토스|하수인|4|3|4|사냥꾼의 뿔=PLAY>SUMMON:사냥개:2:1:CHARGE|활(1)=DMG:2:ENEMY|짐승의 말(1)=BUFF:1:1:OTHER_FRIEND_MIN|숨은 보물(0)=DRAW:2\n85|GOE|파이몬|하수인|7|5|7|학문의 왕=TURN_END>ARMOR:2|학문(1)=DRAW:1|나팔 소리(2)=FREEZE:ENEMY|200군단(0)=SUMMON:파이몬의 군단:3:3:TAUNT;SUMMON:파이몬의 군단:3:3:TAUNT\n86|GOE|부에르|하수인|3|2|4|치유의 바퀴=TURN_END>HEAL:2:ALL_FRIEND_MIN|약초(1)=HEAL:4:FRIEND|회전(2)=DMG:1:ALL_ENEMY_MIN|만병통치(0)=HEAL:8:ALL_FRIEND\n87|GOE|아스타로트|하수인|6|5|6|독의 숨=PLAY>DMG:2:ALL_ENEMY_MIN|비밀 지식(1)=DRAW:1|용 타기(2)=KW:CHARGE:SELF;BUFF:2:0:SELF|타락(0)=DESTROY:ENEMY_MIN\n88|GOE|벨리알|하수인|8|7|7|불의 전차=KW:CHARGE&KW:SHIELD|불 수레(2)=DMG:3:ENEMY|거짓 은혜(2)=BUFF:2:2:FRIEND_MIN|무법의 왕(0)=DMG:4:ALL_ENEMY_MIN\n89|GOE|아스모데우스|하수인|7|6|6|세 머리=TURN_END>DMG:2:RANDOM_ENEMY|기하학(1)=DRAW:1|보물 창고(1)=MANA:2|진노(0)=DMG:3:ALL_ENEMY\n90|GOE|포칼로르|하수인|5|4|5|폭풍의 바다=PLAY>DMG:3:ENEMY_MIN|침몰(2)=DMG:3:ENEMY_MIN|바람 지배(1)=FREEZE:ENEMY|해일(0)=DMG:2:ALL_ENEMY_MIN;FREEZE:RANDOM_ENEMY_MIN\n91|GOE|단탈리온|하수인|4|3|5|천의 얼굴=KW:STEALTH|마음 읽기(1)=DRAW:1|생각 바꾸기(2)=FREEZE:ENEMY_MIN|환영(0)=SUMMON:환영:3:3;SUMMON:환영:3:3\n92|GOE|안드로말리우스|하수인|3|3|3|뱀을 든 백작=KW:TAUNT|뱀(1)=DMG:2:ENEMY_MIN|되찾기(2)=HEAL:4:MY_HERO|악인 처벌(0)=DESTROY:ENEMY_MIN\n93|GOE|소환진|주문|2|0|0|SUMMON:하급 악마:2:2;DRAW:1|||\n94|GOE|솔로몬의 인장|주문|4|0|0|FREEZE:ALL_ENEMY_MIN;DMG:1:ALL_ENEMY_MIN|||\n95|GOE|솔로몬의 반지|주문|6|0|0|SUMMON:봉인된 악마:4:4:TAUNT;SUMMON:봉인된 악마:4:4:TAUNT|||\n# ================= 북유럽 룬 (나머지 5자 — 이로써 24자 완성)\n96|NOR|우뇨의 룬|주문|3|0|0|HEAL:2:ALL_FRIEND;BUFF:1:0:ALL_FRIEND_MIN|||\n97|NOR|페르스의 룬|주문|3|0|0|DMG:3:RANDOM_ENEMY;DRAW:1|||\n98|NOR|라구즈의 룬|주문|4|0|0|DMG:2:ALL_ENEMY_MIN;HEAL:2:ALL_FRIEND_MIN|||\n99|NOR|인구즈의 룬|주문|3|0|0|HEAL:6:MY_HERO;DRAW:1|||\n100|NOR|만나즈의 룬|주문|3|0|0|SUMMON:마을 사람:1:2;SUMMON:마을 사람:1:2;SUMMON:마을 사람:1:2|||\n# ================= 타로 메이저 아르카나 22장 (주문) — 정방향의 뜻을 효과로\n101|TAR|0 바보|주문|1|0|0|DRAW:1;MANA:1|||\n102|TAR|1 마법사|주문|3|0|0|DMG:2:ANY;DRAW:1|||\n103|TAR|2 여사제|주문|2|0|0|DRAW:1;ARMOR:3|||\n104|TAR|3 여황제|주문|4|0|0|SUMMON:풍요의 아이:2:2;SUMMON:풍요의 아이:2:2;HEAL:3:MY_HERO|||\n105|TAR|4 황제|주문|4|0|0|KW:TAUNT:ALL_FRIEND_MIN;BUFF:0:2:ALL_FRIEND_MIN|||\n106|TAR|5 교황|주문|3|0|0|BUFF:1:3:FRIEND_MIN;DRAW:1|||\n107|TAR|6 연인|주문|3|0|0|KW:SHIELD:FRIEND_MIN;HEAL:3:ALL_FRIEND_MIN|||\n108|TAR|7 전차|주문|2|0|0|KW:CHARGE:FRIEND_MIN;BUFF:2:0:FRIEND_MIN|||\n109|TAR|8 힘|주문|3|0|0|BUFF:2:4:FRIEND_MIN|||\n110|TAR|9 은둔자|주문|2|0|0|KW:STEALTH:FRIEND_MIN;DRAW:1|||\n111|TAR|10 운명의 수레바퀴|주문|4|0|0|DMG:2:RANDOM_ENEMY;DMG:2:RANDOM_ENEMY;DMG:2:RANDOM_ENEMY|||\n112|TAR|11 정의|주문|3|0|0|CHOOSE>이간{FIGHT_ENEMIES;HEAL:3:MY_HERO}/탈취{DISCARD:1;HEAL:3:MY_HERO}|||\n113|TAR|12 매달린 남자|주문|1|0|0|DESTROY:FRIEND_MIN;DRAW:2|||\n114|TAR|13 죽음|주문|8|0|0|DESTROY:ALL_MIN;DRAW:2|||\n115|TAR|14 절제|주문|3|0|0|HEAL:4:ALL_FRIEND|||\n116|TAR|15 악마|주문|2|0|0|BUFF:4:0:FRIEND_MIN;DMG:3:MY_HERO|||\n117|TAR|16 탑|주문|4|0|0|DMG:3:ALL|||\n118|TAR|17 별|주문|3|0|0|HEAL:5:MY_HERO;DRAW:1|||\n119|TAR|18 달|주문|3|0|0|KW:STEALTH:ALL_FRIEND_MIN;FREEZE:RANDOM_ENEMY_MIN|||\n120|TAR|19 태양|주문|6|0|0|DMG:2:ALL_ENEMY;HEAL:3:ALL_FRIEND|||\n121|TAR|20 심판|주문|6|0|0|SUMMON:깨어난 영혼:4:4:TAUNT;SUMMON:깨어난 영혼:4:4|||\n122|TAR|21 세계|주문|8|0|0|BUFF:3:3:ALL_FRIEND_MIN;DRAW:2;HEAL:5:MY_HERO|||\n# ================= 십이지(띠) 하수인 12장 + 오행 주문 5장\n123|GAN|쥐 (자子)|하수인|1|1|3|재빠른 첫째=KW:STEALTH|갉아먹기(1)=DMG:1:ENEMY_MIN|새끼 치기(1)=SUMMON:생쥐:1:1|첫째 자리(0)=DRAW:2\n124|GAN|소 (축丑)|하수인|3|2|6|우직함=KW:TAUNT|밭갈이(1)=ARMOR:3|되새김(1)=BUFF:0:2:SELF|황소걸음(0)=BUFF:2:2:SELF\n125|GAN|호랑이 (인寅)|하수인|5|5|5|산군=KW:CHARGE|할퀴기(1)=DMG:2:ENEMY_MIN|포효(2)=FREEZE:ENEMY_MIN|백수의 왕(0)=DMG:4:ENEMY\n126|GAN|토끼 (묘卯)|하수인|2|2|3|영리함=PLAY>DRAW:1|깡충(1)=KW:STEALTH:SELF|달의 절구(1)=HEAL:3:FRIEND|토끼의 꾀(0)=FREEZE:ALL_ENEMY_MIN\n127|GAN|용 (진辰)|하수인|8|7|8|비구름=KW:SHIELD&TURN_END>DMG:1:ALL_ENEMY|여의주(2)=DMG:4:ENEMY|단비(2)=HEAL:4:ALL_FRIEND|승천(0)=DMG:4:ALL_ENEMY\n128|GAN|뱀 (사巳)|하수인|3|3|3|풀숲=KW:STEALTH|독니(1)=DMG:3:ENEMY_MIN|허물 벗기(1)=HEAL:3:SELF|똬리(0)=KW:TAUNT:SELF;BUFF:0:4:SELF\n129|GAN|말 (오午)|하수인|4|4|4|질풍=KW:CHARGE|발굽(1)=DMG:2:ENEMY_MIN|함께 달리기(2)=KW:CHARGE:OTHER_FRIEND_MIN|천리마(0)=BUFF:3:0:ALL_FRIEND_MIN\n130|GAN|양 (미未)|하수인|2|1|5|온순함=KW:TAUNT|풀 뜯기(1)=HEAL:2:ALL_FRIEND_MIN|양털(1)=ARMOR:3|양 떼(0)=SUMMON:양:1:3:TAUNT;SUMMON:양:1:3:TAUNT\n131|GAN|원숭이 (신申)|하수인|3|3|4|장난꾸러기=PLAY>DMG:1:RANDOM_ENEMY_MIN|재주(1)=DRAW:1|흉내(1)=BUFF:2:0:SELF|분신술(0)=SUMMON:분신:3:3;SUMMON:분신:3:3\n132|GAN|닭 (유酉)|하수인|2|2|3|새벽 알림=TURN_START>HEAL:1:MY_HERO|쪼기(1)=DMG:1:ENEMY|홰치기(1)=DRAW:1|해를 부름(0)=HEAL:6:ALL_FRIEND\n133|GAN|개 (술戌)|하수인|3|3|4|충직함=KW:TAUNT&DEATH>DMG:2:RANDOM_ENEMY_MIN|물기(1)=DMG:2:ENEMY_MIN|집 지키기(1)=BUFF:0:2:SELF|지킴이(0)=KW:SHIELD:ALL_FRIEND_MIN\n134|GAN|돼지 (해亥)|하수인|4|3|7|넉넉함=TURN_END>HEAL:2:SELF|돌진(2)=DMG:3:ENEMY_MIN|복 부르기(1)=MANA:2|복돼지(0)=DRAW:2;ARMOR:3\n135|GAN|목(木) 오행|주문|3|0|0|SUMMON:나무 정령:2:3:TAUNT;HEAL:3:MY_HERO|||\n136|GAN|화(火) 오행|주문|4|0|0|DMG:3:ENEMY;DMG:1:ALL_ENEMY_MIN|||\n137|GAN|토(土) 오행|주문|2|0|0|ARMOR:5|||\n138|GAN|금(金) 오행|주문|2|0|0|BUFF:3:0:FRIEND_MIN|||\n139|GAN|수(水) 오행|주문|3|0|0|FREEZE:ENEMY;HEAL:3:ALL_FRIEND_MIN|||\n# ================= 동양 상징 · 조정자\n140|EAS|춘분 (春分)|하수인|3|1|5|낮밤의 저울=CHOOSE>이간{FIGHT_ENEMIES}/균형 강화{FLAG:BALANCE2;FLAG:NARROW}|싹틔움(1)=HEAL:3:FRIEND_MIN|봄비(1)=BUFF:1:1:OTHER_FRIEND_MIN|천지 균형(0)=HEAL:4:ALL_FRIEND;DRAW:1\n141|EAS|추분 (秋分)|하수인|3|1|5|결실의 저울=CHOOSE>탈취{DISCARD:1}/대치{FACE_OFF}|거둠(1)=ARMOR:3|서리 바람(1)=FREEZE:ENEMY_MIN|가을걷이(0)=DRAW:2\n142|EAS|수화기제 (水火旣濟)|하수인|4|2|6|이미 건넘=KW:TAUNT&CHOOSE>대치{FACE_OFF}/이간{FIGHT_ENEMIES;FLAG:WITHER}|물불 다스림(2)=FREEZE:ENEMY_MIN|끓는 솥(1)=DMG:2:ENEMY_MIN|완성(0)=HEAL:5:ALL_FRIEND_MIN\n143|EAS|화수미제 (火水未濟)|하수인|4|2|6|아직 못 건넘=CHOOSE>고독{FLAG:LONE}/탈취{DISCARD:2;INFIGHT}|불길(2)=DMG:2:ENEMY|여우 꼬리(1)=DRAW:1|새 시작(0)=MANA:2;DRAW:1\n# ================= 한국 · 서사와 사건 (v2.5)\n144|KOR|동굴 속의 곰|하수인|1|1|3|백일 기도=KW:TAUNT&SAGA:단군:1|버티기(1)=BUFF:0:2:SELF|쑥 한 줌(1)=HEAL:2:MY_HERO|삼칠일(0)=BUFF:1:2:SELF\n145|KOR|신단수 아래의 웅녀|하수인|3|2|4|아이를 비는 기도=SAGA:단군:3&CHAIN>HEAL:3:MY_HERO;DRAW:1|기도(1)=HEAL:2:FRIEND|신단수(1)=KW:TAUNT:SELF|하늘이 응답하다(0)=DRAW:2\n146|KOR|환웅과 혼인한 웅녀|하수인|4|3|5|혼인=SAGA:단군:4&CHAIN>BUFF:1:2:ALL_FRIEND_MIN|축복(1)=BUFF:1:1:FRIEND_MIN|모성(2)=HEAL:3:ALL_FRIEND_MIN|단군을 낳다(0)=SUMMON:어린 단군:2:3:TAUNT\n147|KOR|유화|하수인|2|1|4|물의 딸=PLAY>HEAL:2:MY_HERO&SAGA:주몽:1|햇빛 피하기(1)=KW:STEALTH:SELF|알을 품다(1)=HEAL:3:FRIEND|어머니의 지혜(0)=DRAW:1\n148|KOR|알 속의 주몽|하수인|1|0|3|큰 알=KW:SHIELD&SAGA:주몽:2&CHAIN>BUFF:2:0:SELF|깨어나기(1)=BUFF:1:1:SELF|짐승도 지키다(1)=KW:TAUNT:SELF|알을 깨다(0)=BUFF:3:2:SELF\n149|KOR|온조|하수인|3|3|3|남쪽으로=SAGA:주몽:4&CHAIN>SUMMON:십제 군사:2:2|창(1)=DMG:1:ENEMY|성 쌓기(1)=ARMOR:3|백제 건국(0)=SUMMON:백제 군사:3:3:TAUNT\n153|KOR|해모수|하수인|5|4|5|오룡거=KW:CHARGE|하늘 수레(2)=DMG:2:ENEMY|천제의 아들(1)=BUFF:1:1:SELF|해모수의 귀환(0)=DMG:3:ALL_ENEMY_MIN\n154|KOR|마고할미|하수인|8|6|9|땅을 만든 여신=KW:TAUNT&PLAY>SUMMON:산:0:4:TAUNT|치마폭(2)=ARMOR:4|돌 던지기(2)=DMG:3:ENEMY_MIN|산과 섬(0)=SUMMON:섬:0:5:TAUNT;SUMMON:섬:0:5:TAUNT\n155|KOR|대별왕·소별왕|하수인|4|3|3|활 쏘는 쌍둥이=PLAY>DMG:2:RANDOM_ENEMY_MIN;DMG:2:RANDOM_ENEMY_MIN|화살(1)=DMG:1:ENEMY|해 떨어뜨리기(2)=DMG:3:ENEMY_MIN|해와 달 하나씩(0)=DMG:2:ALL_ENEMY_MIN\n156|KOR|김수로|하수인|4|3|4|구지봉의 알=PLAY>SUMMON:가야의 알:0:2;SUMMON:가야의 알:0:2|철(1)=BUFF:1:0:FRIEND_MIN|가야 연맹(2)=BUFF:1:1:ALL_FRIEND_MIN|금관가야(0)=ARMOR:6\n157|KOR|허황옥|하수인|3|2|4|바다 건너온 공주=TURN_END>HEAL:2:ALL_FRIEND_MIN|비단(1)=KW:SHIELD:FRIEND_MIN|파사석탑(2)=ARMOR:4|아유타국의 축복(0)=HEAL:8:MY_HERO\n158|KOR|삼신할미|하수인|3|2|4|아기 점지=TURN_END>HEAL:1:ALL_FRIEND_MIN|점지(1)=SUMMON:아기:1:1|명줄(1)=HEAL:3:FRIEND|생불꽃(0)=BUFF:2:2:FRIEND_MIN\n165|KOR|신단수 강림|주문|4|0|0|SUMMON:신시의 무리:2:2;SUMMON:신시의 무리:2:2;HEAL:2:MY_HERO|||\n166|KOR|쑥과 마늘|주문|1|0|0|BUFF:0:3:FRIEND_MIN|||\n167|KOR|아사달 도읍|주문|4|0|0|ARMOR:4;BUFF:1:1:ALL_FRIEND_MIN|||\n168|KOR|해와 달 쏘기|주문|3|0|0|DMG:3:ENEMY_MIN;DMG:1:RANDOM_ENEMY_MIN|||\n169|KOR|마고할미의 치마|주문|5|0|0|SUMMON:산:0:4:TAUNT;SUMMON:섬:0:4:TAUNT;ARMOR:2|||\n170|KOR|연오랑 세오녀|주문|2|0|0|FREEZE:ENEMY_MIN;DRAW:1|||\n171|KOR|생명수|주문|3|0|0|HEAL:6:FRIEND;DRAW:1|||\n172|KOR|구지가|주문|2|0|0|SUMMON:가야의 알:0:2;SUMMON:가야의 알:0:2;DRAW:1|||\n# ================= 일본 · 서사와 사건 (v2.5)\n150|JPN|동굴에 숨은 아마테라스|하수인|3|1|6|바위 문=KW:TAUNT&SAGA:아마테라스:1|숨기(1)=BUFF:0:2:SELF|어둠(1)=FREEZE:ENEMY_MIN|빛을 거두다(0)=FREEZE:ALL_ENEMY_MIN\n151|JPN|아메노우즈메|하수인|2|2|2|바위 앞의 춤=PLAY>BUFF:1:0:OTHER_FRIEND_MIN&SAGA:아마테라스:2&CHAIN>DRAW:1|춤(1)=BUFF:1:0:FRIEND_MIN|웃음(1)=HEAL:2:ALL_FRIEND_MIN|신들의 잔치(0)=BUFF:1:1:ALL_FRIEND_MIN\n152|JPN|구시나다히메|하수인|2|1|4|빗으로 변한 공주=KW:STEALTH&SAGA:오로치:1|빗(1)=BUFF:0:2:FRIEND_MIN|여덟 술통 준비(1)=FREEZE:ENEMY_MIN|이즈모의 아내(0)=HEAL:5:MY_HERO\n159|JPN|이자나기|하수인|4|3|5|천상의 창=PLAY>SUMMON:섬:0:3:TAUNT|창 휘젓기(1)=DMG:1:ALL_ENEMY_MIN|정화(1)=HEAL:3:FRIEND|삼귀자를 낳다(0)=DRAW:3\n160|JPN|이자나미|하수인|5|4|5|요미의 여왕=DEATH>DMG:2:ALL_ENEMY_MIN|저주(2)=DMG:2:ENEMY|불의 신(1)=DMG:1:ALL_MIN|천 명을 데려가리라(0)=DESTROY:ENEMY_MIN\n161|JPN|쓰쿠요미|하수인|3|3|2|달의 신=KW:STEALTH|달빛(1)=DMG:2:ENEMY_MIN|밤의 나라(1)=KW:STEALTH:SELF|월식(0)=FREEZE:ALL_ENEMY_MIN\n162|JPN|오쿠니누시|하수인|4|3|5|나라 만들기=TURN_END>HEAL:2:MY_HERO|흰 토끼 구하기(1)=HEAL:3:FRIEND|이즈모(2)=ARMOR:4|나라를 넘기다(0)=DRAW:2;HEAL:5:MY_HERO\n163|JPN|니니기|하수인|3|2|3|천손=PLAY>DRAW:1|벼(1)=HEAL:2:ALL_FRIEND|세 신기(2)=KW:SHIELD:FRIEND_MIN|강림(0)=SUMMON:호위 신:2:3:TAUNT\n164|JPN|진무 천황|하수인|6|5|5|동정=PLAY>BUFF:1:1:ALL_FRIEND_MIN|까마귀 길잡이(1)=DRAW:1|야마토(2)=BUFF:1:1:FRIEND_MIN|첫 천황(0)=BUFF:2:2:ALL_FRIEND_MIN\n173|JPN|국토 낳기|주문|3|0|0|SUMMON:섬:0:3:TAUNT;SUMMON:섬:0:3:TAUNT|||\n174|JPN|요미 방문|주문|2|0|0|DRAW:2;DMG:2:MY_HERO|||\n175|JPN|아마노이와토|주문|5|0|0|FREEZE:ALL_ENEMY_MIN;HEAL:4:MY_HERO|||\n176|JPN|여덟 술통|주문|3|0|0|FREEZE:ENEMY_MIN;DMG:3:ENEMY_MIN|||\n177|JPN|삼종신기|주문|4|0|0|KW:SHIELD:FRIEND_MIN;BUFF:2:2:FRIEND_MIN|||\n178|JPN|천손 강림|주문|5|0|0|SUMMON:천손의 호위:3:3;SUMMON:천손의 호위:3:3|||\n", "tags": "# 신화 카드 속성 (번호|주속성|보조속성|종류|팔괘|정역|근거)\n# 종류: 단 = 속성 하나 / 양 = 공격할 때 주속성, 방어할 때 보조 속성 / 조정자 = 정반대(수↔화, 목↔금)를 품어 상쇄됨 / 무 = 속성 없음(비용 +1)\n# 팔괘: 乾 兌 離 震 巽 坎 艮 坤 (震 동, 巽 동남, 離 남, 坤 남서, 兌 서, 乾 북서, 坎 북, 艮 동북) / 정역: Y = 룬·타로\n1|목||단|震||천둥(우레)\n2|금||단|兌||지혜·전쟁(창과 방패)\n3|수||단|坎||바다\n4|수||단|坎||저승(어둠·겨울)\n5|토||단|艮||산 같은 힘, 장사\n6|금||단|乾||전사\n7|토||단|艮||돌로 만드는 눈\n8|토||단|坤||흙 항아리, 재앙의 근원\n9|화||단|離||불\n10|금||단|乾||하늘의 아버지(乾=아버지)\n11|목||단|震||천둥\n12|화||단|離||불의 거인 혈통·속임수\n13|목||단|巽||사랑·풍요, 깃털 망토(바람)\n14|토||단|艮||파수꾼(산=멈춤·지킴)\n15|화|금|양|乾||늑대의 이빨, 신을 삼킴 → 상극을 품어 이기는 쪽이 주속성\n16|금||단|兌||발키리(전사·창)\n17|화||단|離||세상을 태우는 불\n18|화||단|離||태양\n19|수||단|坎||저승·나일의 부활\n20|토||단|坤||어머니(坤=어머니)\n21|토||단|艮||무덤·미라의 수호\n22|토|금|양|坤||사막 폭풍\n23|화||단|離||불타는 사자\n24|금||단|乾||왕·도끼\n25|목||단|巽||야생의 숲\n26|수||단|坎||태초의 바닷물\n27|목|수|양|震||바람과 폭풍의 왕\n28|금||단|兌||용사·철퇴\n29|수||단|坎||홍수\n30|화||단|離||파괴의 춤, 셋째 눈의 불\n31|수||단|坎||우유 바다에 누운 유지자\n32|목|토|양|坤||장애 제거, 대지의 풍요 → 상극을 품어 이기는 쪽이 주속성\n33|목||단|巽||바람의 아들\n34|목||단|震||천둥왕(바즈라)\n35|토||단|艮||천지개벽, 몸이 산과 땅이 됨\n36|토||단|坤||흙으로 사람을 빚음\n37|화|금|양|乾||활(쇠·금속) → 상극을 품어 이기는 쪽이 주속성\n38|금||단|兌||병기를 만든 전쟁의 신\n39|수||단|坎||물을 다스림\n40|목||단|巽||약초\n41|화||단|離||태양 여신\n42|목|수|양|震||폭풍\n43|수||단|坎||강의 큰 뱀\n44|목||단|巽||풍백·우사·운사(바람·비·구름)\n45|토||단|艮||산신이 됨\n46|토||단|坤||곰에서 사람, 인내(땅)\n47|금||단|乾||신궁(활)\n48|수||단|坎||생명수·저승\n49|화||단|離||빛, 알에서 태어남\n50|목||단|巽||바람의 신\n51|화||단|離||태양·전쟁\n52|화|목|양|離||해가 된 쌍둥이\n53|수||단|坎||티티카카 호수, 홍수\n54|수||단|坎||바다에서 섬을 낚음\n55|금||단|乾||영원한 푸른 하늘(乾)\n56|토||단|坤||풍요의 가마솥\n57|목||단|震||번개\n58|화||단|離|Y|룬 원소: 불\n59|토||단|艮|Y|룬 원소: 흙\n60|화||단|離|Y|룬 원소: 불\n61|목||단|巽|Y|룬 원소: 바람\n62|목||단|巽|Y|룬 원소: 공기\n63|화||단|離|Y|룬 원소: 불(횃불)\n64|목||단|巽|Y|룬 원소: 바람\n65|수||단|坎|Y|룬 원소: 물·눈\n66|화||단|離|Y|룬 원소: 불(필요의 불꽃)\n67|수||단|坎|Y|룬 원소: 물(얼음)\n68|토||단|坤|Y|룬 원소: 흙(수확)\n69|금||단|乾|Y|룬 원소: 자료에 \"모든 원소\" — 생사의 주목나무로 금\n70|목||단|巽|Y|룬 원소: 바람\n71|목|화|양|巽|Y|룬 원소: 자료는 공기, 뜻은 태양(화도 가능)\n72|목||단|巽|Y|룬 원소: 바람\n73|토||단|坤|Y|룬 원소: 흙\n74|토||단|坤|Y|룬 원소: 흙\n75|화||단|離|Y|룬 원소: 불\n76|||무||Y|룬 원소: 자료에 원소 없음 — 물려받은 땅으로 토 → 무속성\n77|목|화|양|震||폭풍의 신 바알\n78|토||단|艮||지진\n79|수||단|坎||예언(감춘 것)\n80|수||단|坎||망자·물에 잠든 혼\n81|금||단|兌||기계·질병의 사자\n82|금|수|양|兌||도둑(날붙이)\n83|화||단|離||불 뿜는 늑대\n84|목||단|巽||사냥꾼·짐승의 말\n85|금||단|乾||왕·학문\n86|목||단|巽||약초\n87|수|금|양|坎||독의 숨\n88|화||단|離||불의 전차\n89|화|토|양|離||진노의 불\n90|수||단|坎||바다\n91|목|수|양|巽||마음(바람처럼 스며듦)\n92|금||단|兌||악인 처벌(정의)\n93|토||단|坤||소환진(땅에 그림)\n94|금||단|乾||인장(금속)\n95|금||단|兌||반지(금속)\n96|토||단|坤|Y|룬 원소: 흙\n97|수||단|坎|Y|룬 원소: 물\n98|수||단|坎|Y|룬 원소: 물\n99|||무||Y|룬 원소: 자료에 원소 없음 — 풍요의 신 잉으로 토 → 무속성\n100|목||단|巽|Y|룬 원소: 바람\n101|목||단|巽|Y|타로: 천왕성·공기\n102|수||단|坎|Y|타로: 수성(水星)\n103|수||단|坎|Y|타로: 달·물\n104|금||단|兌|Y|타로: 금성(金星)\n105|화||단|離|Y|타로: 양자리·불\n106|토||단|艮|Y|타로: 황소자리·흙\n107|목||단|巽|Y|타로: 쌍둥이자리·공기\n108|수||단|坎|Y|타로: 게자리·물\n109|화||단|離|Y|타로: 사자자리·불\n110|토||단|艮|Y|타로: 처녀자리·흙\n111|목||단|震|Y|타로: 목성(木星)\n112|목|금|조정자|巽|Y|타로: 천칭자리·공기 (저울·칼로 금도 가능) → 목↔금 정반대라 상쇄\n113|수||단|坎|Y|타로: 해왕성·물\n114|수||단|坎|Y|타로: 전갈자리·물\n115|화||단|離|Y|타로: 궁수자리·불\n116|토||단|坤|Y|타로: 염소자리·흙\n117|화||단|離|Y|타로: 화성(火星)\n118|목||단|巽|Y|타로: 물병자리·공기\n119|수||단|坎|Y|타로: 물고기자리·물\n120|화||단|離|Y|타로: 태양\n121|화||단|離|Y|타로: 명왕성·불\n122|토||단|坤|Y|타로: 토성(土星)\n123|수||단|坎||간지: 자(子)=수\n124|토||단|艮||간지: 축(丑)=토\n125|목||단|震||간지: 인(寅)=목\n126|목||단|巽||간지: 묘(卯)=목\n127|토|수|양|艮||간지: 진(辰)=토 (용이지만 지지는 토)\n128|화||단|離||간지: 사(巳)=화\n129|화||단|離||간지: 오(午)=화\n130|토||단|坤||간지: 미(未)=토\n131|금||단|兌||간지: 신(申)=금\n132|금||단|兌||간지: 유(酉)=금\n133|토||단|艮||간지: 술(戌)=토\n134|수||단|坎||간지: 해(亥)=수\n135|목||단|震||간지: 목\n136|화||단|離||간지: 화\n137|토||단|坤||간지: 토\n138|금||단|乾||간지: 금\n139|수||단|坎||간지: 수\n140|목|금|조정자|震||절기: 춘분 — 낮과 밤이 같음, 봄(목)이 가을(금)과 맞섬\n141|금|목|조정자|兌||절기: 추분 — 낮과 밤이 같음, 가을(금)이 봄(목)과 맞섬\n142|수|화|조정자|坎||64괘 63 수화기제 — 물이 불 위, 이미 균형\n143|화|수|조정자|離||64괘 64 화수미제 — 불이 물 위, 아직 어긋남\n144|토||단|||단군 신화 1: 동굴 속 곰(땅)\n145|목||단|||단군 신화 3: 신단수(나무)\n146|토||단|||단군 신화 4: 혼인, 어머니(땅)\n147|수||단|||주몽 1: 물의 신 하백의 딸\n148|화||단|||주몽 2: 햇빛을 받아 생긴 알\n149|금||단|||주몽 4: 백제 건국(성·창)\n153|화||단|||해모수: 하늘·태양의 아들\n154|토||단|||마고할미: 산과 섬을 만듦\n155|화||단|||대별왕·소별왕: 해와 달을 쏨\n156|금||단|||김수로: 철의 나라 가야\n157|수||단|||허황옥: 바다를 건너옴\n158|목||단|||삼신할미: 생명·아기\n165|목||단|||신단수 아래로 내려옴\n166|목||단|||쑥과 마늘(풀)\n167|토||단|||아사달에 도읍(땅)\n168|화||단|||해와 달 쏘기\n169|토||단|||치마로 흙을 날라 산·섬\n170|수||단|||바위를 타고 바다 건넘\n171|수||단|||생명수\n172|토||단|||구지봉 거북 노래\n150|화||단|||아마테라스 1: 동굴에 숨은 태양\n151|목||단|||아마테라스 2: 춤과 잔치\n152|목||단|||오로치 1: 빗으로 변한 공주\n159|수||단|||이자나기: 바다를 휘저음, 씻음\n160|화||단|||이자나미: 불의 신을 낳고 죽음\n161|수||단|||쓰쿠요미: 달·밤\n162|토||단|||오쿠니누시: 나라 만들기\n163|목||단|||니니기: 벼 이삭\n164|금||단|||진무 천황: 원정\n173|토||단|||국토 낳기\n174|수||단|||요미(저승) 방문\n175|화||단|||아마노이와토: 빛이 돌아옴\n176|수||단|||여덟 술통(술)\n177|금||단|||삼종신기: 거울·칼·곡옥\n178|금||단|||천손 강림\n", "lore": {"GRE|제우스": "제우스 (Zeus) — 신, 하늘·천둥\n올림포스의 주신. 로마의 유피테르\n나오는 이야기: 크로노스와 자식 삼키기, 티타노마키아, 세계를 나누다, 기간토마키아와 티폰, 프로메테우스와 불, 판도라의 항아리, 데우칼리온의 홍수, 헤르메스, 소를 훔치다, 두 번 태어난 디오니소스, 레토의 쌍둥이", "GRE|포세이돈": "포세이돈 (Poseidon) — 신, 바다·지진\n삼지창의 바다 신. 로마의 넵투누스\n나오는 이야기: 티타노마키아, 세계를 나누다", "GRE|하데스": "하데스 (Hades) — 신, 저승\n저승의 왕. 로마의 플루톤\n나오는 이야기: 티타노마키아, 세계를 나누다, 오르페우스의 저승 여행", "GRE|아테나": "아테나 (Athena) — 여신, 지혜·전쟁\n제우스의 머리에서 태어났다. 로마의 미네르바\n나오는 이야기: 페르세우스와 메두사", "GRE|메두사": "메두사 (Medusa) — 괴물, 돌로 만드는 눈\n머리카락이 뱀인 고르곤\n나오는 이야기: 페르세우스와 메두사", "GRE|헤라클레스": "헤라클레스 (Herakles) — 영웅, 힘\n12가지 과업. 죽은 뒤 신이 되었다\n나오는 이야기: 기간토마키아와 티폰, 헤라클레스의 12가지 과업", "GRE|아킬레우스": "아킬레우스 (Achilleus) — 영웅, 전사\n발뒤꿈치만 약점인 트로이 전쟁의 영웅\n나오는 이야기: 트로이 전쟁", "NOR|오딘": "오딘 (Óðinn) — 신, 지혜·전쟁·죽음\n아스 신족의 주신. 외눈, 까마귀 두 마리\n나오는 이야기: 이미르의 몸으로 세상을 만들다, 아스 신족과 바니르 신족의 전쟁, 오딘의 지혜, 아스크와 엠블라, 라그나로크, 펜리르를 묶다", "NOR|토르": "토르 (Þórr) — 신, 천둥·힘\n망치 묠니르를 든 천둥신\n나오는 이야기: 묠니르의 탄생, 라그나로크", "NOR|로키": "로키 (Loki) — 신, 속임수\n장난과 꾀의 신. 거인족 출신\n나오는 이야기: 묠니르의 탄생, 발드르의 죽음, 라그나로크, 펜리르를 묶다", "NOR|헤임달": "헤임달 (Heimdallr) — 신, 파수꾼\n무지개다리 비프로스트를 지킨다\n나오는 이야기: 라그나로크", "NOR|프레이야": "프레이야 (Freyja) — 여신, 사랑·전쟁·마법\n바니르 신족, 전사자의 절반을 맞는다\n나오는 이야기: 아스 신족과 바니르 신족의 전쟁", "NOR|펜리르": "펜리르 (Fenrir) — 괴물, 늑대\n로키의 아들, 라그나로크에 오딘을 삼킨다\n나오는 이야기: 라그나로크, 펜리르를 묶다", "NOR|브륀힐드": "브륀힐드 (Brynhildr) — 영웅, 발키리\n시구르드와 얽힌 발키리\n나오는 이야기: 시구르드와 용 파프니르", "EGY|라": "라 (Ra) — 신, 태양\n태양신. 매 머리\n나오는 이야기: 태초의 언덕과 아툼, 라의 밤 항해, 라의 눈물에서 인간이, 하토르(세크메트)의 분노, 아몬-라, 라의 눈, 세크메트", "EGY|오시리스": "오시리스 (Osiris) — 신, 저승·부활\n저승의 왕\n나오는 이야기: 오시리스와 세트, 이시스, 오시리스를 되살리다, 사후 심판(마아트의 저울)", "EGY|이시스": "이시스 (Isis) — 여신, 마법·어머니\n오시리스의 아내, 호루스의 어머니\n나오는 이야기: 이시스, 오시리스를 되살리다, 호루스와 세트의 다툼", "EGY|세트": "세트 (Set) — 신, 사막·폭풍·혼돈\n오시리스를 죽인 동생\n나오는 이야기: 오시리스와 세트, 호루스와 세트의 다툼, 라의 밤 항해", "EGY|아누비스": "아누비스 (Anubis) — 신, 미라·장례\n자칼 머리의 신\n나오는 이야기: 이시스, 오시리스를 되살리다, 사후 심판(마아트의 저울)", "EGY|세크메트": "세크메트 (Sekhmet) — 여신, 전쟁·역병\n사자 머리의 여신\n나오는 이야기: 하토르(세크메트)의 분노, 라의 눈, 세크메트", "MES|티아마트": "티아마트 (Tiamat) — 원초신, 바닷물\n바다와 혼돈의 여신\n나오는 이야기: 압주와 티아마트, 마르두크와 티아마트", "MES|마르두크": "마르두크 (Marduk) — 신, 바빌론의 주신\n티아마트를 이긴 신들의 왕\n나오는 이야기: 마르두크와 티아마트, 신들의 노동을 대신할 인간", "MES|길가메시": "길가메시 (Gilgamesh) — 영웅, 우루크 왕\n3분의 2는 신, 3분의 1은 인간\n나오는 이야기: 길가메시와 엔키두, 영생을 찾아서", "MES|엔키두": "엔키두 (Enkidu) — 영웅, 야생인\n길가메시의 친구\n나오는 이야기: 길가메시와 엔키두", "IND|비슈누": "비슈누 (Vishnu) — 신, 유지\n세상을 지키며 여러 화신으로 내려온다\n나오는 이야기: 우유 바다 젓기, 삼주신, 마누와 물고기, 유가의 순환", "IND|시바": "시바 (Shiva) — 신, 파괴·재생\n춤추는 신, 셋째 눈\n나오는 이야기: 우유 바다 젓기, 삼주신, 가네샤의 코끼리 머리", "IND|가네샤": "가네샤 (Ganesha) — 신, 지혜·장애 제거\n코끼리 머리의 신\n나오는 이야기: 가네샤의 코끼리 머리", "IND|인드라": "인드라 (Indra) — 신, 천둥·하늘\n베다 시대 신들의 왕\n나오는 이야기: 인드라와 브리트라, 아그니와 제사의 불", "IND|하누만": "하누만 (Hanuman) — 신, 원숭이·힘\n라마를 도운 원숭이 장수\n나오는 이야기: 라마야나", "CHN|반고": "반고 (盤古) — 원초신, 천지개벽\n알 속에서 깨어나 하늘과 땅을 갈랐다\n나오는 이야기: 혼돈과 계란 같은 우주, 반고 개천벽지, 반고의 몸이 세상이 되다", "CHN|여와": "여와 (女媧) — 여신, 인간 창조·하늘 수리\n뱀의 몸을 한 여신\n나오는 이야기: 여와의 인간 창조, 여와, 하늘을 기우다", "CHN|치우": "치우 (蚩尤) — 신, 전쟁·병기\n구려족의 우두머리, 전쟁의 신\n나오는 이야기: 탁록 대전", "CHN|후예": "후예 (后羿) — 영웅, 활\n아홉 해를 쏘아 떨어뜨렸다\n나오는 이야기: 후예, 아홉 해를 쏘다, 항아, 달로 가다", "JPN|아마테라스": "아마테라스 (天照) — 여신, 태양\n천황가의 조상신\n나오는 이야기: 삼귀자의 탄생, 아마노이와토(천암호), 천손 강림", "JPN|스사노오": "스사노오 (須佐之男) — 신, 폭풍·바다\n야마타노오로치를 물리쳤다\n나오는 이야기: 삼귀자의 탄생, 아마노이와토(천암호), 야마타노오로치 퇴치", "JPN|야마타노오로치": "야마타노오로치 (八岐大蛇) — 괴물, 큰 뱀\n머리와 꼬리가 여덟 개인 뱀\n나오는 이야기: 야마타노오로치 퇴치", "KOR|환웅": "환웅 (桓雄) — 신, 하늘에서 내려온 신\n풍백·우사·운사를 거느렸다\n나오는 이야기: 환인과 환웅, 곰과 호랑이, 단군의 고조선 건국", "KOR|웅녀": "웅녀 (熊女) — 인간, 곰에서 사람으로\n단군의 어머니\n나오는 이야기: 곰과 호랑이, 단군의 고조선 건국", "KOR|단군": "단군 (檀君) — 영웅, 고조선 시조\n단군왕검\n나오는 이야기: 단군의 고조선 건국", "KOR|주몽": "주몽 (朱蒙) — 영웅, 고구려 시조\n동명성왕\n나오는 이야기: 주몽의 고구려 건국", "KOR|박혁거세": "박혁거세 (朴赫居世) — 영웅, 신라 시조\n알에서 태어났다\n나오는 이야기: 박혁거세", "KOR|바리공주": "바리공주 (바리데기) — 여신, 무조신·저승 인도\n버려진 일곱째 공주\n나오는 이야기: 바리공주", "PER|로스탐": "로스탐 (Rostam) — 영웅, 최고의 용사\n샤나메의 영웅\n나오는 이야기: 로스탐과 소랍", "MAY|우나푸": "우나푸 (Hunahpu) — 영웅, 해\n영웅 쌍둥이\n나오는 이야기: 거짓 태양 부쿱 칵시, 시발바의 공놀이", "AZT|케찰코아틀": "케찰코아틀 (Quetzalcoatl) — 신, 바람·지혜\n깃털 달린 뱀\n나오는 이야기: 이원의 신, 대지 괴물을 찢다, 네 번의 태양, 뼈와 피로 만든 사람", "AZT|우이칠로포치틀리": "우이칠로포치틀리 (Huitzilopochtli) — 신, 태양·전쟁\n아즈텍의 수호신\n나오는 이야기: 우이칠로포치틀리의 탄생, 독수리와 선인장, 다섯째 태양의 끝", "INC|비라코차": "비라코차 (Viracocha) — 원초신, 창조\n티티카카 호수에서 나온 창조신\n나오는 이야기: 티티카카의 어둠, 돌 거인들, 운누 파차쿠티, 해와 달을 띄우다, 다시 만든 사람들"}};</script>
 <script>// Voltaic Myth Card Battle (신화 카드 대전) with Claude — 규칙 엔진 (웹판)
 // VB.NET v1.6 엔진을 옮긴 것. 화면과 무관하며 node 에서도 돌아간다.
 (function (root) {
@@ -221,6 +229,7 @@ class CardDef {
   get defenseEl() { return this.attrKind === '양' && this.subEl ? this.subEl : this.mainEl; }
   hasKeyword(kw) { return !!this.passive && this.passive.clauses.some(cl => cl.trigger === 'KW' && cl.keyword === kw); }
   clausesOf(tr) { return this.passive ? this.passive.clauses.filter(cl => cl.trigger === tr) : []; }
+  get saga() { const cl = this.clausesOf('SAGA')[0]; return cl ? { name: cl.keyword, stage: cl.stage } : null; }
 }
 
 function parseEffects(s) {
@@ -276,14 +285,19 @@ function parsePassive(s) {
   for (const part of body.split('&')) {
     const t = part.trim();
     if (t.startsWith('CHOOSE>')) { sk.choices.push(...parseChoices(t.substring(7))); continue; }
-    const cl = { trigger: '', keyword: '', effects: [] };
-    if (t.startsWith('KW:')) {
+    const cl = { trigger: '', keyword: '', effects: [], stage: 0 };
+    if (t.startsWith('SAGA:')) {
+      // 서사: SAGA:이야기이름:단계
+      const a = t.split(':');
+      cl.trigger = 'SAGA'; cl.keyword = (a[1] || '').trim(); cl.stage = +a[2];
+      if (!cl.keyword || !(cl.stage >= 1)) throw new Error('서사 형식: SAGA:이름:단계 — ' + t);
+    } else if (t.startsWith('KW:')) {
       cl.trigger = 'KW'; cl.keyword = t.substring(3).trim();
       if (!KeywordNames[cl.keyword]) throw new Error('알 수 없는 키워드 ' + cl.keyword);
     } else {
       const gt = t.indexOf('>'); if (gt < 0) throw new Error('패시브 절 형식: 계기>효과 — ' + t);
       cl.trigger = t.substring(0, gt).trim();
-      if (!['PLAY', 'DEATH', 'TURN_START', 'TURN_END'].includes(cl.trigger)) throw new Error('알 수 없는 계기 ' + cl.trigger);
+      if (!['PLAY', 'DEATH', 'TURN_START', 'TURN_END', 'CHAIN'].includes(cl.trigger)) throw new Error('알 수 없는 계기 ' + cl.trigger);
       cl.effects = parseEffects(t.substring(gt + 1));
       if (cl.trigger !== 'PLAY' && chosenSpec(cl.effects)) throw new Error(cl.trigger + ' 절에는 직접 고르는 대상을 쓸 수 없습니다');
     }
@@ -362,6 +376,8 @@ function describePassive(sk) {
       case 'DEATH': return '최후: ' + describe(cl.effects);
       case 'TURN_START': return '내 턴 시작: ' + describe(cl.effects);
       case 'TURN_END': return '내 턴 끝: ' + describe(cl.effects);
+      case 'SAGA': return '서사 ' + cl.keyword + ' ' + cl.stage;
+      case 'CHAIN': return '이어짐: ' + describe(cl.effects);
     }
     return '';
   }).join(' · ');
@@ -395,23 +411,24 @@ function makeRng(seed) {
   const next = () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   return { next, int: n => Math.floor(next() * n) };
 }
+// 추천 덱: 하수인 12 · 주문 8 (6:4). 주제 신화 카드부터 넣고, 모자라면 다른 신화의 싼 카드로 채운다.
+const DeckMinions = 12, DeckSpells = 8;
 function buildThemed(cards, title, codes, seed) {
   const rnd = makeRng(seed), byId = new Map(cards.map(c => [c.id, c]));
-  const d = { title: title + ' 덱', ids: [], preset: true };
-  const theme = cards.filter(c => codes.includes(c.mythCode)).sort((a, b) => a.cost - b.cost || a.id - b.id);
-  const many = theme.length >= 14;
-  for (const tc of theme) { d.ids.push(tc.id); if (!many && tc.cost <= 6) d.ids.push(tc.id); }
-  while (d.ids.length > DeckSize) {
-    let hi = 0; d.ids.forEach((id, i) => { if (byId.get(id).cost > byId.get(d.ids[hi]).cost) hi = i; });
-    d.ids.splice(hi, 1);
-  }
-  const others = cards.filter(c => !codes.includes(c.mythCode) && c.cost <= 5).map(c => [rnd.next(), c]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
-  let i = 0;
-  while (d.ids.length < DeckSize && others.length > 0 && i <= 500) {
-    const oc = others[i % others.length];
-    if (d.ids.filter(x => x === oc.id).length < MaxCopies) d.ids.push(oc.id);
-    i++;
-  }
+  const pick = (isSpell, need) => {
+    const theme = cards.filter(c => codes.includes(c.mythCode) && c.isSpell === isSpell).sort((a, b) => a.cost - b.cost || a.id - b.id);
+    const out = [], many = theme.length >= need;
+    if (many && !isSpell) {
+      // 하수인이 넉넉하면 비용 순으로 고르게 뽑아 곡선을 맞춘다(싼 카드만 몰리지 않게)
+      for (let i = 0; i < need; i++) out.push(theme[Math.round(i * (theme.length - 1) / Math.max(1, need - 1))].id);
+    } else for (const c of theme) { if (out.length >= need) break; out.push(c.id); if (!many && c.cost <= 6 && out.length < need) out.push(c.id); }
+    while (out.length > need) { let hi = 0; out.forEach((id, i) => { if (byId.get(id).cost > byId.get(out[hi]).cost) hi = i; }); out.splice(hi, 1); }
+    const others = cards.filter(c => !codes.includes(c.mythCode) && c.isSpell === isSpell && c.cost <= 5).map(c => [rnd.next(), c]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+    let i = 0;
+    while (out.length < need && others.length && i < 500) { const oc = others[i % others.length]; if (out.filter(x => x === oc.id).length < MaxCopies) out.push(oc.id); i++; }
+    return out;
+  };
+  const d = { title: title + ' 덱', ids: [...pick(false, DeckMinions), ...pick(true, DeckSpells)], preset: true };
   d.ids.sort((a, b) => byId.get(a).cost - byId.get(b).cost);
   return d;
 }
@@ -428,12 +445,23 @@ const GraceCard = new CardDef();
 GraceCard.id = 0; GraceCard.title = '신의 은총'; GraceCard.isSpell = true; GraceCard.cost = 0;
 GraceCard.spellEffects = [{ op: 'MANA', n: 1, n2: 0, target: '', tokenName: '', tokenKw: '', keyword: '' }];
 
+// 역방향 카드(효과는 같고, 쓸 때 반전 하나가 붙는다). 한 번 쓰면 사라진다.
+const revCache = new Map();
+function reversedOf(c) {
+  if (revCache.has(c)) return revCache.get(c);
+  const r = Object.assign(Object.create(Object.getPrototypeOf(c)), c);
+  r.title = c.title + ' (역)'; r.isReversedCopy = true; r.origin = c;
+  revCache.set(c, r);
+  return r;
+}
+
 class Game {
   constructor(deck0, deck1, name0, name1, seed) {
     this.MaxBoard = 7; this.MaxHand = 10;
     this.rnd = makeRng(seed);
     this.players = [0, 1].map(s => ({ side: s, title: s ? name1 : name0, hp: 30, armor: 0, maxMana: 0, mana: 0, fatigue: 0,
-      deck: (s ? deck1 : deck0).slice(), hand: [], board: [], lastEl: '' }));
+      deck: (s ? deck1 : deck0).slice(), hand: [], board: [], lastEl: '', grave: [], sagas: {} }));
+    this.reuseReversed = true;   // 룬·타로 역방향 재사용
     this.current = 0; this.turnNumber = 0; this.winner = -1; this.log = [];
     this.nextUid = 1; this.sourceCard = null; this.playedIds = [new Set(), new Set()]; this.finisherId = 0;
     this.tierOf = () => [1, 1];
@@ -465,6 +493,8 @@ class Game {
   }
   endTurnInternal() {
     this.runTrigger(this.current, 'TURN_END');
+    // 되살아난 꼭두각시: 정해진 턴이 끝나면 사라진다
+    for (const m of this.players[this.current].board) if (m.doomTurn && this.turnNumber >= m.doomTurn) { m.hp = 0; m.doomed = true; }
     this.cleanup();
     if (this.winner >= 0) return;
     for (const m of this.players[this.current].board) {
@@ -568,7 +598,7 @@ class Game {
   }
   canAttack(m) {
     if (!m || this.winner >= 0 || m.side !== this.current) return false;
-    if (m.acted || m.frozen || this.attackOf(m) <= 0) return false;
+    if (m.acted || m.frozen || m.flags.has('PUPPET') || this.attackOf(m) <= 0) return false;
     if (m.def.isArbiter && !(m.flags.has('LONE') && this.players[m.side].board.length === 1)) return false;
     if (m.summonedThisTurn && !m.charge) return false;
     return true;
@@ -585,7 +615,7 @@ class Game {
     if (!m || this.winner >= 0 || m.side !== this.current) return false;
     const sk = this.skillOf(m, slot);
     if (!sk || !this.skillUnlocked(m, slot)) return false;
-    if (m.acted || m.frozen) return false;
+    if (m.acted || m.frozen || m.flags.has('PUPPET')) return false;
     if (slot === 3 && m.specialUsed) return false;
     if (sk.cost > this.players[m.side].mana) return false;
     const spec = chosenSpec(sk.effects);
@@ -627,7 +657,23 @@ class Game {
           if (m) {
             for (const cl of c.clausesOf('PLAY')) this.execute(side, m, cl.effects, tgt);
             if (opt) { this.say('  선택: ' + opt.title); this.execute(side, m, opt.effects, NoTarget); }
+            const sg = c.saga;
+            if (sg) {
+              const done = p.sagas[sg.name] || [];
+              if (done.some(st => st < sg.stage) && c.clausesOf('CHAIN').length) {
+                this.say('  이야기가 이어집니다 (' + sg.name + ' ' + sg.stage + ')');
+                for (const cl of c.clausesOf('CHAIN')) this.execute(side, m, cl.effects, NoTarget);
+              }
+              if (!done.includes(sg.stage)) done.push(sg.stage);
+              p.sagas[sg.name] = done;
+            }
           }
+        }
+        if (c.isSpell && c.isReversedCopy) this.reverseTwist(side);
+        else if (c.isSpell && c.reversible && this.reuseReversed && c.id > 0) {
+          // 쓴 룬·타로는 덱에 거꾸로 섞여 들어간다
+          p.deck.splice(this.rnd.int(p.deck.length + 1), 0, reversedOf(c));
+          this.say('  ' + c.title + ' — 덱에 역방향으로 섞임');
         }
         if (c.mainEl && !c.isNeutral) p.lastEl = c.mainEl;
         this.cleanup();
@@ -770,6 +816,27 @@ class Game {
       case 'DESTROY': if (m) { m.hp = 0; this.say('  ' + m.def.title + ' 처치'); } break;
     }
   }
+  // 역방향 반전: 상대 하수인 하나 체력 +1, 또는 내가 잃은 하수인이 꼭두각시로 되살아남
+  reverseTwist(side) {
+    const me = this.players[side], foe = this.players[1 - side];
+    const opts = [];
+    if (foe.board.some(m => m.hp > 0)) opts.push('foe');
+    if (me.grave.length && me.board.length < this.boardLimit(side)) opts.push('revive');
+    if (!opts.length) return;
+    if (opts[this.rnd.int(opts.length)] === 'foe') {
+      const pool = foe.board.filter(m => m.hp > 0), t = pool[this.rnd.int(pool.length)];
+      t.hp += 1; t.maxHp += 1;
+      this.say('  역방향: ' + t.def.title + ' 체력 +1 (상대)');
+    } else {
+      const def = me.grave[this.rnd.int(me.grave.length)];
+      const m = this.summon(side, def, false, -1);
+      if (m) {
+        m.hp += 1; m.maxHp += 1; m.flags.add('PUPPET');
+        m.doomTurn = this.turnNumber + 2;   // 다음 내 턴이 끝날 때 사라진다
+        this.say('  역방향: ' + def.title + ' 되살아남 (조종 불가, 다음 턴에 사라짐)');
+      }
+    }
+  }
   damageHero(p, n) {
     if (n <= 0) return;
     const ab = Math.min(p.armor, n); p.armor -= ab; p.hp -= n - ab;
@@ -788,7 +855,11 @@ class Game {
       const dead = [];
       for (const sd of [this.current, 1 - this.current]) for (const m of this.players[sd].board) if (m.hp <= 0) dead.push(m);
       if (!dead.length) break;
-      for (const m of dead) { const b = this.players[m.side].board; b.splice(b.indexOf(m), 1); this.say('  ' + m.def.title + ' 쓰러짐'); }
+      for (const m of dead) {
+        const b = this.players[m.side].board; b.splice(b.indexOf(m), 1);
+        this.say('  ' + m.def.title + (m.doomed ? ' 사라짐' : ' 쓰러짐'));
+        if (!m.def.isToken && !m.flags.has('PUPPET')) this.players[m.side].grave.push(m.def);
+      }
       for (const m of dead) for (const cl of m.def.clausesOf('DEATH')) { this.sourceCard = m.def; this.execute(m.side, m, cl.effects, NoTarget); }
     }
     this.checkWin();
@@ -971,8 +1042,8 @@ class AiPlayer {
 const API = { Elements, ElementHanja, ElementColor, generates, overcomes, oppositeOf, TermNames, TermHanja, seasonName, seasonElement,
   monthGuaOf, termOfDate, TierNames, Active2Tier, SpecialTier, MaxLevel, XpPlayed, XpWin, XpFinisher, tierOfLevel, starOfLevel,
   rankText, rankTextOfLevel, xpForNext, xpAtLevel, levelFromXp, statBonus, KeywordNames, FlagNames, MythNames, mythName, mythColor,
-  chosenSpec, CardDef, loadCards, describe, describePassive, rulesLine, describeAttr, DeckSize, MaxCopies, Themes, makeRng,
-  buildThemed, presets, NoTarget, T, isHero, isNone, sameRef, GraceCard, Game, AiPlayer };
+  chosenSpec, CardDef, loadCards, describe, describePassive, rulesLine, describeAttr, DeckSize, MaxCopies, DeckMinions, DeckSpells, Themes, makeRng,
+  buildThemed, presets, reversedOf, NoTarget, T, isHero, isNone, sameRef, GraceCard, Game, AiPlayer };
 if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.MC = API;
 })(typeof window !== 'undefined' ? window : globalThis);
 </script>
@@ -980,7 +1051,7 @@ if (typeof module !== 'undefined' && module.exports) module.exports = API; else 
 (function () {
 'use strict';
 const APP_TITLE = 'Voltaic Myth Card Battle (신화 카드 대전) with Claude';
-const VERSION = '2.1.1';
+const VERSION = '2.5';
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 
@@ -1031,13 +1102,15 @@ function showHome() {
     <h1>신화 카드 대전<\/h1><p>${esc(APP_TITLE)} · v${VERSION}<\/p>
     <p>카드 ${S.cards.length}장 · 오행·24절기<\/p>
     <button class="primary" data-a="new">새 대전 (AI)<\/button>
+    <button data-a="oracle">신탁 대전<\/button>
     <button data-a="net">대인전 (방 코드)<\/button>
     <button data-a="decks">덱 편집<\/button>
     <button data-a="coll">내 카드 등급<\/button>
+    <button data-a="dict">키워드 사전<\/button>
     <button data-a="rules">규칙<\/button><\/div>`;
   $('#home').onclick = e => {
     const a = e.target.closest('[data-a]'); if (!a) return;
-    ({ new: newGameSheet, net: netLobby, decks: deckEditor, coll: collection, rules: rulesSheet })[a.dataset.a]();
+    ({ new: newGameSheet, oracle: oracleMenu, net: netLobby, decks: deckEditor, coll: collection, rules: rulesSheet, dict: () => dictSheet('') })[a.dataset.a]();
   };
 }
 
@@ -1100,6 +1173,7 @@ function startGame(myKey, aiKey, first, mode, practice) {
     return [MC.tierOfLevel(lv), MC.starOfLevel(lv)];
   };
   netClose();
+  S.oracle = false;
   S.game = g; S.ai = new MC.AiPlayer(1); S.mySide = 0;
   S.placing = null; S.pending = null; S.selUid = 0; S.resultShown = false;
   buildBattle();
@@ -1165,7 +1239,8 @@ function cardHtml(c, m, o = {}) {
   const kind = c.isSpell ? '주문' : c.isToken ? '소환물' : MC.mythName(c.mythCode);
   let h = `<div class="${cls.join(' ')}" data-k="${o.key}">`;
   h += `<div class="band" style="background:${col}">${esc(c.title)}<small>${esc(kind)}<\/small><\/div>`;
-  h += `<div class="rule">${esc(MC.rulesLine(c))}<\/div>`;
+  h += kwChips(c, m);
+  h += `<div class="rule">${esc(shortRule(c))}<\/div>`;
   h += `<div class="rank">${o.rank && !c.isSpell && !c.isToken ? esc(o.rank) : ''}<\/div><div class="foot"><\/div>`;
   if (o.showCost) {
     const cc = o.cost == null ? c.cost : o.cost;
@@ -1242,7 +1317,7 @@ function render() {
     const lv = S.practice ? MC.MaxLevel : levelOfCard(c);
     const bonus = c.isSpell ? [0, 0] : MC.statBonus(MC.tierOfLevel(lv), MC.starOfLevel(lv));
     return cardHtml(c, null, { key: 'hand:' + i, showCost: true, cost: g.costOf(S.mySide, c), bonus,
-      rank: c === MC.GraceCard ? '' : MC.rankTextOfLevel(lv), cls: [ok ? 'play' : 'dim', i === pendHand ? 'sel' : ''].filter(Boolean) });
+      rank: c === MC.GraceCard ? '' : MC.rankTextOfLevel(lv), cls: [ok ? 'play' : 'dim', i === pendHand ? 'sel' : '', chainReady(me, c) ? 'chain' : ''].filter(Boolean) });
   }).join('');
   renderActbar();
   // 기록
@@ -1269,10 +1344,17 @@ function sizeCards(nFoe, nMe) {
 }
 window.addEventListener('resize', () => { if (S.game) render(); });
 
+function chainReady(p, c) {
+  const sg = c.saga; if (!sg || !c.clausesOf('CHAIN').length) return false;
+  return (p.sagas[sg.name] || []).some(st => st < sg.stage);
+}
+
 function bannerText() {
   const g = S.game;
   if (g.winner >= 0) return g.winner === S.mySide ? '승리했습니다!' : g.winner === 2 ? '무승부' : '패배했습니다';
   if (S.net && S.net.ended) return '상대와 연결이 끊겼습니다';
+  if (S.net && S.net.down) return '연결이 불안정합니다 · 다시 연결하는 중…';
+  if (S.net && S.net.quiet && g.current !== S.mySide) return '상대 응답이 없습니다 · 기다리는 중 (메뉴에서 나갈 수 있음)';
   if (S.net && g.current !== S.mySide) return '상대 차례 · ' + g.players[1 - S.mySide].title;
   if (S.aiTimer || g.current !== S.mySide) return '상대가 생각하는 중…';
   if (S.placing) return '놓을 자리(▼)를 누르세요';
@@ -1481,6 +1563,100 @@ function runAi() {
   render();
 }
 
+// ============================================================ 키워드 풀이·사전
+function allEffects(c) {
+  const l = [...c.spellEffects];
+  if (c.passive) for (const cl of c.passive.clauses) l.push(...cl.effects);
+  for (const s of [c.active1, c.active2, c.special]) if (s) l.push(...s.effects);
+  for (const o of c.choices) l.push(...o.effects);
+  return l;
+}
+const hasOp = (c, op, kw) => allEffects(c).some(e => e.op === op && (!kw || e.keyword === kw || e.tokenKw === kw));
+const hasTrig = (c, t) => !!c.passive && c.passive.clauses.some(cl => cl.trigger === t);
+const GLOSSARY = [
+  { g: '능력', n: '수호', t: '상대는 수호가 있는 하수인부터 공격해야 합니다(그림자 상태인 수호는 예외).', f: c => c.hasKeyword('TAUNT') || hasOp(c, 'KW', 'TAUNT') },
+  { g: '능력', n: '질주', t: '낸 턴에 바로 공격할 수 있습니다. 보통은 다음 턴부터 공격합니다.', f: c => c.hasKeyword('CHARGE') || hasOp(c, 'KW', 'CHARGE') },
+  { g: '능력', n: '신의 가호', t: '처음 받는 피해 한 번을 막고 사라집니다.', f: c => c.hasKeyword('SHIELD') || hasOp(c, 'KW', 'SHIELD') },
+  { g: '능력', n: '그림자', t: '공격하기 전까지 상대가 대상으로 고를 수 없습니다. 모든 적에게 주는 광역 효과는 맞습니다.', f: c => c.hasKeyword('STEALTH') || hasOp(c, 'KW', 'STEALTH') },
+  { g: '능력', n: '빙결', t: '얼은 하수인은 다음 자기 차례에 공격도 스킬도 못 합니다.', f: c => hasOp(c, 'FREEZE') },
+  { g: '능력', n: '소환', t: '작은 하수인(소환물)을 내 전장에 놓습니다. 소환물은 등급 보너스가 없습니다.', f: c => hasOp(c, 'SUMMON') },
+  { g: '능력', n: '방어도', t: '영웅이 받는 피해를 먼저 대신 받습니다(생명력보다 먼저 깎임).', f: c => hasOp(c, 'ARMOR') },
+  { g: '때', n: '출전', t: '하수인을 낼 때 한 번 일어납니다.', f: c => hasTrig(c, 'PLAY') },
+  { g: '때', n: '최후', t: '하수인이 쓰러질 때 일어납니다.', f: c => hasTrig(c, 'DEATH') },
+  { g: '때', n: '내 턴 시작', t: '내 차례가 시작될 때마다 일어납니다.', f: c => hasTrig(c, 'TURN_START') },
+  { g: '때', n: '내 턴 끝', t: '내 차례가 끝날 때마다 일어납니다.', f: c => hasTrig(c, 'TURN_END') },
+  { g: '때', n: '서사', t: '같은 이야기(예: 단군, 주몽, 아마테라스)의 단계가 붙은 카드. 앞 단계를 이 대전에서 이미 냈으면 "이어짐" 효과가 더 일어납니다. 손패에서 금색 테두리 = 이어짐 준비됨.', f: c => !!c.saga },
+  { g: '때', n: '이어짐', t: '서사 카드를 낼 때, 같은 이야기의 앞 단계를 이미 냈으면 일어나는 효과.', f: c => hasTrig(c, 'CHAIN') },
+  { g: '능력', n: '역방향', t: '룬·타로 주문은 쓰고 나면 덱에 거꾸로 섞여 들어갑니다. 역방향 카드를 다시 쓰면 같은 효과에 반전이 하나 붙습니다: 상대 하수인 하나 체력 +1, 또는 내가 잃은 하수인이 되살아남. 역방향 카드는 한 번 쓰면 사라집니다.', f: c => c.reversible && c.isSpell },
+  { g: '능력', n: '조종 불가', t: '역방향으로 되살아난 하수인. 체력 +1로 나오지만 공격·스킬을 못 하고(수호는 그대로), 다음 내 턴이 끝날 때 사라집니다.', f: () => false },
+  { g: '때', n: '스킬', t: '하수인이 신력을 내고 쓰는 능력. 쓰면 그 턴에는 공격할 수 없습니다. 액티브2는 반신, 특수능력은 상급신부터 열리고 특수능력은 대전마다 한 번.', f: c => !c.isSpell && !!c.active1 },
+  { g: '오행', n: '상극 +1', t: '공격하는 쪽 주속성이 맞는 쪽 방어 속성을 이기면(목→토→수→화→금→목) 피해 +1. 반격 피해는 그대로입니다.', f: c => !!c.mainEl && !c.isNeutral && !c.isSpell },
+  { g: '오행', n: '계절 강세', t: '지금 계절의 오행과 주속성이 같은 하수인은 공격 +1. 절기는 한 턴에 하나씩 지나갑니다.', f: c => !!c.mainEl && !c.isNeutral && !c.isArbiter && !c.isSpell },
+  { g: '오행', n: '계절 역행', t: '계절의 정반대 오행(수↔화, 목↔금) 카드는 비용 +1.', f: c => !!c.mainEl && !c.isNeutral && c.mainEl !== '토' },
+  { g: '오행', n: '상생 연쇄', t: '같은 턴에 상생 순서(목→화→토→금→수→목)로 이어 내면 다음 카드 비용 −1.', f: c => !!c.mainEl && !c.isNeutral },
+  { g: '오행', n: '양속성', t: '속성이 둘인 카드. 공격할 때는 주속성, 맞을 때는 보조 속성으로 상극을 따집니다.', f: c => c.attrKind === '양' },
+  { g: '오행', n: '무속성', t: '속성이 없는 카드. 비용 +1, 대신 상극·계절의 영향을 받지 않습니다.', f: c => c.isNeutral },
+  { g: '조정자', n: '조정자', t: '정반대 두 오행을 품어 상쇄된 카드(調). 공격하지 않고, 양옆 아군의 공격을 +1 올려 줍니다.', f: c => c.isArbiter },
+  { g: '조정자', n: '선택', t: '낼 때 두 효과 중 하나를 고릅니다.', f: c => c.choices.length === 2 },
+  { g: '조정자', n: '이간·대치·내분', t: '이간: 무작위 적 하수인 둘이 싸움 · 대치: 양옆 아군이 맞은편 적과 싸움 · 내분: 무작위 아군 둘이 싸움. 싸움은 서로 공격력만큼 피해를 주고받습니다.', f: c => hasOp(c, 'FIGHT_ENEMIES') || hasOp(c, 'FACE_OFF') || hasOp(c, 'INFIGHT') },
+  { g: '조정자', n: '탈취', t: '상대 손패에서 무작위로 카드를 버리게 합니다.', f: c => hasOp(c, 'DISCARD') },
+  { g: '조정자', n: '고독', t: '아군 전장에 이 조정자 혼자일 때는 공격할 수 있습니다.', f: c => hasOp(c, 'FLAG', 'LONE') },
+  { g: '조정자', n: '균형 강화', t: '양옆 공격 보너스가 +2가 됩니다.', f: c => hasOp(c, 'FLAG', 'BALANCE2') },
+  { g: '조정자', n: '위축', t: '이 카드가 있는 동안 모든 아군 공격 −1.', f: c => hasOp(c, 'FLAG', 'WITHER') },
+  { g: '조정자', n: '협소', t: '이 카드가 있는 동안 내 전장에 놓을 수 있는 하수인 수 −1.', f: c => hasOp(c, 'FLAG', 'NARROW') }
+];
+const GROUP_COLOR = { 능력: '#2e5a9a', 때: '#9a6a10', 오행: '#2e7d46', 조정자: '#6a3a8a' };
+
+// 카드 위에 붙는 능력 표(지금 상태 기준)
+function kwChips(c, m) {
+  const on = k => m ? ({ TAUNT: m.taunt, CHARGE: m.charge, SHIELD: m.shield, STEALTH: m.stealth })[k] : c.hasKeyword(k);
+  const names = [];
+  for (const k of ['TAUNT', 'CHARGE', 'SHIELD', 'STEALTH']) if (on(k)) names.push(MC.KeywordNames[k]);
+  if (c.isArbiter && !c.isSpell) names.push('조정자');
+  const extra = [];
+  const sg = c.saga; if (sg) extra.push(['sg', '서사 ' + sg.name + ' ' + sg.stage]);
+  if (c.isReversedCopy) extra.push(['rv', '역방향']);
+  if (m && m.flags.has('PUPPET')) extra.push(['pu', '조종 불가']);
+  if (m && m.doomTurn) extra.push(['pu', '다음 턴 소멸']);
+  if (!names.length && !extra.length) return '';
+  return `<div class="kws">${extra.map(x => `<span class="kw ${x[0]}">${esc(x[1])}<\/span>`).join('')}${names.map(n => `<span class="kw">${esc(n)}<\/span>`).join('')}<\/div>`;
+}
+// 카드 문장: 키워드는 표로 보여 주므로 뺀다
+function shortRule(c) {
+  if (c.isSpell) return c.choices.length === 2 ? '선택: ' + c.choices[0].title + ' / ' + c.choices[1].title : MC.describe(c.spellEffects);
+  const parts = [];
+  if (c.passive) for (const cl of c.passive.clauses) {
+    if (cl.trigger === 'KW' || cl.trigger === 'SAGA') continue;
+    parts.push(({ PLAY: '출전', DEATH: '최후', TURN_START: '턴 시작', TURN_END: '턴 끝', CHAIN: '이어짐' })[cl.trigger] + ': ' + MC.describe(cl.effects));
+  }
+  if (c.choices.length === 2) parts.push('선택: ' + c.choices[0].title + ' / ' + c.choices[1].title);
+  return parts.join(' · ');
+}
+function glossaryFor(c, m) {
+  const list = GLOSSARY.filter(x => x.f(c));
+  if (m) for (const fl of m.flags) { const e = GLOSSARY.find(x => x.n === (fl === 'PUPPET' ? '조종 불가' : MC.FlagNames[fl])); if (e && !list.includes(e)) list.push(e); }
+  if (c.isReversedCopy) { const e = GLOSSARY.find(x => x.n === '역방향'); if (!list.includes(e)) list.push(e); }
+  if (!list.length) return '';
+  return `<h3>용어 풀이<\/h3>` + list.map(x => `<div style="margin:3px 0"><span class="gchip" style="background:${GROUP_COLOR[x.g]}">${esc(x.n)}<\/span> ${esc(x.t)}<\/div>`).join('');
+}
+function dictSheet(open) {
+  const groups = [...new Set(GLOSSARY.map(x => x.g))];
+  const body = groups.map(g => `<h3>${esc(g)}<\/h3><div>${GLOSSARY.filter(x => x.g === g).map(x =>
+    `<button class="gbtn" data-a="t:${esc(x.n)}" style="background:${x.n === open ? GROUP_COLOR[g] : '#fff'};color:${x.n === open ? '#fff' : GROUP_COLOR[g]};border-color:${GROUP_COLOR[g]}">${esc(x.n)}<\/button>`).join('')}<\/div>`).join('');
+  let detail = '<div class="muted" style="margin-top:10px">항목을 누르면 풀이와 그 키워드가 있는 카드가 나옵니다.<\/div>';
+  const e = GLOSSARY.find(x => x.n === open);
+  if (e) {
+    const ex = S.cards.filter(c => e.f(c)).slice(0, 8);
+    detail = `<div style="margin-top:12px;padding:10px;border-radius:8px;background:#fff;border:1px solid #ddd5c4"><b>${esc(e.n)}<\/b><div>${esc(e.t)}<\/div>
+      ${ex.length ? `<div class="muted" style="margin-top:6px">이 키워드가 있는 카드<\/div><div class="list" style="max-height:28vh">${ex.map(c => `<div class="it" data-a="card:${c.id}"><span class="c">${c.cost}<\/span><span class="t">${esc(c.title)}<\/span><span class="m">${esc(MC.mythName(c.mythCode))}<\/span><\/div>`).join('')}<\/div>` : ''}<\/div>`;
+  }
+  sheet(`<h2>키워드 사전<\/h2>${body}${detail}<div class="btns"><button data-a="close">닫기<\/button><\/div>`, (a, b, close) => {
+    if (a.startsWith('t:')) { close(); dictSheet(a.substring(2)); return; }
+    if (a.startsWith('card:')) { detailSheet(a); return; }
+    close();
+  });
+}
+
 // ============================================================ 설명
 function detailHtml(c, m) {
   const g = S.game;
@@ -1499,7 +1675,7 @@ function detailHtml(c, m) {
   h += '<\/div>';
   const attr = MC.describeAttr(c);
   if (attr && !c.isToken) h += `<div style="font-weight:600;color:${MC.ElementColor[c.mainEl] || '#666'}">${esc(attr)}<\/div>`;
-  if (m && m.flags.size) h += `<div style="color:#2a6aa0">선택 효과: ${[...m.flags].map(f => MC.FlagNames[f]).join(', ')}<\/div>`;
+  if (m && m.flags.size) h += `<div style="color:#2a6aa0">붙은 효과: ${[...m.flags].map(f => f === 'PUPPET' ? '조종 불가' : MC.FlagNames[f]).join(', ')}<\/div>`;
   if (c.choices.length === 2) h += `<div style="color:#784a90">선택: ${esc(c.choices[0].title)} (${esc(MC.describe(c.choices[0].effects))}) / ${esc(c.choices[1].title)} (${esc(MC.describe(c.choices[1].effects))})<\/div>`;
   if (c.isSpell) { if (c.spellEffects.length) h += `<p>${esc(MC.describe(c.spellEffects))}<\/p>`; }
   else {
@@ -1517,6 +1693,7 @@ function detailHtml(c, m) {
     const lv = levelOfCard(c);
     h += `<div class="muted" style="color:#9a6a10">내 카드 등급: ${MC.rankTextOfLevel(lv)} · 경험치 ${S.xp[c.id] || 0}${lv >= MC.MaxLevel ? '' : ' / ' + MC.xpAtLevel(lv + 1)}<\/div>`;
   }
+  h += glossaryFor(c, m);
   const lore = S.lore[c.mythCode + '|' + c.title];
   if (lore) h += `<div class="lore">${esc(lore)}<\/div>`;
   return h;
@@ -1549,12 +1726,14 @@ function logSheet() {
 }
 function battleMenu() {
   sheet(`<h2>메뉴<\/h2><div class="btns" style="flex-direction:column">
-    <button data-a="new">${S.net ? '대전 나가고 새 대전' : '새 대전'}<\/button><button data-a="log">기록 보기<\/button><button data-a="rules">규칙<\/button><button data-a="home">처음 화면으로<\/button><button data-a="close">닫기<\/button><\/div>`,
+    <button data-a="new">${S.net ? '대전 나가고 새 대전' : '새 대전'}<\/button><button data-a="oracle">신탁 대전<\/button><button data-a="log">기록 보기<\/button><button data-a="dict">키워드 사전<\/button><button data-a="rules">규칙<\/button><button data-a="home">처음 화면으로<\/button><button data-a="close">닫기<\/button><\/div>`,
     (a, b, close) => {
       close();
       if (a === 'new') { stopAi(); if (S.net && S.game && S.game.winner < 0 && !S.net.ended) ask('대전을 나갈까요? (경험치 없음)', '나가기', () => { netClose(); newGameSheet(); }); else { netClose(); newGameSheet(); } }
       else if (a === 'log') logSheet();
       else if (a === 'rules') rulesSheet();
+      else if (a === 'dict') dictSheet('');
+      else if (a === 'oracle') { if (S.game && S.game.winner < 0) ask('지금 대전을 그만두고 신탁 대전을 열까요?', '신탁 대전', () => { stopAi(); netClose(); oracleMenu(); }); else oracleMenu(); }
       else if (a === 'home') { if (S.game && S.game.winner < 0) ask('대전을 그만둘까요? (경험치 없음)', '그만두기', showHome); else showHome(); }
     });
 }
@@ -1582,8 +1761,8 @@ function showResult() {
   const note = S.practice ? '연습 대전이라 경험치는 쌓이지 않았습니다.' : netNoXp ? (S.net.ended ? '연결이 끊겨 경험치 없이 끝났습니다.' : '공정 모드라 경험치는 쌓이지 않았습니다.') : `낸 카드 +${MC.XpPlayed}${g.winner === S.mySide ? ', 승리 +' + MC.XpWin : ''}, 마무리 일격 +${MC.XpFinisher}`;
   sheet(`<h2>${msg}<\/h2><div class="muted">${note}<\/div><div style="margin-top:8px">${gains.map(x =>
     `<div class="gain"><span>${esc(x.c.title)} <span class="muted">+${x.amt} (${x.parts.join(', ')})<\/span><\/span>${x.c.isSpell ? '' : `<span class="${x.lv1 > x.lv0 ? 'up' : ''}">${x.lv1 > x.lv0 ? MC.rankTextOfLevel(x.lv0) + ' → ' : ''}${MC.rankTextOfLevel(x.lv1)}<\/span>`}<\/div>`).join('')}<\/div>
-    <div class="btns"><button data-a="board">판 보기<\/button><button class="primary" data-a="again">${S.net ? '대인전 다시' : '새 대전'}<\/button><\/div>`,
-    (a, b, close) => { close(); if (a === 'again') { if (S.net) { netClose(); netLobby(); } else newGameSheet(); } });
+    <div class="btns"><button data-a="board">판 보기<\/button><button class="primary" data-a="again">${S.net ? '대인전 다시' : S.oracle ? '신탁 대전 다시' : '새 대전'}<\/button><\/div>`,
+    (a, b, close) => { close(); if (a === 'again') { if (S.net) { netClose(); netLobby(); } else if (S.oracle) oracleMenu(); else newGameSheet(); } });
 }
 
 // ============================================================ 덱 편집
@@ -1667,28 +1846,29 @@ function rulesSheet() {
   <h3>오행·절기<\/h3><div>• 한 턴에 절기 하나씩(오늘 날짜의 절기에서 시작).<br>• 계절 오행과 같은 주속성 하수인 공격 +1, 계절의 정반대 오행 카드 비용 +1.<br>
   • 같은 턴에 상생 순서(목→화→토→금→수→목)로 이어 내면 비용 −1.<br>• 공격하는 쪽 주속성이 맞는 쪽 방어 속성(양속성은 보조)을 상극하면 피해 +1.<br>
   • 무속성(無): 비용 +1, 상극·계절의 영향 없음.<br>• 조정자(調): 공격 불가, 양옆 아군 공격 +1, 낼 때 효과 둘 중 하나 선택.<\/div>
+  <h3>서사·역방향<\/h3><div>• 서사 카드: 같은 이야기의 앞 단계를 이미 냈으면 "이어짐" 효과가 더 일어납니다(손패 금색 테두리).<br>
+  • 룬·타로 주문은 쓰면 덱에 역방향으로 섞여 들어가고, 다시 쓰면 반전 하나가 붙습니다(상대 하수인 체력 +1, 또는 내가 잃은 하수인이 조종 불가로 되살아나 다음 턴에 사라짐).<\/div>
+  <h3>신탁 대전<\/h3><div>그 자리에서 덱을 만드는 대전. 운명에 맡기기(무작위 20장) 또는 신탁 받기(세 장 중 한 장 × 20). 양쪽 모두 정령★1.<\/div>
   <h3>등급<\/h3><div>정령 → 수호령 → 반신(액티브2) → 하급신 → 상급신(특수능력) → 대신 → 주신 → 태초신. 한 단계마다 체력 +1, 두 단계마다 공격 +1.<\/div>
   <h3>조작<\/h3><div>카드를 누르면 냅니다(하수인은 ▼ 자리를 고름). 내 하수인을 누른 뒤 빨간 대상을 누르면 공격. 길게 누르면(PC는 오른쪽 클릭) 설명. 빈 곳을 누르면 취소.<\/div>
   <div class="btns"><button data-a="close">닫기<\/button><\/div>`, (a, b, close) => close());
 }
 
 // ============================================================ 대인전 (방 코드)
-// 연결: PeerJS(WebRTC). 처음 만날 때만 공개 중개 서버(0.peerjs.com)를 쓰고, 그 뒤로는 두 기기가 직접 행동을 주고받는다.
-// 메시지(JSON)
+// 연결: 공개 MQTT 중계 서버(웹소켓). 두 기기 모두 바깥으로만 접속하므로 공유기·통신사 망 종류와 관계없이 연결된다.
+// 방 코드의 첫 글자로 중계 서버를 고른다(방장이 접속에 성공한 서버).
+// 봉투 {id: 보낸 기기, s: 순번(0 = 순번 없음), m: 내용}  — 순번으로 빠진 것은 다시 달라고 하고, 겹친 것은 버린다.
+// 내용
 //   참가자 → 방장  {t:'hello', proto, hash, name, deck:[번호…], levels:{번호:레벨}}
 //   방장 → 참가자  {t:'start', seed, first, term, name, deck, levels, fair}   또는 {t:'err', why}
-//   서로           {t:'act', a:행동} {t:'chat', s:글} {t:'bye'}
-// 두 기기는 같은 시드·같은 행동 순서로 같은 결과를 계산한다(v1.6 같은 네트워크 대전과 같은 원리).
-const NET_PROTO = 'VMC3';
+//   서로           {t:'act', a:행동} {t:'chat', s:글} {t:'bye'} {t:'need', from:순번} {t:'ping'}
+// 두 기기는 같은 시드·같은 행동 순서로 같은 결과를 계산한다.
+const NET_PROTO = 'VMC4';
 const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-const PEER_PREFIX = 'voltaic-mythcards-';
-// 연결 도우미 서버(STUN/TURN). PeerJS 기본값에 구글 STUN 을 더한다.
-const PEER_OPTS = { config: { iceServers: [
-  { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302'] },
-  { urls: 'turn:eu-0.turn.peerjs.com:3478', username: 'peerjs', credential: 'peerjsp' },
-  { urls: 'turn:us-0.turn.peerjs.com:3478', username: 'peerjs', credential: 'peerjsp' }] } };
+const TOPIC_ROOT = 'voltaic/mythcards/v4/';
+const BROKERS = ['wss://broker.emqx.io:8084/mqtt', 'wss://broker.hivemq.com:8884/mqtt', 'wss://test.mosquitto.org:8081/mqtt'];
 const PHRASES = ['안녕하세요', '잘 부탁해요', '잘했어요!', '고민 중…', '아이고', '한 판 더?', '좋은 대전이었어요'];
-let peerLib = null, lobby = null;
+let mqttLib = null, lobby = null;
 
 function cardsHash() {
   const src = ((HOSTDATA && HOSTDATA.cards) || DATA.cards) + '\n#tags\n' + ((HOSTDATA && HOSTDATA.tags) || DATA.tags);
@@ -1699,30 +1879,108 @@ function cardsHash() {
 }
 function netAvailable() {
   if (/(^|\.)claude\.ai$|claudeusercontent|claude\.site/.test(location.hostname)) return '이 링크(claude.ai) 안에서는 대인전 연결이 막혀 있습니다. 내 웹 주소나 PC판(exe)에서 열어 주세요.';
-  if (typeof RTCPeerConnection === 'undefined') return '이 브라우저는 대인전 연결(WebRTC)을 지원하지 않습니다.';
+  if (typeof WebSocket === 'undefined') return '이 브라우저는 대인전 연결을 지원하지 않습니다.';
   return '';
 }
-function loadPeer() {
-  if (window.Peer) return Promise.resolve(window.Peer);
-  if (peerLib) return peerLib;
-  peerLib = new Promise((ok, fail) => {
-    const sc = document.createElement('script');
-    sc.src = 'https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js';
-    sc.onload = () => window.Peer ? ok(window.Peer) : fail(new Error('연결 도구를 읽지 못했습니다'));
-    sc.onerror = () => { peerLib = null; fail(new Error('인터넷에 연결되어 있는지 확인하세요 (연결 도구를 받지 못함)')); };
-    document.head.appendChild(sc);
+function loadMqtt() {
+  if (window.mqtt) return Promise.resolve(window.mqtt);
+  if (mqttLib) return mqttLib;
+  mqttLib = new Promise((ok, fail) => {
+    const urls = ['https://cdn.jsdelivr.net/npm/mqtt@5.10.1/dist/mqtt.min.js', 'https://unpkg.com/mqtt@5.10.1/dist/mqtt.min.js'];
+    const tryAt = i => {
+      if (i >= urls.length) { mqttLib = null; fail(new Error('인터넷에 연결되어 있는지 확인하세요 (연결 도구를 받지 못함)')); return; }
+      const sc = document.createElement('script'); sc.src = urls[i];
+      sc.onload = () => window.mqtt ? ok(window.mqtt) : tryAt(i + 1);
+      sc.onerror = () => tryAt(i + 1);
+      document.head.appendChild(sc);
+    };
+    tryAt(0);
   });
-  return peerLib;
+  return mqttLib;
 }
-// 시험용: 주소에 ?bc=1 이 있으면 같은 브라우저의 두 탭끼리 BroadcastChannel 로 연결한다.
+// 시험용 주소 옵션: ?bc=1 → 같은 브라우저의 두 탭끼리(BroadcastChannel), ?broker=ws://… → 그 중계 서버만 사용
 function useLoopback() { return /[?&]bc=1/.test(location.search) && typeof BroadcastChannel !== 'undefined'; }
-function loopbackConn(code, me) {
-  const ch = new BroadcastChannel('vmc-' + code), handlers = {};
-  ch.onmessage = e => { if (e.data.from !== me && handlers.data) handlers.data(e.data.m); };
-  return { send: m => ch.postMessage({ from: me, m }), on: (ev, fn) => { handlers[ev] = fn; }, close: () => ch.close(), open: true };
+function brokerList() { const m = /[?&]broker=([^&]+)/.exec(location.search); return m ? [decodeURIComponent(m[1])] : BROKERS; }
+
+function makeCode(brokerIdx) {
+  let s = '';
+  for (let i = 0; i < 6; i++) s += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+  // 첫 글자 = 중계 서버 번호
+  const n = brokerList().length;
+  let c0; do { c0 = CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)]; } while (CODE_CHARS.indexOf(c0) % n !== brokerIdx);
+  return c0 + s.substring(1);
+}
+const brokerOfCode = code => CODE_CHARS.indexOf(code[0]) % brokerList().length;
+const randId = () => Math.random().toString(36).slice(2, 10);
+
+// ------------------------------------------------------------ 운반(transport): 순번·재전송을 맡는다
+// role 'h' = 방장, 'g' = 참가자. 내 주제(topic)는 …/코드/역할, 상대에게는 상대 주제로 보낸다.
+function makeTransport(code, role, onMessage, onState) {
+  const me = randId();
+  const tx = { me, peer: null, sent: [], seq: 0, recvSeq: 0, alive: Date.now(), closed: false, client: null, bc: null };
+  const myTopic = TOPIC_ROOT + code + '/' + role, otherTopic = TOPIC_ROOT + code + '/' + (role === 'h' ? 'g' : 'h');
+  const raw = env => {
+    const text = JSON.stringify(env);
+    const drop = /[?&]drop=([\d.]+)/.exec(location.search);   // 시험용: 일부러 메시지를 버린다
+    if (drop && Math.random() < +drop[1]) return;
+    if (tx.bc) tx.bc.postMessage({ topic: otherTopic, text });
+    else if (tx.client) tx.client.publish(otherTopic, text, { qos: 1 });
+  };
+  tx.send = (m, unsequenced) => {
+    if (tx.closed) return;
+    const env = { id: me, s: unsequenced ? 0 : ++tx.seq, m };
+    if (!unsequenced) tx.sent.push(env);
+    raw(env);
+  };
+  tx.resendFrom = from => { for (const env of tx.sent) if (env.s >= from) raw(env); };
+  const onText = text => {
+    let env; try { env = JSON.parse(text); } catch (e) { return; }
+    if (!env || env.id === me) return;
+    if (tx.peer && env.id !== tx.peer) return;          // 다른 기기(같은 코드로 들어온 제3자)는 무시
+    tx.alive = Date.now();
+    const m = env.m || {};
+    if (m.t === 'need') { tx.resendFrom(m.from || 1); return; }
+    if (m.t === 'ping') { if ((m.last || 0) > tx.recvSeq) tx.send({ t: 'need', from: tx.recvSeq + 1 }, true); return; }
+    if (!env.s) { onMessage(m, env.id); return; }
+    if (env.s <= tx.recvSeq) return;                    // 이미 받은 것
+    if (env.s > tx.recvSeq + 1) { tx.send({ t: 'need', from: tx.recvSeq + 1 }, true); return; }  // 빠진 것이 있다
+    tx.recvSeq = env.s;
+    onMessage(m, env.id);
+  };
+  tx.lock = id => { tx.peer = id; };
+  tx.close = () => {
+    tx.closed = true; clearInterval(tx.pinger);
+    try { tx.bc && tx.bc.close(); } catch (e) { }
+    try { tx.client && tx.client.end(true); } catch (e) { }
+  };
+  // 5초마다 "여기까지 보냈다"를 알린다 → 상대가 놓친 것이 있으면 다시 달라고 한다
+  tx.pinger = setInterval(() => { if (tx.peer) raw({ id: me, s: 0, m: { t: 'ping', last: tx.seq } }); }, 5000);
+  if (useLoopback()) {
+    tx.bc = new BroadcastChannel('vmc-' + code);
+    tx.bc.onmessage = e => { if (e.data.topic === myTopic) onText(e.data.text); };
+    setTimeout(() => onState('up'), 50);
+    return Promise.resolve(tx);
+  }
+  return loadMqtt().then(mq => new Promise((ok, fail) => {
+    const url = brokerList()[brokerOfCode(code)];
+    const client = mq.connect(url, { clientId: 'vmc_' + me, clean: true, keepalive: 30, reconnectPeriod: 2000, connectTimeout: 10000 });
+    tx.client = client;
+    let first = true;
+    const failTimer = setTimeout(() => { if (first) { first = false; try { client.end(true); } catch (e) { } fail(new Error('중계 서버에 연결하지 못했습니다')); } }, 12000);
+    client.on('connect', () => {
+      client.subscribe(myTopic, { qos: 1 }, err => {
+        if (err) return;
+        if (first) { first = false; clearTimeout(failTimer); ok(tx); onState('up'); }
+        else { onState('up'); if (tx.peer) tx.send({ t: 'need', from: tx.recvSeq + 1 }, true); }  // 다시 붙음 → 빠진 것 달라고
+      });
+    });
+    client.on('message', (topic, payload) => { onText(typeof payload === 'string' ? payload : new TextDecoder().decode(payload)); });
+    client.on('offline', () => onState('down'));
+    client.on('reconnect', () => onState('down'));
+    client.on('error', () => { });
+  }));
 }
 
-function makeCode() { let s = ''; for (let i = 0; i < 6; i++) s += CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)]; return s; }
 function deckValid(ids) {
   if (!Array.isArray(ids) || ids.length !== MC.DeckSize) return false;
   const n = new Map();
@@ -1731,24 +1989,27 @@ function deckValid(ids) {
 }
 function myLevels(ids) { const o = {}; for (const id of new Set(ids)) o[id] = levelOfCard(S.byId.get(id)); return o; }
 
-function netSend(m) {
-  const n = S.net; if (!n || n.ended || !n.conn) return;
-  try { n.conn.send(m); } catch (e) { netLost('연결이 끊겼습니다.'); }
-}
+function netSend(m) { const n = S.net; if (!n || n.ended || !n.tx) return; n.tx.send(m); }
 function netClose() {
   if (lobby) { lobby.cleanup(); lobby = null; }
   const n = S.net; if (!n) return;
-  try { if (!n.ended && n.conn) n.conn.send({ t: 'bye' }); } catch (e) { /* 무시 */ }
-  setTimeout(() => { try { n.conn && n.conn.close(); } catch (e) { } try { n.peer && n.peer.destroy(); } catch (e) { } }, 300);
+  clearInterval(n.watch);
+  if (!n.ended && n.tx) n.tx.send({ t: 'bye' });
+  const tx = n.tx; setTimeout(() => tx && tx.close(), 400);
   S.net = null;
   const cb = document.getElementById('chatBtn'); if (cb) cb.classList.add('hidden');
 }
 function netLost(why) {
   const n = S.net; if (!n || n.ended) return;
-  n.ended = true;
+  n.ended = true; clearInterval(n.watch);
   if (S.game) { S.game.log.push('※ ' + why); render(); }
   if (S.game && S.game.winner < 0) sheet(`<h2>${esc(why)}<\/h2><div class="muted">이 대전은 경험치 없이 끝납니다.<\/div><div class="btns"><button data-a="home">처음 화면<\/button><button class="primary" data-a="lobby">대인전 다시<\/button><\/div>`,
     (a, b, close) => { close(); if (a === 'home') showHome(); else { netClose(); netLobby(); } });
+}
+function netState(st) {
+  const n = S.net; if (!n || n.ended) return;
+  n.down = st === 'down';
+  render();
 }
 function onNetData(m) {
   const n = S.net; if (!n || !m || typeof m !== 'object') return;
@@ -1811,8 +2072,8 @@ function netLobby() {
       if (!deck || !deckValid(deck.ids)) { status('덱이 올바르지 않습니다(20장).'); return; }
       if (a === 'host') hostRoom(name, deck.ids.slice(), +s.el.querySelector('#nFair').value, close, status, s.el);
       else if (a === 'join') {
-        const code = s.el.querySelector('#nCode').value.trim().toUpperCase();
-        if (!/^[A-Z0-9]{6}$/.test(code)) { status('방 코드 6자리를 넣으세요.'); return; }
+        const code = s.el.querySelector('#nCode').value.replace(/\s/g, '').toUpperCase();
+        if (code.length !== 6 || [...code].some(ch => CODE_CHARS.indexOf(ch) < 0)) { status('방 코드 6자리를 넣으세요.'); return; }
         joinRoom(code, name, deck.ids.slice(), close, status);
       }
     }, { modal: true });
@@ -1821,105 +2082,69 @@ function netLobby() {
   else if ([...s.el.querySelector('#nDeck').options].some(o => o.value === L.my)) s.el.querySelector('#nDeck').value = L.my;
 }
 
+// 방장: 첫 중계 서버부터 차례로 접속해 보고, 붙은 서버 번호가 들어간 코드를 만든다
 function hostRoom(name, deckIds, fair, closeLobby, status, el) {
-  const code = makeCode();
+  let tx = null, done = false, cancelled = false;
+  lobby = { cleanup: () => { cancelled = true; if (!done && tx) tx.close(); } };
   const box = el.querySelector('#nCodeBox');
-  box.textContent = code; box.classList.remove('hidden');
-  status('이 코드를 상대에게 알려 주세요 · 연결 준비 중…');
-  let peer = null, done = false;
-  lobby = { cleanup: () => { if (!done) { try { peer && peer.destroy(); } catch (e) { } } } };
-  const onHello = (conn, m) => {
-    if (done) return;
-    const refuse = why => { try { conn.send({ t: 'err', why }); } catch (e) { } };
-    if (!m || m.t !== 'hello') return;
+  const onMsg = (m, from) => {
+    if (done || !m || m.t !== 'hello') return;
+    const refuse = why => tx.send({ t: 'err', why }, true);
     if (m.proto !== NET_PROTO) return refuse('프로그램 버전이 다릅니다. 둘 다 새로 고쳐 주세요.');
     if (m.hash !== cardsHash()) return refuse('두 기기의 카드 목록이 다릅니다.');
     if (!deckValid(m.deck)) return refuse('상대 덱이 올바르지 않습니다.');
-    done = true;
+    done = true; tx.lock(from);
     const start = { t: 'start', seed: (Math.random() * 2 ** 31) >>> 0, first: Math.floor(Math.random() * 2), term: MC.termOfDate(new Date()),
       name, deck: deckIds, levels: myLevels(deckIds), fair };
-    conn.send(start);
+    tx.send(start);
     lobby = null; closeLobby();
-    beginNetGame(0, conn, peer, start, { name, deck: deckIds, levels: start.levels },
+    beginNetGame(0, tx, start, { name, deck: deckIds, levels: start.levels },
       { name: String(m.name || '상대').slice(0, 12), deck: m.deck, levels: m.levels || {} });
   };
-  if (useLoopback()) {
-    const conn = loopbackConn(code, 'host');
-    conn.on('data', m => { if (!done) onHello(conn, m); else onNetData(m); });
-    status('이 코드를 상대에게 알려 주세요 · 기다리는 중… (시험 연결)');
-    lobby = { cleanup: () => { if (!done) conn.close(); } };
-    return;
-  }
-  loadPeer().then(Peer => {
-    status('중개 서버에 연결하는 중…');
-    peer = new Peer(PEER_PREFIX + code, PEER_OPTS);
-    const openTimer = setTimeout(() => { if (!done && !peer.open) status('중개 서버에 연결하지 못했습니다. 인터넷 연결을 확인하고 닫았다가 다시 만들어 주세요.'); }, 15000);
-    peer.on('open', () => { clearTimeout(openTimer); status('이 코드를 상대에게 알려 주세요 · 기다리는 중… (이 화면을 켜 둔 채로)'); });
-    // 폰 화면이 꺼지거나 다른 앱으로 가면 중개 서버 연결이 끊긴다 → 다시 붙는다
-    peer.on('disconnected', () => { if (!done) { status('중개 서버 연결이 끊겨 다시 연결하는 중…'); try { peer.reconnect(); } catch (e) { } } });
-    peer.on('error', err => {
-      if (done) { if (S.net && S.net.peer === peer) netLost('연결 오류: ' + (err.type || err.message)); return; }
-      status(err.type === 'unavailable-id' ? '코드가 겹쳤습니다. 닫고 다시 만들어 주세요.' : '연결 준비 실패: ' + (err.type || err.message));
-    });
-    peer.on('connection', conn => {
-      if (!done) status('상대가 들어오는 중…');
-      if (done) { conn.on('open', () => { conn.send({ t: 'err', why: '이미 대전 중인 방입니다.' }); setTimeout(() => conn.close(), 500); }); return; }
-      conn.on('data', m => { if (!done) onHello(conn, m); else if (S.net && S.net.conn === conn) onNetData(m); });
-      conn.on('close', () => { if (S.net && S.net.conn === conn) netLost('상대와 연결이 끊겼습니다.'); });
-    });
-  }).catch(e => status(e.message));
+  const tryBroker = i => {
+    if (cancelled) return;
+    if (i >= brokerList().length) { status('중계 서버에 연결하지 못했습니다. 인터넷 연결을 확인하고 다시 [방 만들기]를 누르세요.'); lobby = null; return; }
+    const code = makeCode(i);
+    status('중계 서버에 연결하는 중…' + (i ? ' (' + (i + 1) + '번째 서버)' : ''));
+    makeTransport(code, 'h', (m, from) => { if (!done) onMsg(m, from); else onNetData(m); }, st => netState(st)).then(t => {
+      if (cancelled) { t.close(); return; }
+      tx = t;
+      box.textContent = code; box.classList.remove('hidden');
+      status('이 코드를 상대에게 알려 주세요 · 기다리는 중…');
+    }).catch(() => tryBroker(i + 1));
+  };
+  tryBroker(0);
 }
 
 function joinRoom(code, name, deckIds, closeLobby, status) {
-  status('연결하는 중…');
-  let peer = null, done = false;
-  lobby = { cleanup: () => { if (!done) { try { peer && peer.destroy(); } catch (e) { } } } };
+  let tx = null, done = false, cancelled = false, helloTimer = 0, giveUp = 0;
+  const stop = msg => { clearInterval(helloTimer); clearTimeout(giveUp); if (msg) status(msg); if (!done && tx) tx.close(); lobby = null; };
+  lobby = { cleanup: () => { cancelled = true; stop(''); } };
   const hello = { t: 'hello', proto: NET_PROTO, hash: cardsHash(), name, deck: deckIds, levels: myLevels(deckIds) };
-  const onMsg = (conn, m) => {
-    if (done) { if (S.net && S.net.conn === conn) onNetData(m); return; }
-    if (m && m.t === 'err') { status('방장이 거절했습니다: ' + m.why); lobby && lobby.cleanup(); lobby = null; return; }
-    if (m && m.t === 'start') {
-      if (!deckValid(m.deck)) { status('방장의 덱을 읽을 수 없습니다.'); return; }
-      done = true; lobby = null; closeLobby();
-      beginNetGame(1, conn, peer, m, { name: String(m.name || '방장').slice(0, 12), deck: m.deck, levels: m.levels || {} },
+  status('중계 서버에 연결하는 중…');
+  makeTransport(code, 'g', (m, from) => {
+    if (done) { onNetData(m); return; }
+    if (m.t === 'err') { stop('방장이 거절했습니다: ' + m.why); return; }
+    if (m.t === 'start') {
+      if (!deckValid(m.deck)) { stop('방장의 덱을 읽을 수 없습니다.'); return; }
+      done = true; tx.lock(from); clearInterval(helloTimer); clearTimeout(giveUp);
+      lobby = null; closeLobby();
+      beginNetGame(1, tx, m, { name: String(m.name || '방장').slice(0, 12), deck: m.deck, levels: m.levels || {} },
         { name, deck: deckIds, levels: hello.levels });
     }
-  };
-  if (useLoopback()) {
-    const conn = loopbackConn(code, 'guest');
-    conn.on('data', m => onMsg(conn, m));
-    lobby = { cleanup: () => { if (!done) conn.close(); } };
-    conn.send(hello);
-    return;
-  }
-  loadPeer().then(Peer => {
-    status('중개 서버에 연결하는 중…');
-    peer = new Peer(PEER_OPTS);
-    let stage = 0; // 0 중개 서버, 1 방 찾는 중(직접 연결 협상), 2 연결됨
-    const fail = msg => { if (done) return; clearTimeout(timer); status(msg); if (lobby) { lobby.cleanup(); lobby = null; } };
-    const timer = setTimeout(() => {
-      if (stage === 0) fail('중개 서버에 연결하지 못했습니다. 인터넷 연결을 확인한 뒤 다시 [참가]를 누르세요.');
-      else if (stage === 1) fail('방에 직접 연결하지 못했습니다. 방장 화면이 켜져 있는지 확인하고 다시 [참가]를 누르세요. 계속 안 되면 두 기기를 같은 와이파이에 두고 해 보세요.');
-      else fail('방장이 응답하지 않습니다. 다시 [참가]를 누르세요.');
-    }, 25000);
-    peer.on('open', () => {
-      stage = 1; status('방을 찾는 중…');
-      const conn = peer.connect(PEER_PREFIX + code, { reliable: true });
-      conn.on('open', () => { stage = 2; status('방을 찾았습니다 · 시작 준비 중…'); conn.send(hello); });
-      conn.on('error', err => fail('연결 실패: ' + (err && (err.type || err.message) || '')));
-      conn.on('data', m => onMsg(conn, m));
-      conn.on('close', () => { if (S.net && S.net.conn === conn) netLost('상대와 연결이 끊겼습니다.'); });
-    });
-    peer.on('error', err => {
-      clearTimeout(timer);
-      if (done) { if (S.net && S.net.peer === peer) netLost('연결 오류: ' + (err.type || err.message)); return; }
-      fail(err.type === 'peer-unavailable' ? '그 코드의 방이 없습니다. 코드와, 방장 화면이 켜져 있는지 확인하세요.' : '연결 실패: ' + (err.type || err.message));
-    });
-  }).catch(e => status(e.message));
+  }, st => netState(st)).then(t => {
+    if (cancelled) { t.close(); return; }
+    tx = t;
+    status('방을 찾는 중…');
+    // 방장이 받을 때까지 몇 번 다시 보낸다(순번 없는 메시지)
+    tx.send(hello, true);
+    helloTimer = setInterval(() => tx.send(hello, true), 2500);
+    giveUp = setTimeout(() => stop('방이 응답하지 않습니다. 코드와, 방장 화면이 켜져 있는지 확인하고 다시 [참가]를 누르세요.'), 20000);
+  }).catch(() => stop('중계 서버에 연결하지 못했습니다. 인터넷 연결을 확인하고 다시 [참가]를 누르세요.'));
 }
 
 // 두 기기 모두: 방장 = 0번, 참가자 = 1번
-function beginNetGame(mySide, conn, peer, start, hostInfo, guestInfo) {
+function beginNetGame(mySide, tx, start, hostInfo, guestInfo) {
   stopAi();
   const deck0 = hostInfo.deck.map(id => S.byId.get(id)), deck1 = guestInfo.deck.map(id => S.byId.get(id));
   const g = new MC.Game(deck0, deck1, hostInfo.name, guestInfo.name, start.seed);
@@ -1929,7 +2154,13 @@ function beginNetGame(mySide, conn, peer, start, hostInfo, guestInfo) {
     const lv = start.fair >= 0 ? start.fair : (levels[sd][c.id] || 0);
     return [MC.tierOfLevel(lv), MC.starOfLevel(lv)];
   };
-  S.net = { conn, peer, fair: start.fair, ended: false };
+  S.net = { tx, fair: start.fair, ended: false, down: false, quiet: false };
+  // 상대 소식이 40초 넘게 없으면 알려 준다(끊지는 않음)
+  S.net.watch = setInterval(() => {
+    const n = S.net; if (!n || n.ended) return;
+    const quiet = Date.now() - tx.alive > 40000;
+    if (quiet !== n.quiet) { n.quiet = quiet; render(); }
+  }, 5000);
   S.game = g; S.ai = null; S.mySide = mySide; S.practice = false;
   S.placing = null; S.pending = null; S.selUid = 0; S.resultShown = false;
   buildBattle();
@@ -1939,6 +2170,129 @@ function beginNetGame(mySide, conn, peer, start, hostInfo, guestInfo) {
   toast('연결되었습니다 · ' + (g.current === mySide ? '내가 먼저' : '상대가 먼저'));
 }
 
+// ============================================================ 신탁 대전 (덱을 그 자리에서 만드는 대전)
+//  운명에 맡기기: 전체 카드에서 하수인 12 · 주문 8 을 무작위로
+//  신탁 받기:     세 장 중 한 장 고르기 × 20 (하수인 12 · 주문 8 이 되도록 제시)
+//  양쪽 모두 등급 보너스 없음(정령★1, 공정), 경험치는 쌓인다. AI 도 같은 방식으로 덱을 만든다.
+function oracleMenu() {
+  sheet(`<h2>신탁 대전<\/h2><div class="muted">그 자리에서 덱을 만들어 대전합니다. 양쪽 모두 등급 보너스 없이(정령★1) 겨루고, 경험치는 쌓입니다.<\/div>
+    <div class="btns" style="flex-direction:column">
+      <button data-a="fate" style="text-align:left;padding:12px"><b>운명에 맡기기<\/b><br><span class="muted">무작위 20장(하수인 12 · 주문 8)으로 바로 대전<\/span><\/button>
+      <button class="primary" data-a="pick" style="text-align:left;padding:12px"><b>신탁 받기<\/b><br><span style="font-weight:400">세 장 중 한 장을 골라 20장 만들기<\/span><\/button>
+      <button data-a="close">닫기<\/button><\/div>`,
+    (a, b, close) => {
+      close();
+      if (a === 'fate') { const ids = fateDeck(Math.random); oracleReview(ids, true); }
+      else if (a === 'pick') oraclePick([], 0);
+    });
+}
+const isMinionCard = c => !c.isSpell && !c.isToken;
+function fateDeck(rand) {
+  const pickN = (pool, n) => {
+    const out = [];
+    let guard = 0;
+    while (out.length < n && guard++ < 1000) {
+      const c = pool[Math.floor(rand() * pool.length)];
+      if (out.filter(x => x === c.id).length < MC.MaxCopies) out.push(c.id);
+    }
+    return out;
+  };
+  const ids = [...pickN(S.cards.filter(isMinionCard), MC.DeckMinions), ...pickN(S.cards.filter(c => c.isSpell), MC.DeckSpells)];
+  return ids.sort((x, y) => S.byId.get(x).cost - S.byId.get(y).cost);
+}
+// 이번 차례에 보여 줄 세 장(남은 하수인·주문 수에 맞춰 섞음)
+function oracleOffer(picked, rand) {
+  const nM = picked.filter(id => !S.byId.get(id).isSpell).length, nS = picked.length - nM;
+  const leftM = MC.DeckMinions - nM, leftS = MC.DeckSpells - nS;
+  const ok = c => picked.filter(x => x === c.id).length < MC.MaxCopies;
+  const poolM = S.cards.filter(c => isMinionCard(c) && ok(c)), poolS = S.cards.filter(c => c.isSpell && ok(c));
+  const offer = [];
+  let guard = 0;
+  while (offer.length < 3 && guard++ < 500) {
+    const wantSpell = leftM <= 0 ? true : leftS <= 0 ? false : rand() < leftS / (leftM + leftS);
+    const pool = wantSpell ? poolS : poolM;
+    const c = pool[Math.floor(rand() * pool.length)];
+    if (c && !offer.includes(c)) offer.push(c);
+  }
+  return offer;
+}
+// AI 가 고르는 기준: 비용에 비해 능력치가 큰 하수인, 주문은 비용이 낮을수록 조금 더
+function aiOracleValue(c) {
+  if (c.isSpell) return 2.2 - c.cost * 0.15 + Math.random() * 0.6;
+  const kw = ['TAUNT', 'CHARGE', 'SHIELD', 'STEALTH'].filter(k => c.hasKeyword(k)).length;
+  return (c.atk + c.hp + kw * 1.2) / (c.cost + 1) + Math.random() * 0.6;
+}
+function aiOracleDeck() {
+  const picked = [];
+  for (let i = 0; i < MC.DeckSize; i++) {
+    const offer = oracleOffer(picked, Math.random);
+    offer.sort((x, y) => aiOracleValue(y) - aiOracleValue(x));
+    picked.push(offer[0].id);
+  }
+  return picked.sort((x, y) => S.byId.get(x).cost - S.byId.get(y).cost);
+}
+function oraclePick(picked, sel, offer) {
+  offer = offer || oracleOffer(picked, Math.random);
+  const nM = picked.filter(id => !S.byId.get(id).isSpell).length, nS = picked.length - nM;
+  const pct = Math.round(picked.length / MC.DeckSize * 100);
+  const cardsHtml = offer.map((c, i) => `<div data-a="sel:${i}" style="display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer">
+      ${cardHtml(c, null, { key: 'o' + i, showCost: true, cls: i === sel ? ['sel'] : [] })}
+      <button data-a="info:${c.id}" style="padding:2px 10px;font-size:12px">설명<\/button><\/div>`).join('');
+  sheet(`<h2>신탁 받기 · ${picked.length + 1} / ${MC.DeckSize}<\/h2>
+    <div style="height:8px;border-radius:4px;background:#e4dccb;overflow:hidden"><div style="width:${pct}%;height:100%;background:#d9a93c"><\/div><\/div>
+    <div class="muted" style="text-align:center;margin:6px 0">하수인 ${nM} / ${MC.DeckMinions} · 주문 ${nS} / ${MC.DeckSpells}<\/div>
+    <div class="oracle" style="--cw:min(100px,27vw);--ch:calc(var(--cw)*1.32);display:flex;justify-content:center;gap:12px;padding:12px 0">${cardsHtml}<\/div>
+    <details><summary class="muted">고른 카드 ${picked.length}장<\/summary><div class="muted">${picked.map(id => esc(S.byId.get(id).title)).join(', ') || '아직 없음'}<\/div><\/details>
+    <div class="btns"><button data-a="quit">그만두기<\/button><button class="primary" data-a="ok">이 카드로<\/button><\/div>`,
+    (a, b, close) => {
+      if (a.startsWith('info:')) { detailSheet('card:' + a.split(':')[1]); return; }
+      if (a.startsWith('sel:')) { close(); oraclePick(picked, +a.split(':')[1], offer); return; }
+      if (a === 'quit') { close(); return; }
+      if (a === 'ok') {
+        close();
+        const next = picked.concat([offer[sel].id]);
+        if (next.length >= MC.DeckSize) oracleReview(next.sort((x, y) => S.byId.get(x).cost - S.byId.get(y).cost), false);
+        else oraclePick(next, 0);
+      }
+    }, { modal: true });
+}
+function oracleReview(ids, fate) {
+  const buckets = [0, 0, 0, 0, 0, 0];   // 0~1, 2, 3, 4, 5, 6+
+  for (const id of ids) { const k = Math.max(0, Math.min(5, S.byId.get(id).cost - 1)); buckets[k]++; }
+  const max = Math.max(...buckets, 1);
+  const nM = ids.filter(id => !S.byId.get(id).isSpell).length;
+  sheet(`<h2>${fate ? '운명이 정한 덱' : '내 신탁 덱'}<\/h2>
+    <div class="muted">하수인 ${nM} · 주문 ${ids.length - nM}<\/div>
+    <div style="display:flex;align-items:flex-end;gap:10px;height:90px;margin:12px 0 2px">${buckets.map(n => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%"><span class="muted">${n}<\/span><div style="width:100%;height:${Math.round(n / max * 70)}px;background:#d9a93c;border-radius:4px 4px 0 0"><\/div><\/div>`).join('')}<\/div>
+    <div style="display:flex;gap:10px" class="muted">${['0~1', '2', '3', '4', '5', '6+'].map(t => `<span style="flex:1;text-align:center">${t}<\/span>`).join('')}<\/div>
+    <div class="list" style="max-height:30vh;margin-top:10px">${ids.map(id => { const c = S.byId.get(id); return `<div class="it" data-a="card:${id}"><span class="c">${c.cost}<\/span><span class="t">${esc(c.title)}<\/span><span class="m">${c.isSpell ? '주문' : c.atk + '/' + c.hp}<\/span><\/div>`; }).join('')}<\/div>
+    <div class="btns"><button data-a="save">덱으로 저장<\/button><button data-a="close">그만두기<\/button><button class="primary" data-a="go">대전 시작<\/button><\/div>`,
+    (a, b, close) => {
+      if (a.startsWith('card:')) { detailSheet(a); return; }
+      if (a === 'save') {
+        const n = S.decks.filter(d => d.title.startsWith('신탁 덱')).length + 1;
+        S.decks.push({ title: '신탁 덱 ' + n, ids: ids.slice() }); saveDecks(); toast('"신탁 덱 ' + n + '"으로 저장했습니다'); return;
+      }
+      close();
+      if (a === 'go') startOracleGame(ids, fate);
+    }, { modal: true });
+}
+function startOracleGame(myIds, fate) {
+  stopAi(); netClose();
+  const aiIds = fate ? fateDeck(Math.random) : aiOracleDeck();
+  const g = new MC.Game(myIds.map(id => S.byId.get(id)), aiIds.map(id => S.byId.get(id)), '나', 'AI · ' + (fate ? '운명의 덱' : '신탁의 덱'), (Date.now() ^ (Math.random() * 1e9)) >>> 0);
+  g.startTerm = MC.termOfDate(new Date());
+  g.tierOf = () => [1, 1];
+  S.practice = false; S.oracle = true;
+  S.game = g; S.ai = new MC.AiPlayer(1); S.mySide = 0;
+  S.placing = null; S.pending = null; S.selUid = 0; S.resultShown = false;
+  buildBattle();
+  g.start(Math.floor(Math.random() * 2));
+  g.log.push('신탁 대전 · ' + (fate ? '운명에 맡기기' : '신탁 받기') + ' · 양쪽 정령★1');
+  render();
+  if (g.current === 1) runAi();
+}
+
 // exe 메뉴에서 부르는 명령
 window.VMC = {
   cmd(name) {
@@ -1946,7 +2300,8 @@ window.VMC = {
     if (name === 'home') { if (S.game && S.game.winner < 0) ask('대전을 그만둘까요? (경험치 없음)', '그만두기', showHome); else showHome(); return; }
     if (name === 'new') { if (S.game && S.game.winner < 0) ask('지금 대전을 그만두고 새로 시작할까요?', '새 대전', () => { stopAi(); newGameSheet(); }); else newGameSheet(); return; }
     if (name === 'net') { if (S.game && S.game.winner < 0) ask('지금 대전을 그만두고 대인전을 열까요?', '대인전', () => { stopAi(); netClose(); netLobby(); }); else netLobby(); return; }
-    const f = { decks: deckEditor, coll: collection, rules: rulesSheet, log: logSheet }[name]; if (f) f();
+    if (name === 'oracle') { if (S.game && S.game.winner < 0) ask('지금 대전을 그만두고 신탁 대전을 열까요?', '신탁 대전', () => { stopAi(); oracleMenu(); }); else oracleMenu(); return; }
+    const f = { decks: deckEditor, coll: collection, rules: rulesSheet, log: logSheet, dict: () => dictSheet('') }[name]; if (f) f();
   },
   // 신화 연표에서 얻은 경험치 등 exe 쪽 값과 합친다(큰 값을 남김)
   mergeXp(obj) {
